@@ -10,6 +10,24 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{7575d0f7-5718-49c6-b3c9-3dcfa166ac16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entity">
+      <UniqueIdentifier>{6e132eb4-3ffd-49d7-8dcd-f618359684c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Buff">
+      <UniqueIdentifier>{2210115a-8022-4287-9221-d3b5434eb96a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Enemy">
+      <UniqueIdentifier>{a09c14b4-dcf8-4b98-8283-9ca9c737527c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Skill">
+      <UniqueIdentifier>{79acdf64-4be3-4616-a415-4e084b59e906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tower">
+      <UniqueIdentifier>{15a736fe-4df0-4c2c-a7aa-d2a6088bdedf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +39,15 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Enemy\Enemy.cpp">
+      <Filter>src\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Buff\Buff.cpp">
+      <Filter>src\Buff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Buff\BuffList.cpp">
+      <Filter>src\Buff</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -31,6 +58,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Enemy\Enemy.h">
+      <Filter>src\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Buff\Buff.h">
+      <Filter>src\Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Buff\BuffList.h">
+      <Filter>src\Buff</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

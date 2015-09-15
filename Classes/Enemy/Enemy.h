@@ -16,15 +16,12 @@ protected:
 
 public:
 
-	Enemy();
-	~Enemy();
-
-	virtual void onEnter();
-	virtual void onExit();
+	explicit Enemy();
+	virtual ~Enemy();
 	
 	virtual void update(float delta);
 
-	virtual int maxHP();
+	virtual int maxHP()=0;
 	virtual int defence();
 
 	// 对该敌人造成伤害，期间检查敌人各项属性和buff，指定direct=true造成直伤；返回最终伤害量

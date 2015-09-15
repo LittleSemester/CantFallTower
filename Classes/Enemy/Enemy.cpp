@@ -14,24 +14,9 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::onEnter()
-{
-	Node::onEnter();
-}
-
-void Enemy::onExit()
-{
-	Node::onExit();
-}
-
 void Enemy::update(float delta)
 {
 	updateBuff(delta);
-}
-
-int Enemy::maxHP()
-{
-	return 100;
 }
 
 int Enemy::defence()

@@ -26,9 +26,12 @@ int Enemy::defence()
 
 int Enemy::dealDamage(double damage, bool direct/*=false*/)
 {
-	double bufDef = calcBuffedValue(&Buff::defence, defence());	
-	damage = calcDefencedDamage(damage, bufDef);
-	damage = calcBuffedValue(&Buff::damageIn, damage);
+	if (!direct)
+	{
+		double bufDef = calcBuffedValue(&Buff::defence, defence());
+		damage = calcDefencedDamage(damage, bufDef);
+		damage = calcBuffedValue(&Buff::damageIn, damage);
+	}
 
 	int finalDamage = (int)round(damage);
 	if (finalDamage < 1)

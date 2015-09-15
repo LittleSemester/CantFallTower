@@ -48,6 +48,9 @@
     <ClCompile Include="..\Classes\Buff\BuffList.cpp">
       <Filter>src\Buff</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Enemy\TestEnemy.cpp">
+      <Filter>src\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -67,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Buff\BuffList.h">
       <Filter>src\Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Enemy\TestEnemy.h">
+      <Filter>src\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

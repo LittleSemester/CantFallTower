@@ -150,6 +150,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Buff\Buff.cpp" />
     <ClCompile Include="..\Classes\Buff\BuffList.cpp" />
     <ClCompile Include="..\Classes\Enemy\Enemy.cpp" />
+    <ClCompile Include="..\Classes\Enemy\TestEnemy.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -158,6 +159,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Buff\Buff.h" />
     <ClInclude Include="..\Classes\Buff\BuffList.h" />
     <ClInclude Include="..\Classes\Enemy\Enemy.h" />
+    <ClInclude Include="..\Classes\Enemy\TestEnemy.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

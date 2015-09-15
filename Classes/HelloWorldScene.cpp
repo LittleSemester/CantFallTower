@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "Enemy/TestEnemy.h"
 
 USING_NS_CC;
 
@@ -34,6 +35,11 @@ bool HelloWorld::init()
     auto rootNode = CSLoader::createNode("MainScene.csb");
 
     addChild(rootNode);
+
+	auto enemy = TestEnemy::create();
+	enemy->setPosition(200.0, 200.0);
+
+	addChild(enemy, 2);
 
     return true;
 }

@@ -31,6 +31,15 @@ double BuffList::calcBuffedValue(double (Buff::*func)(double), double origin)
 	return origin;
 }
 
+void BuffList::updateBuff(double deltaSec)
+{
+	for (Buff* buff : buffs)
+	{
+		if (!buff->isFinished())
+			buff->update(deltaSec);
+	}
+}
+
 void BuffList::clear()
 {
 	Buff* buff = 0;

@@ -27,8 +27,10 @@ public:
 	// 参数buff必须为new的对象，buff失效时列表将尝试delete
 	void pushBuff(Buff* buff);
 
-	// 使用方法举例：double buffedDamage=list.calcBuffedValue(Buff::damageOut, originDamage);
+	// 使用方法举例：double buffedDamage=list.calcBuffedValue(&Buff::damageOut, originDamage);
 	double calcBuffedValue(double (Buff::*func)(double), double origin);
+
+	void updateBuff(double deltaSec);
 
 	void clear();
 

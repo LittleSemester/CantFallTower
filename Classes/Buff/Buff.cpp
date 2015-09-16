@@ -54,3 +54,40 @@ double Buff::cureIn(double origin)
 {
 	return origin;
 }
+
+//=========SimpleBuff Member Functions===========
+
+SimpleBuff::SimpleBuff(double timeSec, const BuffMultiplier& multiplier)
+	:Buff(timeSec)
+{
+	mul = multiplier;
+}
+
+double SimpleBuff::defence(double origin)
+{
+	return origin*mul.defence;
+}
+
+double SimpleBuff::damageOut(double origin)
+{
+	return origin*mul.damageOut;
+}
+
+double SimpleBuff::damageIn(double origin)
+{
+	return origin*mul.damageIn;
+}
+
+double SimpleBuff::cureIn(double origin)
+{
+	return origin*mul.cureIn;
+}
+
+void SimpleBuff::setMultiplier(int curr)
+{
+	if (curr < sizeof(BuffMultiplier) / sizeof(double))
+	{
+		*((double*)&mul + curr) = 1.0;
+		setMultiplier(curr + 1);
+	}
+}

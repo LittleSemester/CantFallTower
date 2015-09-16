@@ -7,11 +7,18 @@ using namespace cocos2d;
 
 Enemy::Enemy()
 {
-}
 
+}
 
 Enemy::~Enemy()
 {
+
+}
+
+bool Enemy::init()
+{
+	healthPoint = maxHP();
+	return true;
 }
 
 void Enemy::update(float delta)

@@ -19,9 +19,9 @@ public:
 	template <typename T, typename... Args>
 	void newBuff(Args... args)
 	{
-		static_assert(is_base_of<T, Buff>::value,
+		static_assert(std::is_base_of<Buff, T>::value,
 			"template parameter T in BuffList::newBuff should be implement of class Buff");
-		buffs.emplace_back(new T(args));
+		buffs.emplace_back(new T(args...));
 	}
 
 	// 参数buff必须为new的对象，buff失效时列表将尝试delete

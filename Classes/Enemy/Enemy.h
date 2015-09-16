@@ -19,6 +19,7 @@ public:
 	explicit Enemy();
 	virtual ~Enemy();
 	
+	virtual bool init();
 	virtual void update(float delta);
 
 	virtual int maxHP()=0;

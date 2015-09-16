@@ -21,7 +21,7 @@ void BuffList::pushBuff(Buff* buff)
 
 double BuffList::calcBuffedValue(double (Buff::*func)(double), double origin)
 {
-	if (func != nullptr)
+	if (func == nullptr)
 		return origin;
 	for (Buff* buff : buffs)
 	{

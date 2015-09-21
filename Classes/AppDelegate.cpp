@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-
+#include "Scene\GameScene.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -29,7 +29,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(!glview) {
         glview = GLViewImpl::createWithRect("CantFallTower", Rect(0, 0, 960, 640));
         director->setOpenGLView(glview);
-    }
+		//ÆÁÄ»ÊÊÅä
+		glview->setDesignResolutionSize(960.0f, 640.0f, ResolutionPolicy::FIXED_HEIGHT);
+		director->setContentScaleFactor(720.0f / 640.0f);
+	}
+
 
     director->getOpenGLView()->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
 
@@ -40,9 +44,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     FileUtils::getInstance()->addSearchPath("res");
+	//Ìí¼Ó¸÷ËØ²ÄÂ·¾¶
+	FileUtils::getInstance()->addSearchPath("res/Map");
+	FileUtils::getInstance()->addSearchPath("res/Enemy");
+	FileUtils::getInstance()->addSearchPath("res/Tower");
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+	//²âÊÔÓÎÏ·³¡¾°
+    auto scene = GameScene::createScene();
 
     // run
     director->runWithScene(scene);

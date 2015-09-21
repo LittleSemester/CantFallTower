@@ -35,7 +35,8 @@ bool HelloWorld::init()
     auto rootNode = CSLoader::createNode("MainScene.csb");
 
     addChild(rootNode);
-
+	auto Map = TMXTiledMap::create("map.tmx");
+	addChild(Map);
 	auto enemy = TestEnemy::create();
 	enemy->setPosition(200.0, 200.0);
 

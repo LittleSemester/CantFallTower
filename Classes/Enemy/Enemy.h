@@ -11,7 +11,9 @@ class Enemy : public cocos2d::Node, public BuffList
 protected:
 
 	int healthPoint;
-
+	int type;//怪物类型
+	double speed;//怪物速度
+	int nextPoint;//下一个移动目标点
 	static double calcDefencedDamage(double damage, double defence);
 
 public:
@@ -22,7 +24,7 @@ public:
 	virtual bool init();
 	virtual void update(float delta);
 
-	virtual int maxHP()=0;
+	int maxHP();
 	virtual int defence();
 
 	// 对该敌人造成伤害，期间检查敌人各项属性和buff，指定direct=true造成直伤；返回最终伤害量
@@ -37,6 +39,19 @@ public:
 	{
 		return healthPoint == 0;
 	}
+
+
+	CREATE_FUNC(Enemy);
+
+	static int nowCount;//当前敌人数量
+
+
+	//生成敌人
+	static Enemy* creatEnemy(int type);
+
+	//敌人移动回调函数
+	void EnemyMove(float dt);
+
 
 };
 

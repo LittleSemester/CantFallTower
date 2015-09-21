@@ -20,10 +20,10 @@
  </layer>
  <objectgroup name="Obj1">
   <object id="1" x="199" y="160"/>
-  <object id="2" x="862" y="163"/>
-  <object id="3" x="863" y="285"/>
-  <object id="4" x="223" y="290"/>
-  <object id="5" x="223" y="542"/>
+  <object id="2" x="865" y="160"/>
+  <object id="3" x="863" y="281"/>
+  <object id="4" x="228" y="288"/>
+  <object id="5" x="230" y="540"/>
   <object id="6" x="903" y="545"/>
  </objectgroup>
 </map>

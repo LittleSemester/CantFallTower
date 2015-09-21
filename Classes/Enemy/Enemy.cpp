@@ -95,16 +95,19 @@ Enemy * Enemy::creatEnemy(int type)
 		//创建帧动画
 		auto AniWalk = Animate::create(Walk);
 		auto RepeatWalk = RepeatForever::create(AniWalk);
-		auto newSprite = Sprite::create();
-		newSprite->runAction(RepeatWalk);
-		newEnemy->addChild(newSprite);
+		newEnemy->ActSprite= Sprite::create();
+		newEnemy->ActSprite->runAction(RepeatWalk);
 
+		newEnemy->addChild(newEnemy->ActSprite);
+		newEnemy->ActSprite->retain();
 		//上述动画纹理设置有误，目前有未知错误
 		
 		newEnemy->runAction(FadeIn::create(2.0));
 		newEnemy->nextPoint = 1;
 		newEnemy->speed = 2;
 		newEnemy->healthPoint = 100;
+		newEnemy->changeDir = 0;
+		newEnemy->lastdir.x = 1;
 	}
 	default:
 		break;
@@ -125,10 +128,18 @@ void Enemy::EnemyMove(float dt)
 	Vec2 nextPos = Vec2(nextTDP->px, nextTDP->py);
 	//计算出方向向量
 	Vec2 dir = (nextPos - nowPos) / sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y));
+	//根据速度沿着该方向去行走一定距离
 	this->setPosition(nowPos + dir*speed);
-
+	//如果当前方向矢量x方向与上一次不同，则转向
+	if (lastdir.x*dir.x < 0)
+	{
+		this->changeDir = 1 - this->changeDir;
+		this->ActSprite->setFlippedX(this->changeDir);
+	}
+	//更新上一次方向向量
+	lastdir = dir;
 	//如果到达了下一个点
-	if (sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y)) < 5)
+	if (sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y)) < 3)
 	{
 		nextPoint++;
 	}
@@ -137,6 +148,7 @@ void Enemy::EnemyMove(float dt)
 	{
 		log("Escape successfully");
 		//删除怪物
+		this->ActSprite->release();
 		this->removeFromParent();
 		nowCount--;
 	}
@@ -148,6 +160,7 @@ void Enemy::EnemyMove(float dt)
 		auto dead = FadeOut::create(1.0);
 		auto deadFunc = CallFunc::create([this]() {this->removeFromParent(); });
 		auto deadSeq = Sequence::create(dead, deadFunc, NULL);
+		this->ActSprite->release();
 		this->runAction(deadSeq);
 		nowCount--;
 	}

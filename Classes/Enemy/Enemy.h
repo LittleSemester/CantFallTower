@@ -14,6 +14,9 @@ protected:
 	int type;//怪物类型
 	double speed;//怪物速度
 	int nextPoint;//下一个移动目标点
+	cocos2d::Sprite* ActSprite;//建立一个成员变量精灵承载行走动画
+	cocos2d::Vec2 lastdir;//上次移动方向
+	int changeDir;//改变方向
 	static double calcDefencedDamage(double damage, double defence);
 
 public:

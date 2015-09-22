@@ -46,8 +46,6 @@ public:
 
 	CREATE_FUNC(Enemy);
 
-	static int nowCount;//当前敌人数量
-
 
 	//生成敌人
 	static Enemy* creatEnemy(int type);

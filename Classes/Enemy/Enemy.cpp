@@ -4,8 +4,6 @@
 #include ".\Scene\GameScene.h"
 using namespace cocos2d;
 
-int Enemy::nowCount = 0;
-//Vec2 Enemy::lastdir;
 Enemy::Enemy()
 {
 
@@ -70,7 +68,6 @@ double Enemy::calcDefencedDamage(double damage, double defence)
 
 Enemy * Enemy::creatEnemy(int type)
 {
-	nowCount++;
 	Enemy * newEnemy = Enemy::create();
 	//设置怪物类型
 	newEnemy->type = type;
@@ -150,7 +147,6 @@ void Enemy::EnemyMove(float dt)
 		//删除怪物
 		this->ActSprite->release();
 		this->removeFromParent();
-		nowCount--;
 	}
 
 	//如果怪物死了
@@ -162,7 +158,6 @@ void Enemy::EnemyMove(float dt)
 		auto deadSeq = Sequence::create(dead, deadFunc, NULL);
 		this->ActSprite->release();
 		this->runAction(deadSeq);
-		nowCount--;
 	}
 }
 

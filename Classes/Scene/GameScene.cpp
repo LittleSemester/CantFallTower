@@ -35,7 +35,8 @@ bool GameScene::init()
 	//加载敌人行走路径点
 	initAllPoints();
 	//设置敌人数量
-	EnemyCount = 20;
+	enemyMaxCount = 20;
+	enemyCreated = 0;
 	//产生一大波怪物
 	schedule(schedule_selector(GameScene::EnemyCreat),1 );
 
@@ -66,14 +67,16 @@ void GameScene::initAllPoints()
 
 void GameScene::EnemyCreat(float dt)
 {
-	if (CreatedEnemy < EnemyCount)
+	if (enemyCreated < enemyMaxCount)
 	{
 		//产生的敌人未达到最大数量则继续产生
-		CreatedEnemy++;
+		++enemyCreated;
 		auto newEnemy = Enemy::creatEnemy(1);
 		addChild(newEnemy);
+		enemyList.pushBack(newEnemy);
 	}
-	if (Enemy::nowCount == 0)
+	clearDeadEnemyFromList();
+	if (enemyList.size() == 0)
 	{
 		//当产生的怪物全被消灭重置怪物生成
 		CreatedEnemy = 0;
@@ -82,5 +85,34 @@ void GameScene::EnemyCreat(float dt)
 
 void GameScene::judgeEntityBounding(Entity* entity, Enemy* singleEnemy)
 {
-	// todo: 枚举Enemy列表，逐一让Entity进行判定
+	clearDeadEnemyFromList();
+
+	if (singleEnemy!=nullptr)
+	{
+		if (singleEnemy->isDead() || !enemyList.contains(singleEnemy))
+			return;
+		entity->judgeSingleEnemy(singleEnemy);
+		return;
+	}
+
+	for (Enemy* enemy : enemyList)
+	{
+		entity->judgeSingleEnemy(enemy);
+	}
+
+}
+
+void GameScene::clearDeadEnemyFromList()
+{
+	for (auto iter = enemyList.begin(); iter != enemyList.end();)
+	{
+		if ((*iter)->isDead())
+		{
+			iter = enemyList.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
+	}
 }

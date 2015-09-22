@@ -5,12 +5,19 @@
 #include "ui/CocosGUI.h"
 #include "Util/TDPoint.h"
 #include "Entity/Entity.h"
+#include "Enemy/Enemy.h"
 
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
 class GameScene:public Layer
 {
+protected:
+
+	cocos2d::Vector<Enemy*> enemyList;
+
+	void clearDeadEnemyFromList();
+
 public:
 
 	static Scene* createScene();
@@ -21,15 +28,15 @@ public:
 
 	static Vector<TDPoint*> allPoint;//保存所有路径转弯点
 
-	int EnemyCount;//敌人数量
-	int CreatedEnemy = 0;//已产生的怪物
+	int enemyMaxCount; //敌人最大数量
+	int enemyCreated;
 	
 	void EnemyCreat(float dt);//产生一波怪物
 
 	void initAllPoints();//加载敌人行走路径点
 
 	// 用于单一Entity进行判定检测，一般情况下由Entity自身调用，指定singleEnemy以判定单个目标（会检查目标有效性）
-	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy=0);
+	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy = nullptr);
 
 
 };

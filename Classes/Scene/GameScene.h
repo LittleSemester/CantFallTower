@@ -1,5 +1,6 @@
 #ifndef __GAMESCENE_H__
 #define __GAMESCENE_H__
+
 #include <cocos2d.h>
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
@@ -8,6 +9,9 @@
 #include "Enemy/Enemy.h"
 
 USING_NS_CC;
+
+class Enemy;
+class Entity;
 
 using namespace cocostudio::timeline;
 class GameScene:public Layer

@@ -20,6 +20,7 @@ bool Missile::init()
 {
 	targetReached = false;
 	this->scheduleUpdate();
+	return true;
 }
 
 void Missile::update(float delta)
@@ -62,8 +63,10 @@ bool Missile::judgeSingleEnemy(Enemy* enemy)
 	if (targetReached)
 	{
 		enemy->dealDamage(baseDamage);
+		return true;
 	}
 
+	return false;
 }
 
 void Missile::setTarget(Enemy* enemy)

@@ -110,7 +110,7 @@ Enemy * Enemy::creatEnemy(int type)
 		break;
 	}
 	//让该敌人执行移动的回调函数
-	newEnemy->schedule(schedule_selector(Enemy::EnemyMove, 1.0 / 60));
+	newEnemy->schedule(schedule_selector(Enemy::EnemyMove), 1.0 / 60);
 
 	return newEnemy;
 }

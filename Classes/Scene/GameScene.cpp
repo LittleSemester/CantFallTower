@@ -79,7 +79,7 @@ void GameScene::EnemyCreat(float dt)
 	if (enemyList.size() == 0)
 	{
 		//当产生的怪物全被消灭重置怪物生成
-		CreatedEnemy = 0;
+		enemyCreated = 0;
 	}
 }
 

@@ -17,7 +17,7 @@ Entity::~Entity()
 void Entity::acquireJudge(Enemy* enemy)
 {
 	if (mainScene != nullptr)
-		mainScene->judgeEntityBounding(this, Enemy* enemy);
+		mainScene->judgeEntityBounding(this, enemy);
 }
 
 void Entity::onEnter()

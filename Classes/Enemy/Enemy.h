@@ -17,14 +17,18 @@ protected:
 	cocos2d::Sprite* ActSprite;//建立一个成员变量精灵承载行走动画
 	cocos2d::Vec2 lastdir;//上次移动方向
 	int changeDir;//改变方向
+	bool finished;//是否正在播放死亡动画或正在删除该Enemy
 	static double calcDefencedDamage(double damage, double defence);
 
 public:
 
 	explicit Enemy();
+	//带参数的构造函数，初始化对应的怪物
+	explicit Enemy(int type);
 	virtual ~Enemy();
-	
+
 	virtual bool init();
+
 	virtual void update(float delta);
 
 	int maxHP();
@@ -38,19 +42,28 @@ public:
 		return healthPoint;
 	}
 
+	//判断是否死亡
 	inline bool isDead() const
 	{
-		return healthPoint == 0;
+		return healthPoint <= 0;
+	}
+
+	inline bool isFinished() const
+	{
+		return finished;
 	}
 
 
 	CREATE_FUNC(Enemy);
 
+	//带参数的create函数,对应怪物类型
+	static Enemy* create(int type);
+
 	static int nowCount;//当前敌人数量
 
 
 	//生成敌人
-	static Enemy* creatEnemy(int type);
+	static Enemy* createEnemy(int type);
 
 	//敌人移动回调函数
 	void EnemyMove(float dt);

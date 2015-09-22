@@ -8,7 +8,31 @@ int Enemy::nowCount = 0;
 //Vec2 Enemy::lastdir;
 Enemy::Enemy()
 {
+}
 
+Enemy::Enemy(int type)
+{
+	//设置怪物类型
+	this->type = type;
+	this->nextPoint = 1;
+	this->changeDir = 0;
+	this->lastdir.x = 1;
+	this->finished = false;
+	switch (type)
+	{
+	case 1:
+		//初始化怪物属性
+		/*this->nextPoint = 1;
+		this->speed = 2;
+		this->healthPoint = 100;
+		this->changeDir = 0;
+		this->lastdir.x = 1;*/
+		this->speed = 2;
+		this->healthPoint = 100;
+		break;
+	default:
+		break;
+	}
 }
 
 Enemy::~Enemy()
@@ -33,7 +57,7 @@ void Enemy::update(float delta)
 
 int Enemy::maxHP()
 {
-	return 0;
+	return 100;
 }
 
 int Enemy::defence()
@@ -68,12 +92,26 @@ double Enemy::calcDefencedDamage(double damage, double defence)
 	return damage > defence ? damage - defence : 0.0;
 }
 
-Enemy * Enemy::creatEnemy(int type)
+Enemy * Enemy::create(int type)
+{
+	Enemy *pRet = new(std::nothrow) Enemy(type);
+		if (pRet && pRet->init())
+		{
+			pRet->autorelease();
+			return pRet;
+		}
+		else
+		{
+			delete pRet;
+			pRet = NULL;
+			return NULL;
+		}
+}
+
+Enemy * Enemy::createEnemy(int type)
 {
 	nowCount++;
-	Enemy * newEnemy = Enemy::create();
-	//设置怪物类型
-	newEnemy->type = type;
+	Enemy * newEnemy = Enemy::create(type);
 	//设置初始出现位置
 	TDPoint * initPoint = (TDPoint *)GameScene::allPoint.at(0);
 	newEnemy->setPosition(initPoint->px, initPoint->py);
@@ -97,17 +135,8 @@ Enemy * Enemy::creatEnemy(int type)
 		auto RepeatWalk = RepeatForever::create(AniWalk);
 		newEnemy->ActSprite= Sprite::create();
 		newEnemy->ActSprite->runAction(RepeatWalk);
-
 		newEnemy->addChild(newEnemy->ActSprite);
-		newEnemy->ActSprite->retain();
-		//上述动画纹理设置有误，目前有未知错误
 		
-		newEnemy->runAction(FadeIn::create(2.0));
-		newEnemy->nextPoint = 1;
-		newEnemy->speed = 2;
-		newEnemy->healthPoint = 100;
-		newEnemy->changeDir = 0;
-		newEnemy->lastdir.x = 1;
 	}
 	default:
 		break;
@@ -121,6 +150,11 @@ Enemy * Enemy::creatEnemy(int type)
 //怪物移动回调函数
 void Enemy::EnemyMove(float dt)
 {
+	if (this->isFinished())
+	{
+		return;
+	}
+
 	//获取当前敌人位置
 	Vec2 nowPos = this->getPosition();
 	//获取下一个点的位置
@@ -142,27 +176,30 @@ void Enemy::EnemyMove(float dt)
 	if (sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y)) < 3)
 	{
 		nextPoint++;
+		//如果到达了终点
+		if (nextPoint == GameScene::allPoint.size())
+		{
+			log("Escape successfully");
+			//删除怪物
+			this->removeFromParent();
+			nowCount--;
+			this->finished = true;
+		}
 	}
-	//如果到达了终点
-	if (nextPoint == GameScene::allPoint.size())
-	{
-		log("Escape successfully");
-		//删除怪物
-		this->ActSprite->release();
-		this->removeFromParent();
-		nowCount--;
-	}
+	
 
 	//如果怪物死了
-	if (this->healthPoint <= 0)
+	if (this->isDead())
 	{
 		//先渐隐消失，再删除
-		auto dead = FadeOut::create(1.0);
+		
+		auto dead = FadeOut::create(0.3);
 		auto deadFunc = CallFunc::create([this]() {this->removeFromParent(); });
 		auto deadSeq = Sequence::create(dead, deadFunc, NULL);
-		this->ActSprite->release();
-		this->runAction(deadSeq);
+		this->ActSprite->runAction(deadSeq);
+		this->runAction(Sequence::create(DelayTime::create(0.3), deadFunc, NULL));
 		nowCount--;
+		this->finished = true;
 	}
 }
 

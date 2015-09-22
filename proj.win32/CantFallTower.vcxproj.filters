@@ -57,6 +57,9 @@
     <ClCompile Include="..\Classes\Scene\TDPoint.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Tower\Tower.cpp">
+      <Filter>src\Tower</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\TDPoint.h">
       <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\Tower.h">
+      <Filter>src\Tower</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

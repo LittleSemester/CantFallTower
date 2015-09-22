@@ -61,7 +61,7 @@ void Missile::update(float delta)
 
 bool Missile::judgeSingleEnemy(Enemy* enemy)
 {
-	if (enemy != target)
+	if (enemy == nullptr || enemy != target)
 		return false;
 
 	if (targetReached)

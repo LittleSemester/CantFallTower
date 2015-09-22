@@ -66,6 +66,9 @@
     <ClCompile Include="..\Classes\Entity\Missile.cpp">
       <Filter>src\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entity\AOEArea.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -99,6 +102,9 @@
       <Filter>src\Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Entity\Missile.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\AOEArea.h">
       <Filter>src\Entity</Filter>
     </ClInclude>
   </ItemGroup>

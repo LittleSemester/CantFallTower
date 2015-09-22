@@ -61,9 +61,22 @@ Tower * Tower::createTower(int type, int row, int col)
 	{
 	case 1:
 	{
-		auto spriteTD = Sprite::create("tower_1.png");
+		auto spriteTD = Sprite::create();
+		auto aniTower = Animation::create();
+		for (int i = 0; i <= 4; i++)
+		{
+			char szName[100];
+			sprintf(szName, "Thunder_Tower_%02d.png", i);
+			aniTower->addSpriteFrameWithFile(szName);
+		}
+		//设置帧序列间隔
+		aniTower->setDelayPerUnit(0.1);
+		//创建帧动画
+		auto ani = Animate::create(aniTower);
+		auto repeatT= RepeatForever::create(ani);
+		spriteTD->runAction(repeatT);
 		newTD->addChild(spriteTD);
-		newTD->setPosition(Vec2(row*58.9 + 24.5,(10- col)*58.9 + 24.5));
+		newTD->setPosition(Vec2(row*56.9 + 28.45,(10- col)*56.9 + 28.45));
 		break;
 	}
 	default:

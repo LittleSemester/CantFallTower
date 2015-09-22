@@ -167,8 +167,8 @@ void GameScene::addTDSelect(int r, int c)
 	Vec2 Size = tPos->getContentSize();
 	//造塔点上方显示要造的塔
 	//设置按钮未选择和选择的图片
-	auto bt01 = Sprite::create("tower_1.png");
-	auto bt01_sel = Sprite::create("tower_1.png");
+	auto bt01 = Sprite::create("Thunder_Tower_00.png");
+	auto bt01_sel = Sprite::create("Thunder_Tower_00.png");
 	bt01_sel->setScale(1.1);
 	//将该sprite转为Menu接收用户事件
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
@@ -185,7 +185,7 @@ void GameScene::addTDSelect(int r, int c)
 	tPos->setTag(100);
 	this->addChild(tPos);
 
-	tPos->setPosition(r*58.9 + 24.5, c*58.9 + 24.5);
+	tPos->setPosition(r*56.9 + 28.45, c*56.9 + 28.45);
 }
 
 void GameScene::selectTD(Ref * obj)

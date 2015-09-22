@@ -69,17 +69,17 @@ double Enemy::calcDefencedDamage(double damage, double defence)
 Enemy * Enemy::creatEnemy(int type)
 {
 	Enemy * newEnemy = Enemy::create();
-	//ÉèÖÃ¹ÖÎïÀàĞÍ
+	//è®¾ç½®æ€ªç‰©ç±»å‹
 	newEnemy->type = type;
-	//ÉèÖÃ³õÊ¼³öÏÖÎ»ÖÃ
+	//è®¾ç½®åˆå§‹å‡ºç°ä½ç½®
 	TDPoint * initPoint = (TDPoint *)GameScene::allPoint.at(0);
 	newEnemy->setPosition(initPoint->px, initPoint->py);
 	switch (type)
 	{
-		//¸ù¾İ¹ÖÎïÀàĞÍ²úÉú¶ÔÓ¦µÄ¹ÖÎï
-	case 1://µÚÒ»ÖÖ¹ÖÎï
+		//æ ¹æ®æ€ªç‰©ç±»å‹äº§ç”Ÿå¯¹åº”çš„æ€ªç‰©
+	case 1://ç¬¬ä¸€ç§æ€ªç‰©
 	{
-		//¹ÖÎïĞĞ×ß¶¯»­
+		//æ€ªç‰©è¡Œèµ°åŠ¨ç”»
 		auto Walk = Animation::create();
 		for (int i = 1; i <= 10; i++)
 		{
@@ -87,9 +87,9 @@ Enemy * Enemy::creatEnemy(int type)
 			sprintf(szName, "gw%d.png", i);
 			Walk->addSpriteFrameWithFile(szName);
 		}
-		//ÉèÖÃÖ¡ĞòÁĞ¼ä¸ô
+		//è®¾ç½®å¸§åºåˆ—é—´éš”
 		Walk->setDelayPerUnit(0.1);
-		//´´½¨Ö¡¶¯»­
+		//åˆ›å»ºå¸§åŠ¨ç”»
 		auto AniWalk = Animate::create(Walk);
 		auto RepeatWalk = RepeatForever::create(AniWalk);
 		newEnemy->ActSprite= Sprite::create();
@@ -97,7 +97,7 @@ Enemy * Enemy::creatEnemy(int type)
 
 		newEnemy->addChild(newEnemy->ActSprite);
 		newEnemy->ActSprite->retain();
-		//ÉÏÊö¶¯»­ÎÆÀíÉèÖÃÓĞÎó£¬Ä¿Ç°ÓĞÎ´Öª´íÎó
+		//ä¸Šè¿°åŠ¨ç”»çº¹ç†è®¾ç½®æœ‰è¯¯ï¼Œç›®å‰æœ‰æœªçŸ¥é”™è¯¯
 		
 		newEnemy->runAction(FadeIn::create(2.0));
 		newEnemy->nextPoint = 1;
@@ -109,50 +109,50 @@ Enemy * Enemy::creatEnemy(int type)
 	default:
 		break;
 	}
-	//ÈÃ¸ÃµĞÈËÖ´ĞĞÒÆ¶¯µÄ»Øµ÷º¯Êı
+	//è®©è¯¥æ•Œäººæ‰§è¡Œç§»åŠ¨çš„å›è°ƒå‡½æ•°
 	newEnemy->schedule(schedule_selector(Enemy::EnemyMove, 1.0 / 60));
 
 	return newEnemy;
 }
 
-//¹ÖÎïÒÆ¶¯»Øµ÷º¯Êı
+//æ€ªç‰©ç§»åŠ¨å›è°ƒå‡½æ•°
 void Enemy::EnemyMove(float dt)
 {
-	//»ñÈ¡µ±Ç°µĞÈËÎ»ÖÃ
+	//è·å–å½“å‰æ•Œäººä½ç½®
 	Vec2 nowPos = this->getPosition();
-	//»ñÈ¡ÏÂÒ»¸öµãµÄÎ»ÖÃ
+	//è·å–ä¸‹ä¸€ä¸ªç‚¹çš„ä½ç½®
 	TDPoint* nextTDP = GameScene::allPoint.at(nextPoint);
 	Vec2 nextPos = Vec2(nextTDP->px, nextTDP->py);
-	//¼ÆËã³ö·½ÏòÏòÁ¿
+	//è®¡ç®—å‡ºæ–¹å‘å‘é‡
 	Vec2 dir = (nextPos - nowPos) / sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y));
-	//¸ù¾İËÙ¶ÈÑØ×Å¸Ã·½ÏòÈ¥ĞĞ×ßÒ»¶¨¾àÀë
+	//æ ¹æ®é€Ÿåº¦æ²¿ç€è¯¥æ–¹å‘å»è¡Œèµ°ä¸€å®šè·ç¦»
 	this->setPosition(nowPos + dir*speed);
-	//Èç¹ûµ±Ç°·½ÏòÊ¸Á¿x·½ÏòÓëÉÏÒ»´Î²»Í¬£¬Ôò×ªÏò
+	//å¦‚æœå½“å‰æ–¹å‘çŸ¢é‡xæ–¹å‘ä¸ä¸Šä¸€æ¬¡ä¸åŒï¼Œåˆ™è½¬å‘
 	if (lastdir.x*dir.x < 0)
 	{
 		this->changeDir = 1 - this->changeDir;
 		this->ActSprite->setFlippedX(this->changeDir);
 	}
-	//¸üĞÂÉÏÒ»´Î·½ÏòÏòÁ¿
+	//æ›´æ–°ä¸Šä¸€æ¬¡æ–¹å‘å‘é‡
 	lastdir = dir;
-	//Èç¹ûµ½´ïÁËÏÂÒ»¸öµã
+	//å¦‚æœåˆ°è¾¾äº†ä¸‹ä¸€ä¸ªç‚¹
 	if (sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y)) < 3)
 	{
 		nextPoint++;
 	}
-	//Èç¹ûµ½´ïÁËÖÕµã
+	//å¦‚æœåˆ°è¾¾äº†ç»ˆç‚¹
 	if (nextPoint == GameScene::allPoint.size())
 	{
 		log("Escape successfully");
-		//É¾³ı¹ÖÎï
+		//åˆ é™¤æ€ªç‰©
 		this->ActSprite->release();
 		this->removeFromParent();
 	}
 
-	//Èç¹û¹ÖÎïËÀÁË
+	//å¦‚æœæ€ªç‰©æ­»äº†
 	if (this->healthPoint <= 0)
 	{
-		//ÏÈ½¥ÒşÏûÊ§£¬ÔÙÉ¾³ı
+		//å…ˆæ¸éšæ¶ˆå¤±ï¼Œå†åˆ é™¤
 		auto dead = FadeOut::create(1.0);
 		auto deadFunc = CallFunc::create([this]() {this->removeFromParent(); });
 		auto deadSeq = Sequence::create(dead, deadFunc, NULL);

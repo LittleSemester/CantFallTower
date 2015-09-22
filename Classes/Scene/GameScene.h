@@ -4,6 +4,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "Util/TDPoint.h"
+#include "Entity/Entity.h"
 
 USING_NS_CC;
 
@@ -11,20 +12,26 @@ using namespace cocostudio::timeline;
 class GameScene:public Layer
 {
 public:
+
 	static Scene* createScene();
 	
 	virtual bool init();
 
 	CREATE_FUNC(GameScene);
 
-	static Vector<TDPoint*> allPoint;//±£´æËùÓĞÂ·¾¶×ªÍäµã
+	static Vector<TDPoint*> allPoint;//ä¿å­˜æ‰€æœ‰è·¯å¾„è½¬å¼¯ç‚¹
 
-	int EnemyCount;//µĞÈËÊıÁ¿
-	int CreatedEnemy = 0;//ÒÑ²úÉúµÄ¹ÖÎï
+	int EnemyCount;//æ•Œäººæ•°é‡
+	int CreatedEnemy = 0;//å·²äº§ç”Ÿçš„æ€ªç‰©
 	
-	void EnemyCreat(float dt);//²úÉúÒ»²¨¹ÖÎï
+	void EnemyCreat(float dt);//äº§ç”Ÿä¸€æ³¢æ€ªç‰©
 
-	void initAllPoints();//¼ÓÔØµĞÈËĞĞ×ßÂ·¾¶µã
+	void initAllPoints();//åŠ è½½æ•Œäººè¡Œèµ°è·¯å¾„ç‚¹
+
+	// ç”¨äºå•ä¸€Entityè¿›è¡Œåˆ¤å®šæ£€æµ‹ï¼Œä¸€èˆ¬æƒ…å†µä¸‹ç”±Entityè‡ªèº«è°ƒç”¨ï¼ŒæŒ‡å®šsingleEnemyä»¥åˆ¤å®šå•ä¸ªç›®æ ‡ï¼ˆä¼šæ£€æŸ¥ç›®æ ‡æœ‰æ•ˆæ€§ï¼‰
+	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy=0);
+
+
 };
 
 #endif

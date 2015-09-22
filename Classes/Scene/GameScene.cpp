@@ -1,6 +1,6 @@
 #include "GameScene.h"
 #include "Enemy\Enemy.h"
-Vector<TDPoint*> GameScene::allPoint;//±£´æËùÓĞÂ·¾¶×ªÍäµã
+Vector<TDPoint*> GameScene::allPoint;//ä¿å­˜æ‰€æœ‰è·¯å¾„è½¬å¼¯ç‚¹
 
 Scene * GameScene::createScene()
 {
@@ -22,33 +22,33 @@ bool GameScene::init()
 	{
 		return false;
 	}
-	//Ìí¼Ó±³¾°Í¼Æ¬
+	//æ·»åŠ èƒŒæ™¯å›¾ç‰‡
 	auto spriteBG = Sprite::create("Map_Ground_02.jpg");
 	addChild(spriteBG);
 	spriteBG->setPosition(Vec2(480, 320));
 
-	//Ìí¼ÓµØÍ¼ÎÄ¼ş
+	//æ·»åŠ åœ°å›¾æ–‡ä»¶
 	auto Map = TMXTiledMap::create("map_0.tmx");
 	addChild(Map);
-	Map->setTag(0);//½«µØÍ¼ÎÄ¼şTagÉèÖÃÎª0
+	Map->setTag(0);//å°†åœ°å›¾æ–‡ä»¶Tagè®¾ç½®ä¸º0
 
-	//¼ÓÔØµĞÈËĞĞ×ßÂ·¾¶µã
+	//åŠ è½½æ•Œäººè¡Œèµ°è·¯å¾„ç‚¹
 	initAllPoints();
-	//ÉèÖÃµĞÈËÊıÁ¿
+	//è®¾ç½®æ•Œäººæ•°é‡
 	EnemyCount = 20;
-	//²úÉúÒ»´ó²¨¹ÖÎï
+	//äº§ç”Ÿä¸€å¤§æ³¢æ€ªç‰©
 	schedule(schedule_selector(GameScene::EnemyCreat),1 );
 
 	return true;
 }
 
 
-//¼ÓÔØµĞÈËĞĞ×ßÂ·¾¶µã
+//åŠ è½½æ•Œäººè¡Œèµ°è·¯å¾„ç‚¹
 void GameScene::initAllPoints()
 {
-	//µÃµ½tmxµØÍ¼
+	//å¾—åˆ°tmxåœ°å›¾
 	TMXTiledMap* ourMap = (TMXTiledMap*)this->getChildByTag(0);
-	auto Group = ourMap->getObjectGroup("Obj1");//»ñÈ¡¶ÔÏó²ãÊı¾İ
+	auto Group = ourMap->getObjectGroup("Obj1");//è·å–å¯¹è±¡å±‚æ•°æ®
 	auto Objs = Group->getObjects();
 
 	for (auto &eachObj : Objs)
@@ -56,9 +56,9 @@ void GameScene::initAllPoints()
 		ValueMap& dict = eachObj.asValueMap();
 		float x = dict["x"].asFloat();
 		float y = dict["y"].asFloat();
-		//½«¸÷¸öµãÊı¾İÌáÈ¡²¢Éú³ÉTDPoint
+		//å°†å„ä¸ªç‚¹æ•°æ®æå–å¹¶ç”ŸæˆTDPoint
 		TDPoint * newPoint = TDPoint::createPoint(x, y);
-		//½«ĞÂÉú³ÉµÄTDPoint¼ÓÈëÕ»
+		//å°†æ–°ç”Ÿæˆçš„TDPointåŠ å…¥æ ˆ
 		allPoint.pushBack(newPoint);
 	}
 }
@@ -68,14 +68,19 @@ void GameScene::EnemyCreat(float dt)
 {
 	if (CreatedEnemy < EnemyCount)
 	{
-		//²úÉúµÄµĞÈËÎ´´ïµ½×î´óÊıÁ¿Ôò¼ÌĞø²úÉú
+		//äº§ç”Ÿçš„æ•Œäººæœªè¾¾åˆ°æœ€å¤§æ•°é‡åˆ™ç»§ç»­äº§ç”Ÿ
 		CreatedEnemy++;
 		auto newEnemy = Enemy::creatEnemy(1);
 		addChild(newEnemy);
 	}
 	if (Enemy::nowCount == 0)
 	{
-		//µ±²úÉúµÄ¹ÖÎïÈ«±»ÏûÃğÖØÖÃ¹ÖÎïÉú³É
+		//å½“äº§ç”Ÿçš„æ€ªç‰©å…¨è¢«æ¶ˆç­é‡ç½®æ€ªç‰©ç”Ÿæˆ
 		CreatedEnemy = 0;
 	}
+}
+
+void GameScene::judgeEntityBounding(Entity* entity, Enemy* singleEnemy)
+{
+	// todo: æšä¸¾Enemyåˆ—è¡¨ï¼Œé€ä¸€è®©Entityè¿›è¡Œåˆ¤å®š
 }

@@ -2,6 +2,8 @@
 
 #include "Enemy.h"
 #include ".\Scene\GameScene.h"
+#include "ui/CocosGUI.h"
+using namespace cocos2d::ui;
 using namespace cocos2d;
 
 int Enemy::nowCount = 0;
@@ -137,6 +139,12 @@ Enemy * Enemy::createEnemy(int type)
 		newEnemy->ActSprite->runAction(RepeatWalk);
 		newEnemy->addChild(newEnemy->ActSprite);
 		
+		//ÉèÖÃÑªÌõ
+		auto hpBar = LoadingBar::create("loadingBar.png");
+		hpBar->setTag(123);
+		hpBar->setPercent(100);
+		newEnemy->addChild(hpBar,1);
+		hpBar->setPositionY(30);
 	}
 	default:
 		break;

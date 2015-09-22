@@ -233,7 +233,7 @@ void GameScene::selectTD(Ref * obj)
 	{
 	case 10:
 	{
-		Tower * TD = Tower::createTower(1, nowRow, nowCol);
+		Tower * TD = Tower::createTower(TOWER_THUNDER, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
@@ -246,4 +246,9 @@ void GameScene::selectTD(Ref * obj)
 	{
 		this->removeChildByTag(100);
 	}
+}
+
+void GameScene::getEnemyInDistance(const cocos2d::Vector<Enemy>* list, double dist)
+{
+	// todo
 }

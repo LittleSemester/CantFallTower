@@ -19,6 +19,9 @@ Missile::~Missile()
 
 bool Missile::init()
 {
+	if (!Entity::init())
+		return false;
+
 	targetReached = false;
 
 	Sprite::create();

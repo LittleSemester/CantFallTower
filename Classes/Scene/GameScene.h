@@ -20,7 +20,6 @@ protected:
 	cocos2d::Vector<Enemy*> enemyList;
 
 	void clearRemovedEnemyFromList();
-
 public:
 
 	static cocos2d::Scene* createScene();
@@ -42,18 +41,16 @@ public:
 	void initAllPoints();//加载敌人行走路径点
 
 	void addTDSelect(int r, int c);//添加塔的选择面板
-
 	void selectTD(cocos2d::Ref* obj);//建塔的回调
 
 	int nowRow, nowCol;//点击处的行列信息，供造塔过程使用
-
 	int towerInfo[11][17];//建塔信息,行列信息完全和二维数组相同，左上角为原点，屏幕原点,11行，17列
 
-	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
-	
-	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);
-	
+	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
+	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
 	virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event);
+
+	void getEnemyInDistance(const cocos2d::Vector<Enemy>* list, double dist);
 
 };
 

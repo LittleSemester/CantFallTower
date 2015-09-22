@@ -2,31 +2,53 @@
 #define __TOWER_H__
 
 #include <cocos2d.h>
+#include "Enemy/Enemy.h"
 
-class Tower:public cocos2d::Node
+enum TowerType
 {
+	TOWER_UNKNOWN,
+	TOWER_ICE,
+	TOWER_FIRE,
+	TOWER_THUNDER,
+	TOWER_KNIFE,
+	TOWER_ARROW,
+	TOWER_FIGHT
+};
+
+class Enemy;
+
+class Tower : public cocos2d::Node
+{
+protected:
+
+	int trow, tcol;//æ‰€åœ¨è¡Œåˆ—
+
+	double attack;//æ”»å‡»åŠ›
+	double radius;//æ”»å‡»èŒƒå›´
+	double interval;//å•æ¬¡æ”»å‡»æ—¶é—´
+
+	TowerType type;//å¡”çš„ç±»å‹
+
+	cocos2d::Vector<Enemy*> enemyInRange;
+
+	virtual void onFire() = 0;
+
+	void doFire(float delta);
+
 public:
-	Tower();
-	~Tower();
-	Tower(int type, int row, int col);
-	bool init();
 
-	int tx, ty;//Î»ÖÃ
-	int trow, tcol;//ËùÔÚĞĞÁĞ
-	int type;//ËşµÄÀàĞÍ
-	int price;//¼Û¸ñ
-	int attack;//¹¥»÷Á¦
-	int radius;//¹¥»÷·¶Î§
+	explicit Tower();
+	virtual ~Tower()=0;
 
+	virtual bool init();
 
-
-	CREATE_FUNC(Tower);
-
-	static Tower* create(int type, int row, int col);
+	void setRowColumn(int row, int col);
+	bool checkEnemyInRange(Enemy* enemy);
 
 	static Tower* createTower(int type, int row, int col);
 
 	void fire();
+
 };
 
 #endif

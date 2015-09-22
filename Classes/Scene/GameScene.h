@@ -3,8 +3,7 @@
 #include <cocos2d.h>
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "Scene\TDPoint.h"
-
+#include "Util/TDPoint.h"
 
 USING_NS_CC;
 

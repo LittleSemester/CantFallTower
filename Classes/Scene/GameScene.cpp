@@ -75,7 +75,7 @@ void GameScene::EnemyCreat(float dt)
 		addChild(newEnemy);
 		enemyList.pushBack(newEnemy);
 	}
-	clearDeadEnemyFromList();
+	clearRemovedEnemyFromList();
 	if (enemyList.size() == 0)
 	{
 		//当产生的怪物全被消灭重置怪物生成
@@ -85,7 +85,7 @@ void GameScene::EnemyCreat(float dt)
 
 void GameScene::judgeEntityBounding(Entity* entity, Enemy* singleEnemy)
 {
-	clearDeadEnemyFromList();
+	clearRemovedEnemyFromList();
 
 	if (singleEnemy!=nullptr)
 	{
@@ -102,11 +102,11 @@ void GameScene::judgeEntityBounding(Entity* entity, Enemy* singleEnemy)
 
 }
 
-void GameScene::clearDeadEnemyFromList()
+void GameScene::clearRemovedEnemyFromList()
 {
 	for (auto iter = enemyList.begin(); iter != enemyList.end();)
 	{
-		if ((*iter)->isDead())
+		if ((*iter)->getParent()==nullptr)
 		{
 			iter = enemyList.erase(iter);
 		}

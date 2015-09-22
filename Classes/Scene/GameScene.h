@@ -20,7 +20,7 @@ protected:
 
 	cocos2d::Vector<Enemy*> enemyList;
 
-	void clearDeadEnemyFromList();
+	void clearRemovedEnemyFromList();
 
 public:
 

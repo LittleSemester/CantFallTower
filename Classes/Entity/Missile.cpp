@@ -2,6 +2,7 @@
 // Created by LuiCat
 
 #include "Missile.h"
+#include "2d/CCSprite.h"
 
 USING_NS_CC;
 
@@ -19,6 +20,9 @@ Missile::~Missile()
 bool Missile::init()
 {
 	targetReached = false;
+
+	Sprite::create();
+
 	this->scheduleUpdate();
 	return true;
 }

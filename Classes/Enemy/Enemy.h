@@ -59,9 +59,6 @@ public:
 	//带参数的create函数,对应怪物类型
 	static Enemy* create(int type);
 
-	static int nowCount;//当前敌人数量
-
-
 	//生成敌人
 	static Enemy* createEnemy(int type);
 

@@ -29,7 +29,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(!glview) {
         glview = GLViewImpl::createWithRect("CantFallTower", Rect(0, 0, 960, 640));
         director->setOpenGLView(glview);
-		//ÆÁÄ»ÊÊÅä
+		//å±å¹•é€‚é…
 		glview->setDesignResolutionSize(960.0f, 640.0f, ResolutionPolicy::FIXED_HEIGHT);
 		director->setContentScaleFactor(720.0f / 640.0f);
 	}
@@ -44,13 +44,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     FileUtils::getInstance()->addSearchPath("res");
-	//Ìí¼Ó¸÷ËØ²ÄÂ·¾¶
+	//æ·»åŠ å„ç´ æè·¯å¾„
 	FileUtils::getInstance()->addSearchPath("res/Map");
 	FileUtils::getInstance()->addSearchPath("res/Enemy");
 	FileUtils::getInstance()->addSearchPath("res/Tower");
 
     // create a scene. it's an autorelease object
-	//²âÊÔÓÎÏ·³¡¾°
+	//æµ‹è¯•æ¸¸æˆåœºæ™¯
     auto scene = GameScene::createScene();
 
     // run

@@ -80,7 +80,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4267;4251;4244;4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4267;4251;4244;4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -151,10 +151,13 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Buff\BuffList.cpp" />
     <ClCompile Include="..\Classes\Enemy\Enemy.cpp" />
     <ClCompile Include="..\Classes\Enemy\TestEnemy.cpp" />
+    <ClCompile Include="..\Classes\Entity\AOEArea.cpp" />
+    <ClCompile Include="..\Classes\Entity\Missile.cpp" />
+    <ClCompile Include="..\Classes\Entity\Entity.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
-    <ClCompile Include="..\Classes\Scene\TDPoint.cpp" />
     <ClCompile Include="..\Classes\Tower\Tower.cpp" />
+    <ClCompile Include="..\Classes\Util\TDPoint.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,10 +166,13 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Buff\BuffList.h" />
     <ClInclude Include="..\Classes\Enemy\Enemy.h" />
     <ClInclude Include="..\Classes\Enemy\TestEnemy.h" />
+    <ClInclude Include="..\Classes\Entity\AOEArea.h" />
+    <ClInclude Include="..\Classes\Entity\Missile.h" />
+    <ClInclude Include="..\Classes\Entity\Entity.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
-    <ClInclude Include="..\Classes\Scene\TDPoint.h" />
     <ClInclude Include="..\Classes\Tower\Tower.h" />
+    <ClInclude Include="..\Classes\Util\TDPoint.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

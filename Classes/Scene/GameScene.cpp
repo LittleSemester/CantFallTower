@@ -4,7 +4,7 @@
 
 USING_NS_CC;
 
-Vector<TDPoint*> GameScene::allPoint;//±£´æËùÓĞÂ·¾¶×ªÍäµã
+Vector<TDPoint*> GameScene::allPoint;//ä¿å­˜æ‰€æœ‰è·¯å¾„è½¬å¼¯ç‚¹
 
 Scene * GameScene::createScene()
 {
@@ -26,27 +26,29 @@ bool GameScene::init()
 	{
 		return false;
 	}
-	//Ìí¼Ó±³¾°Í¼Æ¬
+	//å¨£è¯²å§é‘³å±¾æ«™é¥å‰§å¢–
 	auto spriteBG = Sprite::create("Map_Ground_02.jpg");
 	addChild(spriteBG);
 	spriteBG->setPosition(Vec2(480, 320));
 
-	//Ìí¼ÓµØÍ¼ÎÄ¼ş
+	//å¨£è¯²å§é¦æ¿æµ˜é‚å›¦æ¬¢
 	auto Map = TMXTiledMap::create("map_0.tmx");
 	addChild(Map);
-	Map->setTag(0);//½«µØÍ¼ÎÄ¼şTagÉèÖÃÎª0
+	Map->setTag(0);//çå——æ¹´é¥ç‚¬æƒæµ ç¦©agç’å‰§ç–†æ¶“?
 
-	//¼ÓÔØµĞÈËĞĞ×ßÂ·¾¶µã
+	//é”çŠºæµ‡éå±¼æ±‰ç›å²ƒè›‹ç’ºîˆšç·é?
 	initAllPoints();
-	//³õÊ¼»¯½¨ËşĞÅÏ¢
+	//åˆå§‹åŒ–å»ºå¡”ä¿¡æ¯
 	memset(towerInfo, 0, sizeof(towerInfo));
 
-	//ÉèÖÃµĞÈËÊıÁ¿
-	EnemyCount = 20;
-	//²úÉúÒ»´ó²¨¹ÖÎï
+	//è®¾ç½®æ•Œäººæ•°é‡
+	enemyMaxCount = 20;
+	//äº§ç”Ÿä¸€å¤§æ³¢æ€ªç‰©
+	enemyCreated = 0;
+
 	schedule(schedule_selector(GameScene::EnemyCreat),1 );
 
-	//¼ÓÈë´¥Ãş´¦Àí
+	//åŠ å…¥è§¦æ‘¸å¤„ç†
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
@@ -56,12 +58,12 @@ bool GameScene::init()
 }
 
 
-//¼ÓÔØµĞÈËĞĞ×ßÂ·¾¶µã
+//é”çŠºæµ‡éå±¼æ±‰ç›å²ƒè›‹ç’ºîˆšç·é?
 void GameScene::initAllPoints()
 {
-	//µÃµ½tmxµØÍ¼
+	//å¯°æ¥€åŸŒtmxé¦æ¿æµ˜
 	TMXTiledMap* ourMap = (TMXTiledMap*)this->getChildByTag(0);
-	auto Group = ourMap->getObjectGroup("Obj1");//»ñÈ¡¶ÔÏó²ãÊı¾İ
+	auto Group = ourMap->getObjectGroup("Obj1");//é‘¾å³°å½‡ç€µç¡…è–„çå‚›æšŸé¹?
 	auto Objs = Group->getObjects();
 
 	for (auto &eachObj : Objs)
@@ -69,9 +71,9 @@ void GameScene::initAllPoints()
 		ValueMap& dict = eachObj.asValueMap();
 		float x = dict["x"].asFloat();
 		float y = dict["y"].asFloat();
-		//½«¸÷¸öµãÊı¾İÌáÈ¡²¢Éú³ÉTDPoint
+		//çå——æ‚‡æ¶“î†å£éç‰ˆåµé»æ„¬å½‡éªå‰æ•“é´æ€²DPoint
 		TDPoint * newPoint = TDPoint::createPoint(x, y);
-		//½«ĞÂÉú³ÉµÄTDPoint¼ÓÈëÕ»
+		//çå—˜æŸŠé¢ç†¸åšé¨å‡¾DPointé”çŠ²å†é?
 		allPoint.pushBack(newPoint);
 	}
 }
@@ -79,24 +81,60 @@ void GameScene::initAllPoints()
 
 void GameScene::EnemyCreat(float dt)
 {
-	if (CreatedEnemy < EnemyCount)
+	if (enemyCreated < enemyMaxCount)
 	{
-		//²úÉúµÄµĞÈËÎ´´ïµ½×î´óÊıÁ¿Ôò¼ÌĞø²úÉú
-		CreatedEnemy++;
+		//äº§ç”Ÿçš„æ•Œäººæœªè¾¾åˆ°æœ€å¤§æ•°é‡åˆ™ç»§ç»­äº§ç”Ÿ
+		++enemyCreated;
 		auto newEnemy = Enemy::createEnemy(1);
 		addChild(newEnemy);
+		enemyList.pushBack(newEnemy);
 	}
-	if (Enemy::nowCount == 0)
+	clearRemovedEnemyFromList();
+	if (enemyList.size() == 0)
 	{
-		//µ±²úÉúµÄ¹ÖÎïÈ«±»ÏûÃğÖØÖÃ¹ÖÎïÉú³É
-		CreatedEnemy = 0;
+		//è¤°æ’²éª‡é¢ç†ºæ®‘é¬î†å¢¿éã„¨î¦å¨‘å ¢ä¼ƒé–²å¶‡ç–†é¬î†å¢¿é¢ç†¸åš
+		enemyCreated = 0;
 	}
 }
 
-//´¥ÃşÊÂ¼ş
+void GameScene::judgeEntityBounding(Entity* entity, Enemy* singleEnemy)
+{
+	clearRemovedEnemyFromList();
+
+	if (singleEnemy!=nullptr)
+	{
+		if (singleEnemy->isDead() || !enemyList.contains(singleEnemy))
+			return;
+		entity->judgeSingleEnemy(singleEnemy);
+		return;
+	}
+
+	for (Enemy* enemy : enemyList)
+	{
+		entity->judgeSingleEnemy(enemy);
+	}
+
+}
+
+void GameScene::clearRemovedEnemyFromList()
+{
+	for (auto iter = enemyList.begin(); iter != enemyList.end();)
+	{
+		if ((*iter)->getParent()==nullptr)
+		{
+			iter = enemyList.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
+	}
+}
+
+//è§¦æ‘¸äº‹ä»¶
 bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 {
-	//ÒÆ³ı½¨ËşÃæ°å
+	//ç§»é™¤å»ºå¡”é¢æ¿
 	if (this->getChildByTag(100) != nullptr)
 	{
 		this->removeChildByTag(100);
@@ -105,16 +143,16 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 	Vec2 now = touch->getLocation();
 	log("touch %f %f", now.x, now.y);
 	TMXTiledMap * ourMap = (TMXTiledMap*)this->getChildByTag(0);
-	//rowÎªºá×ø±ê£¬colÎª×İ×ø±ê
+	//rowä¸ºæ¨ªåæ ‡ï¼Œcolä¸ºçºµåæ ‡
 	this->nowRow = (int)(now.x / 56.9);
 	this->nowCol = 10-(int)(now.y / 56.9);
 	log("%d %d", nowRow, nowCol);
-	//»ñÈ¡µã»÷¿éid
+	//è·å–ç‚¹å‡»å—id
 	int touchID = ourMap->getLayer("Layer1")->getTileGIDAt(Vec2(nowRow, nowCol));
 	log("touch ID %d", touchID);
-	//³õÊ¼»¯¿É·ÅËş±ê¼Ç
+	//åˆå§‹åŒ–å¯æ”¾å¡”æ ‡è®°
 	bool canTouch = false;
-	//¼ì²é¸Ã¿éÊÇ·ñ¿ÉÒÔ½¨Ëş
+	//æ£€æŸ¥è¯¥å—æ˜¯å¦å¯ä»¥å»ºå¡”
 	if (!ourMap->getPropertiesForGID(touchID).isNull())
 	{
 		auto tileTemp = ourMap->getPropertiesForGID(touchID).asValueMap();
@@ -127,10 +165,10 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 
 	if (canTouch)
 	{
-		//¿ÉÒÔ½¨Ëş£¬µ¯³öÑ¡ÔñÃæ°å
+		//å¯ä»¥å»ºå¡”ï¼Œå¼¹å‡ºé€‰æ‹©é¢æ¿
 		if(towerInfo[nowCol][nowRow])
 		{
-			//Èç¹ûÒÑ¾­ÓĞËş£¬±äÂô»òÉı¼¶
+			//å¦‚æœå·²ç»æœ‰å¡”ï¼Œå˜å–æˆ–å‡çº§
 		}
 		else
 		{
@@ -139,7 +177,7 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 	}
 	else
 	{
-		//²»¿É½¨Ëş£¬µ¯³ö´íÎóÌáÊ¾
+		//ä¸å¯å»ºå¡”ï¼Œå¼¹å‡ºé”™è¯¯æç¤º
 		auto tips = Sprite::create("notips.png");
 		tips->setPosition(Vec2(nowRow * 56.9+28.45, (10 - nowCol) * 56.9+28.45));
 		this->addChild(tips);
@@ -159,22 +197,22 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 {
 }
 
-//ËşµÄÑ¡Ôñ
+//å¡”çš„é€‰æ‹©
 void GameScene::addTDSelect(int r, int c)
 {
-	//ÔìËşµãÏÔÊ¾Í¼Æ¬×ö±ê×¢
+	//é€ å¡”ç‚¹æ˜¾ç¤ºå›¾ç‰‡åšæ ‡æ³¨
 	auto tPos = Sprite::create("notips.png");
 	Vec2 Size = tPos->getContentSize();
-	//ÔìËşµãÉÏ·½ÏÔÊ¾ÒªÔìµÄËş
-	//ÉèÖÃ°´Å¥Î´Ñ¡ÔñºÍÑ¡ÔñµÄÍ¼Æ¬
+	//é€ å¡”ç‚¹ä¸Šæ–¹æ˜¾ç¤ºè¦é€ çš„å¡”
+	//è®¾ç½®æŒ‰é’®æœªé€‰æ‹©å’Œé€‰æ‹©çš„å›¾ç‰‡
 	auto bt01 = Sprite::create("Thunder_Tower_00.png");
 	auto bt01_sel = Sprite::create("Thunder_Tower_00.png");
 	bt01_sel->setScale(1.1);
-	//½«¸Ãsprite×ªÎªMenu½ÓÊÕÓÃ»§ÊÂ¼ş
+	//å°†è¯¥spriteè½¬ä¸ºMenuæ¥æ”¶ç”¨æˆ·äº‹ä»¶
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem01->setTag(10);
 	menuItem01->setAnchorPoint(Vec2(0.5, 0));
-	//ÓÃmenuÈİÄÉmenuItem
+	//ç”¨menuå®¹çº³menuItem
 	auto menuTD = Menu::create(menuItem01, nullptr);
 	
 	menuTD->setPosition(Vec2::ZERO);
@@ -197,13 +235,13 @@ void GameScene::selectTD(Ref * obj)
 	{
 		Tower * TD = Tower::createTower(1, nowRow, nowCol);
 		this->addChild(TD);
-		//±ê¼Ç¸ÃÎ»ÖÃÒÑ¾­½¨Ëş
+		//æ ‡è®°è¯¥ä½ç½®å·²ç»å»ºå¡”
 		towerInfo[nowCol][nowRow] = true;
 	}
 	default:
 		break;
 	}
-	//ÒÆ³ı½¨ËşÃæ°å
+	//ç§»é™¤å»ºå¡”é¢æ¿
 	if (this->getChildByTag(100) != nullptr)
 	{
 		this->removeChildByTag(100);

@@ -28,6 +28,9 @@
     <Filter Include="src\Tower">
       <UniqueIdentifier>{15a736fe-4df0-4c2c-a7aa-d2a6088bdedf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Util">
+      <UniqueIdentifier>{c2921edb-527d-46cc-b2ee-a71ff5770198}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,8 +57,17 @@
     <ClCompile Include="..\Classes\Scene\GameScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scene\TDPoint.cpp">
-      <Filter>src\Scene</Filter>
+    <ClCompile Include="..\Classes\Util\TDPoint.cpp">
+      <Filter>src\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Entity.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Missile.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\AOEArea.cpp">
+      <Filter>src\Entity</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Tower\Tower.cpp">
       <Filter>src\Tower</Filter>
@@ -86,8 +98,17 @@
     <ClInclude Include="..\Classes\Scene\GameScene.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\TDPoint.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\Util\TDPoint.h">
+      <Filter>src\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Entity.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Missile.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\AOEArea.h">
+      <Filter>src\Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Tower\Tower.h">
       <Filter>src\Tower</Filter>

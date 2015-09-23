@@ -31,12 +31,44 @@ double BuffList::calcBuffedValue(double (Buff::*func)(double), double origin)
 	return origin;
 }
 
-void BuffList::updateBuff(double deltaSec)
+double BuffList::getBuffValue(double (Buff::*func)())
 {
+	if (func == nullptr)
+		return 0.0;
+	double res = 0.0;
 	for (Buff* buff : buffs)
 	{
 		if (!buff->isFinished())
-			buff->update(deltaSec);
+			res += (buff->*func)();
+	}
+	return res;
+}
+
+unsigned int BuffList::getBuffFlag()
+{
+	unsigned int flag = BUFF_NONE;
+	for (Buff* buff : buffs)
+	{
+		if (!buff->isFinished())
+			flag |= buff->getFlag();
+	}
+	return flag;
+}
+
+
+void BuffList::updateBuff(double deltaSec)
+{
+	for (auto iter = buffs.begin(); iter != buffs.end();)
+	{
+		if ((*iter)->isFinished())
+		{
+			iter = buffs.erase(iter);
+		}
+		else
+		{
+			(*iter)->update(deltaSec);
+			++iter;
+		}
 	}
 }
 

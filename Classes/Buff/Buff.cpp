@@ -6,6 +6,7 @@
 Buff::Buff(double timeSec)
 	: timeLeft(timeSec)
 	, finished(false)
+	, flag(BUFF_NONE)
 {
 
 }
@@ -50,9 +51,19 @@ double Buff::damageIn(double origin)
 	return origin;
 }
 
-double Buff::cureIn(double origin)
+double Buff::speed(double origin)
 {
 	return origin;
+}
+
+double Buff::damageOnce()
+{
+	return 0.0;
+}
+
+double Buff::cureOnce()
+{
+	return 0.0;
 }
 
 //=========SimpleBuff Member Functions===========
@@ -78,9 +89,19 @@ double SimpleBuff::damageIn(double origin)
 	return origin*mul.damageIn;
 }
 
-double SimpleBuff::cureIn(double origin)
+double SimpleBuff::speed(double origin)
 {
-	return origin*mul.cureIn;
+	return origin*mul.speed;
+}
+
+double SimpleBuff::damageOnce()
+{
+	return mul.damageOnce;
+}
+
+double SimpleBuff::cureOnce()
+{
+	return mul.cureOnce;
 }
 
 void SimpleBuff::setMultiplier(int curr)

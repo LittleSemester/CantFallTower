@@ -4,12 +4,26 @@
 #ifndef _BUFF_H_
 #define _BUFF_H_
 
+enum BuffFlags
+{
+	BUFF_NONE = 0,
+	BUFF_BURNED = 1,
+	BUFF_FROZEN = 2,
+	BUFF_CURED = 4,
+	BUFF_CHEERUP = 8,
+	BUFF_DEFDOWN = 16,
+	BUFF_RUSH = 32,
+	BUFF_INVINCIBLE = 64,
+	BUFF_FXXKUP = 0xFFFFFFFF
+};
+
 class Buff
 {
 protected:
 
 	double timeLeft;
 	bool finished;
+	unsigned int flag;
 
 public:
 
@@ -27,7 +41,15 @@ public:
 	virtual double damageOut(double origin);
 	virtual double damageIn(double origin);
 
-	virtual double cureIn(double origin);
+	virtual double speed(double origin);
+
+	virtual double damageOnce();
+	virtual double cureOnce();
+
+	inline unsigned int getFlag() const
+	{
+		return flag;
+	}
 
 };
 
@@ -40,7 +62,9 @@ public:
 		double defence;
 		double damageOut;
 		double damageIn;
-		double cureIn;
+		double speed;
+		double damageOnce;
+		double cureOnce;
 	};
 
 	SimpleBuff(double timeSec, const BuffMultiplier& multiplier);
@@ -52,6 +76,11 @@ public:
 		setMultiplier(0, multipliers...);
 	}
 
+	inline void setFlag(unsigned int newflag)
+	{
+		flag = newflag;
+	}
+
 protected:
 
 	BuffMultiplier mul;
@@ -61,7 +90,10 @@ protected:
 	virtual double damageOut(double origin);
 	virtual double damageIn(double origin);
 
-	virtual double cureIn(double origin);
+	virtual double speed(double origin);
+
+	virtual double damageOnce();
+	virtual double cureOnce();
 
 private:
 

@@ -29,6 +29,10 @@ public:
 
 	// 使用方法举例：double buffedDamage=list.calcBuffedValue(&Buff::damageOut, originDamage);
 	double calcBuffedValue(double (Buff::*func)(double), double origin);
+	// 使用方法举例：double buffDamage=list.getBuffValue(&Buff::damageOnce);
+	double getBuffValue(double (Buff::*func)());
+
+	unsigned int getBuffFlag();
 
 	void updateBuff(double deltaSec);
 

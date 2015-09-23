@@ -10,11 +10,16 @@ class AOEArea : public Entity
 {
 protected:
 
-	virtual bool isPositionInArea(const cocos2d::Vec2 relativePos)=0;
+	// 自定义AOE范围，参数relativePos为相对中心的位置
+	virtual bool isPositionInArea(const cocos2d::Vec2& relativePos)=0;
+
+	// 继承以自定义造成伤害时的操作
+	virtual void onDealDamage(Enemy* enemy);
 
 public:
 
-	virtual bool judgeSingleEnemy(Enemy* enemy);
+	// 建议不要继承这个函数
+	virtual bool judgeSingleEnemy(Enemy* enemy) override;
 
 };
 

@@ -5,6 +5,11 @@
 
 USING_NS_CC;
 
+void AOEArea::onDealDamage(Enemy* enemy)
+{
+	enemy->dealDamage(baseDamage);
+}
+
 bool AOEArea::judgeSingleEnemy(Enemy* enemy)
 {
 	if (enemy == nullptr)
@@ -14,7 +19,7 @@ bool AOEArea::judgeSingleEnemy(Enemy* enemy)
 	vecEnemy -= this->getPosition();
 	if (isPositionInArea(vecEnemy))
 	{
-		enemy->dealDamage(baseDamage);
+		onDealDamage(enemy);
 		return true;
 	}
 

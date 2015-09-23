@@ -3,7 +3,7 @@
 USING_NS_CC;
 
 #include "TowerThunder.h"
-
+#include "TowerIce.h"
 Tower::Tower()
 {
 	trow = tcol = 0;
@@ -45,6 +45,11 @@ Tower * Tower::createTower(int type, int row, int col)
 	case TOWER_THUNDER:
 		newTD = TowerThunder::create();
 		break;
+	case TOWER_ICE:
+		{
+			newTD = TowerIce::create();
+			break;
+		}
 	default:
 		break;
 	}

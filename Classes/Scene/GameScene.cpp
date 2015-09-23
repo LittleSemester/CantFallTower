@@ -163,6 +163,7 @@ Enemy* GameScene::getNearestEnemy(const Vec2& pos, double dist/*=INFINITY*/)
 }
 
 
+
 //触摸事件
 bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 {

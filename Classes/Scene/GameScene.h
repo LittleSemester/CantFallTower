@@ -40,6 +40,7 @@ public:
 	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy = nullptr);
 
 	void getEnemyInDistance(cocos2d::Vector<Enemy*>& list, const cocos2d::Vec2& pos, double dist);
+	
 	Enemy* getNearestEnemy(const cocos2d::Vec2& pos, double dist=INFINITY);
 
 	void initAllPoints();//加载敌人行走路径点

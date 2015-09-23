@@ -16,11 +16,12 @@ TowerThunder::TowerThunder()
 void TowerThunder::onFire()
 {
 	Enemy* p = nullptr;
-	float dist = INFINITY, t;
+	//改为选择走过距离最远的敌人攻击
+	float dist = -INFINITY, t;
 	for (Enemy* enemy : enemyInRange)
 	{
-		t = this->getPosition().distance(enemy->getPosition());
-		if (t < dist)
+		t = enemy->getDistance();
+		if (t > dist)
 		{
 			p = enemy;
 			dist = t;

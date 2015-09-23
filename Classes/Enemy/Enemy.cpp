@@ -185,7 +185,7 @@ void Enemy::EnemyMove(float dt)
 	if (sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y)) < 3)
 	{
 		nextPoint++;
-		log("run %f", this->distance);
+		this->ActSprite->setColor(Color3B(0, 0, 100));
 		//如果到达了终点
 		if (nextPoint == GameScene::allPoint.size())
 		{

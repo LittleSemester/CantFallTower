@@ -19,6 +19,7 @@ protected:
 	cocos2d::Sprite* ActSprite;//建立一个成员变量精灵承载行走动画
 	cocos2d::Vec2 lastdir;//上次移动方向
 	int changeDir;//改变方向
+	float distance;//已走过的路
 	bool finished;//是否正在播放死亡动画或正在删除该Enemy
 	static double calcDefencedDamage(double damage, double defence);
 
@@ -53,6 +54,11 @@ public:
 	inline bool isFinished() const
 	{
 		return finished;
+	}
+
+	inline float getDistance() const
+	{
+		return this->distance;
 	}
 
 

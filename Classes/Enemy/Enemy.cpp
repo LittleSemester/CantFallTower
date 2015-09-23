@@ -18,6 +18,7 @@ Enemy::Enemy(int type)
 	this->changeDir = 0;
 	this->lastdir.x = 1;
 	this->finished = false;
+	this->distance = 0;
 	switch (type)
 	{
 	case 1:
@@ -171,6 +172,7 @@ void Enemy::EnemyMove(float dt)
 	Vec2 dir = (nextPos - nowPos) / sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y));
 	//鏍规嵁閫熷害娌跨潃璇ユ柟鍚戝幓琛岃蛋涓�瀹氳窛绂?
 	this->setPosition(nowPos + dir*speed);
+	this->distance += speed;
 	//濡傛灉褰撳墠鏂瑰悜鐭㈤噺x鏂瑰悜涓庝笂涓�娆′笉鍚岋紝鍒欒浆鍚?
 	if (lastdir.x*dir.x < 0)
 	{
@@ -183,6 +185,7 @@ void Enemy::EnemyMove(float dt)
 	if (sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y)) < 3)
 	{
 		nextPoint++;
+		log("run %f", this->distance);
 		//如果到达了终点
 		if (nextPoint == GameScene::allPoint.size())
 		{

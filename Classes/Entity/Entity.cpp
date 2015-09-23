@@ -26,6 +26,6 @@ void Entity::onEnter()
 	Node* node = this->getParent();
 	mainScene = dynamic_cast<GameScene*>(node);
 	if (mainScene == nullptr)
-		removeAllChildrenWithCleanup(true);
+		removeFromParent(true);
 }
 

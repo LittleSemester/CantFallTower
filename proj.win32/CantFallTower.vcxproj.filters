@@ -78,6 +78,9 @@
     <ClCompile Include="..\Classes\Entity\MissileStar.cpp">
       <Filter>src\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Thunder.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -123,6 +126,9 @@
       <Filter>src\Tower</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Entity\MissileStar.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Thunder.h">
       <Filter>src\Entity</Filter>
     </ClInclude>
   </ItemGroup>

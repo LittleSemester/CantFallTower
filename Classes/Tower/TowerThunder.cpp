@@ -2,7 +2,7 @@
 // Created by LuiCat
 
 #include "TowerThunder.h"
-#include "Entity/Missile.h"
+#include "Entity/Thunder.h"
 
 USING_NS_CC;
 
@@ -30,10 +30,10 @@ void TowerThunder::onFire()
 
 	if (p != nullptr)
 	{
-		auto star = Missile::createMissile(MISSILE_STAR);
-		star->setPosition(this->getPosition());
-		star->setTarget(p);
-		mainScene->addChild(star);
+		auto thunder = Thunder::create();
+		thunder->setPosition(p->getPosition());
+		thunder->setTarget(p);
+		mainScene->addChild(thunder);
 	}
 
 }

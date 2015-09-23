@@ -1,7 +1,7 @@
 #include <cmath>
 
 #include "Enemy.h"
-#include ".\Scene\GameScene.h"
+#include "Scene/GameScene.h"
 #include "ui/CocosGUI.h"
 using namespace cocos2d::ui;
 using namespace cocos2d;
@@ -82,6 +82,8 @@ int Enemy::dealDamage(double damage, bool direct/*=false*/)
 	if (healthPoint < 0)
 		healthPoint = 0;
 
+	hpBar->setPercent(100.0 * healthPoint / maxHP());
+
 	return finalDamage;
 }
 
@@ -137,11 +139,11 @@ Enemy * Enemy::createEnemy(int type)
 		newEnemy->addChild(newEnemy->ActSprite);
 		
 		//ÉèÖÃÑªÌõ
-		auto hpBar = LoadingBar::create("loadingBar.png");
-		hpBar->setTag(123);
-		hpBar->setPercent(100);
-		newEnemy->addChild(hpBar,1);
-		hpBar->setPositionY(30);
+		newEnemy->hpBar = LoadingBar::create("loadingBar.png");
+		newEnemy->hpBar->setTag(123);
+		newEnemy->hpBar->setPercent(100);
+		newEnemy->addChild(newEnemy->hpBar, 1);
+		newEnemy->hpBar->setPositionY(30);
 	}
 	default:
 		break;

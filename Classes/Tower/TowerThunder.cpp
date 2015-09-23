@@ -2,6 +2,7 @@
 // Created by LuiCat
 
 #include "TowerThunder.h"
+#include "Entity/Missile.h"
 
 USING_NS_CC;
 
@@ -14,6 +15,25 @@ TowerThunder::TowerThunder()
 
 void TowerThunder::onFire()
 {
+	Enemy* p = nullptr;
+	float dist = INFINITY, t;
+	for (Enemy* enemy : enemyInRange)
+	{
+		t = this->getPosition().distance(enemy->getPosition());
+		if (t < dist)
+		{
+			p = enemy;
+			dist = t;
+		}
+	}
+
+	if (p != nullptr)
+	{
+		auto star = Missile::createMissile(MISSILE_STAR);
+		star->setPosition(this->getPosition());
+		star->setTarget(p);
+		mainScene->addChild(star);
+	}
 
 }
 

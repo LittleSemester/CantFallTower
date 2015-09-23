@@ -10,11 +10,14 @@ Missile::Missile()
 {
 	judgeDistance = 0.0;
 	remainTime = 1.0;
+	speedGradient = 1.0;
+	target = nullptr;
 }
 
 Missile::~Missile()
 {
-
+	if (target != nullptr)
+		target->release();
 }
 
 bool Missile::init()
@@ -32,7 +35,7 @@ bool Missile::init()
 
 void Missile::update(float delta)
 {
-	if (target == nullptr || targetReached)
+	if (isFinished())
 		return;
 
 	// 剩余飞行时间结束！
@@ -47,7 +50,7 @@ void Missile::update(float delta)
 	Vec2 vecDist = vecTarget - vecThis;
 
 	// 按时间比例移动到合适地点
-	vecDist *= delta / remainTime;
+	vecDist *= (targetReached ? 1.0 : speedGradient) * delta / remainTime;
 	vecThis += vecDist;
 	this->setPosition(vecThis);
 
@@ -57,6 +60,7 @@ void Missile::update(float delta)
 	if (targetReached)
 	{
 		acquireJudge();
+		removeFromParent();
 	}
 
 }
@@ -78,7 +82,24 @@ bool Missile::judgeSingleEnemy(Enemy* enemy)
 
 void Missile::setTarget(Enemy* enemy)
 {
+	if (target != nullptr)
+		target->release();
 	if (enemy != nullptr)
 		target = enemy;
+	target->retain();
+}
+
+#include "MissileStar.h"
+
+Missile* Missile::createMissile(MissileType type)
+{
+	switch (type)
+	{
+	case MISSILE_STAR:
+		return MissileStar::create();
+	default:
+		return nullptr;
+	}
+	return nullptr;
 }
 

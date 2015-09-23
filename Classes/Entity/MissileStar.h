@@ -18,6 +18,8 @@ public:
 	virtual bool init();
 	virtual void update(float delta);
 
+	CREATE_FUNC(MissileStar);
+
 };
 
 #endif // _MISSILE_STAR_H_

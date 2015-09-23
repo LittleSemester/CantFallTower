@@ -136,6 +136,8 @@ void GameScene::getEnemyInDistance(Vector<Enemy*>& list, const Vec2& pos, double
 	clearRemovedEnemyFromList();
 	for (Enemy* enemy : enemyList)
 	{
+		if (enemy->isDead())
+			continue;
 		if (enemy->getPosition().distance(pos) <= dist)
 			list.pushBack(enemy);
 	}
@@ -148,6 +150,8 @@ Enemy* GameScene::getNearestEnemy(const Vec2& pos, double dist/*=INFINITY*/)
 	float t;
 	for (Enemy* enemy : enemyList)
 	{
+		if (enemy->isDead())
+			continue;
 		t = enemy->getPosition().distance(pos);
 		if (t <= dist)
 		{

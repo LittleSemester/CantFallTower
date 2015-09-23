@@ -10,11 +10,14 @@ bool MissileStar::init()
 {
 	if (!Missile::init())
 		return false;
-
+	
 	sprite = Sprite::create("bullet.png");
+	sprite->setScale(0.5f);
 	this->addChild(sprite);
 
-	this->baseDamage = 20.0;
+	this->remainTime = 0.3;
+	this->speedGradient = 1.3;
+	this->baseDamage = 10.0;
 
 	return true;
 }
@@ -23,5 +26,9 @@ void MissileStar::update(float delta)
 {
 	Missile::update(delta);
 
-	sprite->setRotation(sprite->getRotation() + delta * M_PI * 2);
+	if (isFinished())
+		return;
+
+	sprite->setRotation(sprite->getRotation() + delta * 360);
+
 }

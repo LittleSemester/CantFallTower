@@ -12,11 +12,16 @@ bool MissileStar::init()
 		return false;
 
 	sprite = Sprite::create("bullet.png");
+	this->addChild(sprite);
+
+	this->baseDamage = 20.0;
 
 	return true;
 }
 
-void MissileStar::onUpdate(float delta)
+void MissileStar::update(float delta)
 {
+	Missile::update(delta);
+
 	sprite->setRotation(sprite->getRotation() + delta * M_PI * 2);
 }

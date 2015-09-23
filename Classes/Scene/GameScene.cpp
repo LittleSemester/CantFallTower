@@ -131,6 +131,34 @@ void GameScene::clearRemovedEnemyFromList()
 	}
 }
 
+void GameScene::getEnemyInDistance(Vector<Enemy*>& list, const Vec2& pos, double dist)
+{
+	clearRemovedEnemyFromList();
+	for (Enemy* enemy : enemyList)
+	{
+		if (enemy->getPosition().distance(pos) <= dist)
+			list.pushBack(enemy);
+	}
+}
+
+Enemy* GameScene::getNearestEnemy(const Vec2& pos, double dist/*=INFINITY*/)
+{
+	clearRemovedEnemyFromList();
+	Enemy* result = nullptr;
+	float t;
+	for (Enemy* enemy : enemyList)
+	{
+		t = enemy->getPosition().distance(pos);
+		if (t <= dist)
+		{
+			result = enemy;
+			dist = t;
+		}
+	}
+	return result;
+}
+
+
 //触摸事件
 bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 {
@@ -246,9 +274,4 @@ void GameScene::selectTD(Ref * obj)
 	{
 		this->removeChildByTag(100);
 	}
-}
-
-void GameScene::getEnemyInDistance(const cocos2d::Vector<Enemy>* list, double dist)
-{
-	// todo
 }

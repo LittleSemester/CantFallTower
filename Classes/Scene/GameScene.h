@@ -7,7 +7,7 @@
 #include "Util/TDPoint.h"
 #include "Entity/Entity.h"
 #include "Enemy/Enemy.h"
-
+#include <cmath>
 
 class Enemy;
 class Entity;
@@ -20,6 +20,7 @@ protected:
 	cocos2d::Vector<Enemy*> enemyList;
 
 	void clearRemovedEnemyFromList();
+
 public:
 
 	static cocos2d::Scene* createScene();
@@ -28,9 +29,9 @@ public:
 
 	CREATE_FUNC(GameScene);
 
-	static cocos2d::Vector<TDPoint*> allPoint;//±£´æËùÓĞÂ·¾¶×ªÍäµã
+	static cocos2d::Vector<TDPoint*> allPoint;//ä¿å­˜æ‰€æœ‰è·¯å¾„è½¬å¼¯ç‚¹
 
-	int enemyMaxCount; //æ•Œäººæœ€å¤§æ•°é‡?
+	int enemyMaxCount; //æ•Œäººæœ€å¤§æ•°é‡
 	int enemyCreated;
 	
 	void EnemyCreat(float dt);//äº§ç”Ÿä¸€æ³¢æ€ªç‰©
@@ -38,19 +39,21 @@ public:
 	// ç”¨äºå•ä¸€Entityè¿›è¡Œåˆ¤å®šæ£€æµ‹ï¼Œä¸€èˆ¬æƒ…å†µä¸‹ç”±Entityè‡ªèº«è°ƒç”¨ï¼ŒæŒ‡å®šsingleEnemyä»¥åˆ¤å®šå•ä¸ªç›®æ ‡ï¼ˆä¼šæ£€æŸ¥ç›®æ ‡æœ‰æ•ˆæ€§ï¼‰
 	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy = nullptr);
 
-	void initAllPoints();//¼ÓÔØµĞÈËĞĞ×ßÂ·¾¶µã
+	void getEnemyInDistance(cocos2d::Vector<Enemy*>& list, const cocos2d::Vec2& pos, double dist);
+	Enemy* getNearestEnemy(const cocos2d::Vec2& pos, double dist=INFINITY);
 
-	void addTDSelect(int r, int c);//Ìí¼ÓËşµÄÑ¡ÔñÃæ°å
-	void selectTD(cocos2d::Ref* obj);//½¨ËşµÄ»Øµ÷
+	void initAllPoints();//åŠ è½½æ•Œäººè¡Œèµ°è·¯å¾„ç‚¹
 
-	int nowRow, nowCol;//µã»÷´¦µÄĞĞÁĞĞÅÏ¢£¬¹©ÔìËş¹ı³ÌÊ¹ÓÃ
-	int towerInfo[11][17];//½¨ËşĞÅÏ¢,ĞĞÁĞĞÅÏ¢ÍêÈ«ºÍ¶şÎ¬Êı×éÏàÍ¬£¬×óÉÏ½ÇÎªÔ­µã£¬ÆÁÄ»Ô­µã,11ĞĞ£¬17ÁĞ
+	void addTDSelect(int r, int c);//æ·»åŠ å¡”çš„é€‰æ‹©é¢æ¿
+	void selectTD(cocos2d::Ref* obj);//å»ºå¡”çš„å›è°ƒ
+
+	int nowRow, nowCol;//ç‚¹å‡»å¤„çš„è¡Œåˆ—ä¿¡æ¯ï¼Œä¾›é€ å¡”è¿‡ç¨‹ä½¿ç”¨
+	int towerInfo[11][17];//å»ºå¡”ä¿¡æ¯,è¡Œåˆ—ä¿¡æ¯å®Œå…¨å’ŒäºŒç»´æ•°ç»„ç›¸åŒï¼Œå·¦ä¸Šè§’ä¸ºåŸç‚¹ï¼Œå±å¹•åŸç‚¹,11è¡Œï¼Œ17åˆ—
 
 	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
 	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
 	virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event);
 
-	void getEnemyInDistance(const cocos2d::Vector<Enemy>* list, double dist);
 
 };
 

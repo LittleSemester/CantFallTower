@@ -16,7 +16,7 @@ private:
 public:
 
 	virtual bool init();
-	virtual void onUpdate(float delta);
+	virtual void update(float delta);
 
 };
 

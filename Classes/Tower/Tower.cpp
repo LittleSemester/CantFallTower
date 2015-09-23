@@ -27,6 +27,15 @@ bool Tower::init()
 	return true;
 }
 
+void Tower::onEnter()
+{
+	Node::onEnter();
+	Node* node = this->getParent();
+	mainScene = dynamic_cast<GameScene*>(node);
+	if (mainScene == nullptr)
+		removeFromParent();
+}
+
 Tower * Tower::createTower(int type, int row, int col)
 {
 	Tower* newTD = nullptr;
@@ -61,5 +70,8 @@ void Tower::fire()
 
 void Tower::doFire(float delta)
 {
+	enemyInRange.clear();
+	mainScene->getEnemyInDistance(enemyInRange, this->getPosition(), radius);
 	fire();
 }
+

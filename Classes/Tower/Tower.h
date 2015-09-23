@@ -3,6 +3,7 @@
 
 #include <cocos2d.h>
 #include "Enemy/Enemy.h"
+#include "Scene/GameScene.h"
 
 enum TowerType
 {
@@ -16,6 +17,7 @@ enum TowerType
 };
 
 class Enemy;
+class GameScene;
 
 class Tower : public cocos2d::Node
 {
@@ -29,6 +31,8 @@ protected:
 
 	TowerType type;//塔的类型
 
+	GameScene* mainScene;
+
 	cocos2d::Vector<Enemy*> enemyInRange;
 
 	virtual void onFire() = 0;
@@ -41,9 +45,9 @@ public:
 	virtual ~Tower()=0;
 
 	virtual bool init();
+	virtual void onEnter();
 
 	void setRowColumn(int row, int col);
-	bool checkEnemyInRange(Enemy* enemy);
 
 	static Tower* createTower(int type, int row, int col);
 

@@ -1,6 +1,7 @@
 #include "IceAOE.h"
 
 #include "cocos2d.h"
+#include "Buff/Buff.h"
 
 USING_NS_CC;
 
@@ -54,4 +55,12 @@ void IceAOE::update(float delta)
 void IceAOE::onEnter()
 {
 	Entity::onEnter();
+}
+
+void IceAOE::onDealDamage(Enemy * enemy)
+{
+	enemy->dealDamage(baseDamage);
+	auto buff = new SimpleBuff(2, 0, 0, 0, 0.5);
+	buff->setFlag(BUFF_FROZEN);
+	enemy->pushBuff(buff);
 }

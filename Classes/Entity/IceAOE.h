@@ -8,6 +8,8 @@ protected:
 
 	virtual bool isPositionInArea(const cocos2d::Vec2& relativePos);
 
+	virtual void onDealDamage(Enemy* enemy);
+
 
 public:
 	explicit IceAOE();
@@ -20,6 +22,7 @@ public:
 	virtual void update(float delta); 
 	virtual void onEnter();
 	
+
 	float radius;//AOE·¶Î§
 
 	static IceAOE * createIceAOE();

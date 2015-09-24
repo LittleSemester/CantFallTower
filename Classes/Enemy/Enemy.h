@@ -12,29 +12,30 @@ class Enemy : public cocos2d::Node, public BuffList
 protected:
 
 	int healthPoint;
-	int type;//怪物类型
 	double speed;//怪物速度
-	int nextPoint;//下一个移动目标点
-	cocos2d::ui::LoadingBar* hpBar;
-	cocos2d::Sprite* ActSprite;//建立一个成员变量精灵承载行走动画
-	cocos2d::Vec2 lastdir;//上次移动方向
-	int changeDir;//改变方向
+
 	float distance;//已走过的路
 	bool finished;//是否正在播放死亡动画或正在删除该Enemy
+
+	int nextPoint; //下一个移动目标点
+	int changeDir; //改变方向
+	cocos2d::ui::LoadingBar* hpBar;
+	cocos2d::Vec2 lastdir;//上次移动方向
+
+	cocos2d::Sprite* actSprite;//建立一个成员变量精灵承载行走动画
+
 	static double calcDefencedDamage(double damage, double defence);
 
 public:
 
 	explicit Enemy();
-	//带参数的构造函数，初始化对应的怪物
-	explicit Enemy(int type);
-	virtual ~Enemy();
+	virtual ~Enemy()=0;
 
 	virtual bool init();
 
 	virtual void update(float delta);
 
-	int maxHP();
+	virtual int maxHP();
 	virtual int defence();
 
 	// 对该敌人造成伤害，期间检查敌人各项属性和buff，指定direct=true造成直伤；返回最终伤害量
@@ -61,18 +62,8 @@ public:
 		return this->distance;
 	}
 
-
-	CREATE_FUNC(Enemy);
-
-	//带参数的create函数,对应怪物类型
-	static Enemy* create(int type);
-
-	//生成敌人
-	static Enemy* createEnemy(int type);
-
 	//敌人移动回调函数
-	void EnemyMove(float dt);
-
+	void moveEnemy(float dt);
 
 };
 

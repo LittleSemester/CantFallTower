@@ -37,10 +37,6 @@ bool HelloWorld::init()
     addChild(rootNode);
 	auto Map = TMXTiledMap::create("map.tmx");
 	addChild(Map);
-	auto enemy = TestEnemy::create();
-	enemy->setPosition(200.0, 200.0);
-
-	addChild(enemy, 2);
 
     return true;
 }

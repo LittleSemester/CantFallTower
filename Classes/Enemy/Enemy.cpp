@@ -8,32 +8,11 @@ using namespace cocos2d;
 
 Enemy::Enemy()
 {
-}
-
-Enemy::Enemy(int type)
-{
-	//设置怪物类型
-	this->type = type;
 	this->nextPoint = 1;
 	this->changeDir = 0;
 	this->lastdir.x = 1;
 	this->finished = false;
 	this->distance = 0;
-	switch (type)
-	{
-	case 1:
-		//初始化怪物属性
-		/*this->nextPoint = 1;
-		this->speed = 2;
-		this->healthPoint = 100;
-		this->changeDir = 0;
-		this->lastdir.x = 1;*/
-		this->speed = 2;
-		this->healthPoint = 100;
-		break;
-	default:
-		break;
-	}
 }
 
 Enemy::~Enemy()
@@ -44,10 +23,22 @@ Enemy::~Enemy()
 bool Enemy::init()
 {
 	if (!Node::init())
-	{
 		return false;
-	}
+
+	TDPoint * initPoint = (TDPoint *)GameScene::allPoint.at(0);
+	setPosition(initPoint->px, initPoint->py);
+	
+	//设置血条
+	hpBar = LoadingBar::create("loadingBar.png");
+	hpBar->setTag(123);
+	hpBar->setPercent(100);
+	addChild(hpBar, 1);
+	hpBar->setPositionY(30);
+
 	healthPoint = maxHP();
+
+	schedule(schedule_selector(Enemy::moveEnemy), 1.0 / 60);
+
 	return true;
 }
 
@@ -95,74 +86,8 @@ double Enemy::calcDefencedDamage(double damage, double defence)
 	return damage > defence ? damage - defence : 0.0;
 }
 
-Enemy * Enemy::create(int type)
-{
-	Enemy *pRet = new(std::nothrow) Enemy(type);
-		if (pRet && pRet->init())
-		{
-			pRet->autorelease();
-			return pRet;
-		}
-		else
-		{
-			delete pRet;
-			pRet = NULL;
-			return NULL;
-		}
-}
-
-Enemy * Enemy::createEnemy(int type)
-{
-	Enemy * newEnemy = Enemy::create(type);
-	//设置初始出现位置
-	TDPoint * initPoint = (TDPoint *)GameScene::allPoint.at(0);
-	newEnemy->setPosition(initPoint->px, initPoint->py);
-	switch (type)
-	{
-		//鏍规嵁鎬墿绫诲瀷浜х敓瀵瑰簲鐨勬�墿
-	case 1://绗竴绉嶆�墿
-	{
-		//鎬墿琛岃蛋鍔ㄧ敾
-		auto Walk = Animation::create();
-		for (int i = 1; i <= 10; i++)
-		{
-			char szName[100];
-			sprintf(szName, "gw%d.png", i);
-			Walk->addSpriteFrameWithFile(szName);
-		}
-		for (int i = 9; i >= 4; i--)
-		{
-			char szName[100];
-			sprintf(szName, "gw%d.png", i);
-			Walk->addSpriteFrameWithFile(szName);
-		}
-		//璁剧疆甯у簭鍒楅棿闅?
-		Walk->setDelayPerUnit(0.1);
-		//鍒涘缓甯у姩鐢?
-		auto AniWalk = Animate::create(Walk);
-		auto RepeatWalk = RepeatForever::create(AniWalk);
-		newEnemy->ActSprite= Sprite::create();
-		newEnemy->ActSprite->runAction(RepeatWalk);
-		newEnemy->addChild(newEnemy->ActSprite);
-		
-		//设置血条
-		newEnemy->hpBar = LoadingBar::create("loadingBar.png");
-		newEnemy->hpBar->setTag(123);
-		newEnemy->hpBar->setPercent(100);
-		newEnemy->addChild(newEnemy->hpBar, 1);
-		newEnemy->hpBar->setPositionY(30);
-	}
-	default:
-		break;
-	}
-	//璁╄鏁屼汉鎵ц绉诲姩鐨勫洖璋冨嚱鏁?
-	newEnemy->schedule(schedule_selector(Enemy::EnemyMove), 1.0 / 60);
-
-	return newEnemy;
-}
-
 //鎬墿绉诲姩鍥炶皟鍑芥暟
-void Enemy::EnemyMove(float dt)
+void Enemy::moveEnemy(float dt)
 {
 	if (this->isFinished())
 	{
@@ -183,7 +108,7 @@ void Enemy::EnemyMove(float dt)
 	if (lastdir.x*dir.x < 0)
 	{
 		this->changeDir = 1 - this->changeDir;
-		this->ActSprite->setFlippedX(this->changeDir);
+		this->actSprite->setFlippedX(this->changeDir);
 	}
 	//鏇存柊涓婁竴娆℃柟鍚戝悜閲?
 	lastdir = dir;
@@ -211,7 +136,7 @@ void Enemy::EnemyMove(float dt)
 		auto dead = FadeOut::create(0.3);
 		auto deadFunc = CallFunc::create([this]() {this->removeFromParent(); });
 		auto deadSeq = Sequence::create(dead, deadFunc, NULL);
-		this->ActSprite->runAction(deadSeq);
+		this->actSprite->runAction(deadSeq);
 		this->runAction(Sequence::create(DelayTime::create(0.3), deadFunc, NULL));
 		this->finished = true;
 	}

@@ -8,7 +8,7 @@ USING_NS_CC;
 IceAOE::IceAOE()
 {
 	radius = 100;
-	baseDamage = 50;
+	baseDamage = 10;
 }
 
 

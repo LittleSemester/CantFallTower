@@ -108,6 +108,9 @@
     <ClCompile Include="..\Classes\Skill\Hurricane.cpp">
       <Filter>src\Skill</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\MainScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Skill\Hurricane.h">
       <Filter>src\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\MainScene.h">
+      <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

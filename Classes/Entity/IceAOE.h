@@ -20,7 +20,7 @@ public:
 	CREATE_FUNC(IceAOE);
 
 	virtual void update(float delta); 
-	virtual void onEnter();
+
 	
 
 	float radius;//AOE·¶Î§

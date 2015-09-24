@@ -10,7 +10,8 @@
 enum MissileType
 {
 	MISSILE_UNKNOWN = -1,
-	MISSILE_STAR = 0
+	MISSILE_STAR = 0,
+	MISSILE_FIRE=1
 };
 
 class Missile : public Entity

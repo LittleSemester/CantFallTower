@@ -4,6 +4,7 @@ USING_NS_CC;
 
 #include "TowerThunder.h"
 #include "TowerIce.h"
+#include "TowerFire.h"
 Tower::Tower()
 {
 	trow = tcol = 0;
@@ -50,6 +51,11 @@ Tower * Tower::createTower(int type, int row, int col)
 			newTD = TowerIce::create();
 			break;
 		}
+	case TOWER_FIRE:
+	{
+		newTD = TowerFire::create();
+		break;
+	}
 	default:
 		break;
 	}

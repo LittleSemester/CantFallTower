@@ -52,10 +52,6 @@ void IceAOE::update(float delta)
 	acquireJudge();
 }
 
-void IceAOE::onEnter()
-{
-	Entity::onEnter();
-}
 
 void IceAOE::onDealDamage(Enemy * enemy)
 {

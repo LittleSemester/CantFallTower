@@ -245,11 +245,18 @@ void GameScene::addTDSelect(int r, int c)
 	auto bt01_sel = Sprite::create("Thunder_Tower_00.png");
 	bt01_sel->setScale(1.1);
 	
+	//冰塔
 	SpriteFrame* spF = SpriteFrameCache::getInstance()->getSpriteFrameByName("Ice Tower/Ice_Tower_00.png");
 	auto bt02 = Sprite::createWithSpriteFrame(spF);
 	auto bt02_sel= Sprite::createWithSpriteFrame(spF);
 	bt02->setScale(0.6);
 	bt02_sel->setScale(0.66);
+
+	//火焰塔
+	auto bt03 = Sprite::create("Fire_Tower_01.png");
+	auto bt03_sel= Sprite::create("Fire_Tower_01.png");
+
+	bt03_sel->setScale(1.1);
 
 	//将该sprite转为Menu接收用户事件
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
@@ -260,14 +267,19 @@ void GameScene::addTDSelect(int r, int c)
 	menuItem02->setTag(11);
 	menuItem02->setAnchorPoint(Vec2(0, 0));
 
+	auto menuItem03 = MenuItemSprite::create(bt03, bt03_sel, CC_CALLBACK_1(GameScene::selectTD, this));
+	menuItem03->setTag(12);
+	menuItem03->setAnchorPoint(Vec2(1, 0));
+
 	//用menu容纳menuItem
-	auto menuTD = Menu::create(menuItem01, menuItem02, nullptr);
+	auto menuTD = Menu::create(menuItem01, menuItem02, menuItem03, nullptr);
 	
 	menuTD->setPosition(Vec2::ZERO);
 	tPos->addChild(menuTD);
 
 	menuItem01->setPosition(Vec2(Size.x / 2, Size.y));
 	menuItem02->setPosition(Vec2(Size.x, Size.y));
+	menuItem03->setPosition(Vec2(0, Size.y));
 
 	tPos->setTag(100);
 	this->addChild(tPos);
@@ -291,6 +303,14 @@ void GameScene::selectTD(Ref * obj)
 	case 11:
 	{
 		Tower * TD = Tower::createTower(TOWER_ICE, nowRow, nowCol);
+		this->addChild(TD);
+		//标记该位置已经建塔
+		towerInfo[nowCol][nowRow] = true;
+		break;
+	}
+	case 12:
+	{
+		Tower * TD = Tower::createTower(TOWER_FIRE, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;

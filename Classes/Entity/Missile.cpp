@@ -93,13 +93,15 @@ void Missile::setTarget(Enemy* enemy)
 }
 
 #include "MissileStar.h"
-
+#include "FireDir.h"
 Missile* Missile::createMissile(MissileType type)
 {
 	switch (type)
 	{
 	case MISSILE_STAR:
 		return MissileStar::create();
+	case MISSILE_FIRE:
+		return FireDir::create();
 	default:
 		return nullptr;
 	}

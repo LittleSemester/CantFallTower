@@ -16,6 +16,7 @@ public:
 	virtual double getCoolDown();
 	virtual int getMaxCount();
 
+	virtual void setLevel(int level);
 
 };
 

@@ -15,6 +15,11 @@ double Skill::getCoolDown()
 
 int Skill::getMaxCount()
 {
-	return INFINITE;
+	return -1;
+}
+
+void Skill::setLevel(int level)
+{
+
 }
 

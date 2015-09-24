@@ -33,8 +33,8 @@ void BuffList::pushBuff(Buff* buff)
 		else
 			++iter;
 	}
-	onBuffBegin(buff);
 	buffs.emplace_back(buff);
+	onBuffBegin(buff);
 }
 
 double BuffList::calcBuffedValue(double (Buff::*func)(double), double origin)

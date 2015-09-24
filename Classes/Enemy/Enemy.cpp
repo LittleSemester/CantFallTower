@@ -145,3 +145,36 @@ void Enemy::moveEnemy(float dt)
 	}
 }
 
+void Enemy::updateBuffState()
+{
+	unsigned int flag = getBuffFlag();
+
+	if (actSprite != nullptr)
+	{
+		if (flag == BUFF_NONE)
+		{
+			actSprite->setColor(Color3B(255, 255, 255));
+		}
+		else
+		{
+			if (flag&BUFF_FROZEN)
+			{
+				actSprite->setColor(Color3B(200, 200, 255));
+			}
+			if (flag&BUFF_DEEPFROZEN)
+			{
+				actSprite->setColor(Color3B(127, 127, 255));
+			}
+		}
+	}
+}
+
+void Enemy::onBuffBegin(Buff* buff)
+{
+	updateBuffState();
+}
+
+void Enemy::onBuffEnd(Buff* buff)
+{
+	updateBuffState();
+}

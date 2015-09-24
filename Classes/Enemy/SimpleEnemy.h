@@ -14,6 +14,11 @@ protected:
 	int maxhp;
 	int def;
 
+	cocos2d::Animation* walk;
+	cocos2d::Animate* aniWalk;
+
+	virtual void updateBuffState();
+
 public:
 
 	explicit SimpleEnemy(int type);

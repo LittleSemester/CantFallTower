@@ -13,7 +13,7 @@ SimpleEnemy::SimpleEnemy(int type)
 	{
 	case 1:
 		//初始化怪物属性，这里预计改为从plist读取
-		this->speed = 2;
+		this->speed = 120;
 		this->maxhp = 100;
 		this->def = 0;
 		break;

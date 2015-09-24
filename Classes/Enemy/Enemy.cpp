@@ -13,6 +13,7 @@ Enemy::Enemy()
 	this->lastdir.x = 1;
 	this->finished = false;
 	this->distance = 0;
+	this->speed = 100;
 }
 
 Enemy::~Enemy()
@@ -95,7 +96,7 @@ void Enemy::moveEnemy(float dt)
 	if (this->isFinished())
 		return;
 
-	double buffedSpeed = calcBuffedValue(&Buff::speed, speed);
+	double buffedDist = calcBuffedValue(&Buff::speed, speed)*dt;
 
 	//获取当前敌人位置
 	Vec2 nowPos = this->getPosition();
@@ -105,8 +106,8 @@ void Enemy::moveEnemy(float dt)
 	//璁＄畻鍑烘柟鍚戝悜閲?
 	Vec2 dir = (nextPos - nowPos) / sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y));
 	//鏍规嵁閫熷害娌跨潃璇ユ柟鍚戝幓琛岃蛋涓�瀹氳窛绂?
-	this->setPosition(nowPos + dir*buffedSpeed);
-	this->distance += buffedSpeed;
+	this->setPosition(nowPos + dir*buffedDist);
+	this->distance += buffedDist;
 	//濡傛灉褰撳墠鏂瑰悜鐭㈤噺x鏂瑰悜涓庝笂涓�娆′笉鍚岋紝鍒欒浆鍚?
 	if (lastdir.x*dir.x < 0)
 	{

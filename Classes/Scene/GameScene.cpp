@@ -1,7 +1,7 @@
 #include "GameScene.h"
 #include "Enemy\SimpleEnemy.h"
 #include "Tower\Tower.h"
-#include "Skill/FastFreeze.h"
+#include "Skill/Hurricane.h"
 
 USING_NS_CC;
 
@@ -62,11 +62,9 @@ bool GameScene::init()
 	
 	currSkill = nullptr;
 
-	/*
-	auto skill = FastFreeze::create();
-	currSkill = dynamic_cast<Skill*>(skill);
-	addChild(skill);
-	*/
+	currSkill = Hurricane::create();
+	currSkill->setPositionZ(10);
+	addChild(currSkill);
 
 	return true;
 }
@@ -145,16 +143,21 @@ void GameScene::clearRemovedEnemyFromList()
 	}
 }
 
-void GameScene::getEnemyInDistance(Vector<Enemy*>& list, const Vec2& pos, double dist)
+int GameScene::getEnemyInDistance(Vector<Enemy*>& list, const Vec2& pos, double dist)
 {
+	int res = 0;
 	clearRemovedEnemyFromList();
 	for (Enemy* enemy : enemyList)
 	{
 		if (enemy->isDead())
 			continue;
 		if (enemy->getPosition().distance(pos) <= dist)
+		{
 			list.pushBack(enemy);
+			++res;
+		}
 	}
+	return res;
 }
 
 Enemy* GameScene::getNearestEnemy(const Vec2& pos, double dist/*=INFINITY*/)
@@ -174,6 +177,22 @@ Enemy* GameScene::getNearestEnemy(const Vec2& pos, double dist/*=INFINITY*/)
 		}
 	}
 	return result;
+}
+
+int GameScene::getEnemyInArea(cocos2d::Vector<Enemy*>& list, const std::function<bool(const cocos2d::Vec2&)> inArea)
+{
+	int res = 0;
+	for (Enemy* enemy : enemyList)
+	{
+		if (enemy->isDead())
+			continue;
+		if (inArea(enemy->getPosition()))
+		{
+			list.pushBack(enemy);
+			++res;
+		}
+	}
+	return res;
 }
 
 
@@ -266,7 +285,7 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 	if (currSkill != nullptr) // 使用技能
 	{
 		currSkill->onTouchEnded(now);
-		currSkill = nullptr;
+		//currSkill = nullptr;
 	}
 
 }
@@ -362,4 +381,11 @@ void GameScene::selectTD(Ref * obj)
 	{
 		this->removeChildByTag(100);
 	}
+}
+
+void GameScene::alignPosition(cocos2d::Vec2& pos)
+{
+	int i = (int)(pos.x / 56.9);
+	int j = (int)(pos.y / 56.9);
+	pos.set((i + 0.5)*56.9, (j + 0.5)*56.9);
 }

@@ -44,16 +44,16 @@ bool Skill::needSelectPos()
 
 bool Skill::onTouchBegan(const cocos2d::Vec2& touchPos)
 {
-	return false;
+	return true;
 }
 
 bool Skill::onTouchMoved(const cocos2d::Vec2& touchPos)
 {
-	return false;
+	return true;
 }
 
 bool Skill::onTouchEnded(const cocos2d::Vec2& touchPos)
 {
-	return false;
+	return true;
 }
 

@@ -105,6 +105,9 @@
     <ClCompile Include="..\Classes\Skill\FastFreeze.cpp">
       <Filter>src\Skill</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Skill\Hurricane.cpp">
+      <Filter>src\Skill</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -177,6 +180,9 @@
       <Filter>src\Skill</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Skill\FastFreeze.h">
+      <Filter>src\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Skill\Hurricane.h">
       <Filter>src\Skill</Filter>
     </ClInclude>
   </ItemGroup>

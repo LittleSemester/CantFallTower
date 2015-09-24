@@ -61,13 +61,11 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 	
 	currSkill = nullptr;
-
 	/*
 	auto skill = FastFreeze::create();
 	currSkill = dynamic_cast<Skill*>(skill);
 	addChild(skill);
 	*/
-
 	return true;
 }
 

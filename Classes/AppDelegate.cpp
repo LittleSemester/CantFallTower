@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-#include "Scene\GameScene.h"
+#include "Scene/MainScene.h"
+#include "Scene/GameScene.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -50,11 +51,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("res/Tower");
 	FileUtils::getInstance()->addSearchPath("res/Sprite");
 	FileUtils::getInstance()->addSearchPath("res/Skill");
+	FileUtils::getInstance()->addSearchPath("res/Scene");
 
     // create a scene. it's an autorelease object
 	//测试游戏场景
-    auto scene = GameScene::createScene();
-
+    //auto scene = GameScene::createScene();
+	auto scene = MainScene::createScene();
     // run
     director->runWithScene(scene);
 

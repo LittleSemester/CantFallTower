@@ -19,6 +19,7 @@ public:
 	explicit SimpleEnemy(int type);
 
 	virtual bool init();
+	virtual void update(float delta);
 
 	virtual int maxHP();
 	virtual int defence();

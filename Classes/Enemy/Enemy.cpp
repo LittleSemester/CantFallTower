@@ -35,15 +35,18 @@ bool Enemy::init()
 	addChild(hpBar, 1);
 	hpBar->setPositionY(30);
 
+	actSprite = nullptr;
+
 	healthPoint = maxHP();
 
-	schedule(schedule_selector(Enemy::moveEnemy), 1.0 / 60);
+	scheduleUpdate();
 
 	return true;
 }
 
 void Enemy::update(float delta)
 {
+	moveEnemy(delta);
 	updateBuff(delta);
 }
 
@@ -90,9 +93,9 @@ double Enemy::calcDefencedDamage(double damage, double defence)
 void Enemy::moveEnemy(float dt)
 {
 	if (this->isFinished())
-	{
 		return;
-	}
+
+	double buffedSpeed = calcBuffedValue(&Buff::speed, speed);
 
 	//获取当前敌人位置
 	Vec2 nowPos = this->getPosition();
@@ -102,13 +105,14 @@ void Enemy::moveEnemy(float dt)
 	//璁＄畻鍑烘柟鍚戝悜閲?
 	Vec2 dir = (nextPos - nowPos) / sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y));
 	//鏍规嵁閫熷害娌跨潃璇ユ柟鍚戝幓琛岃蛋涓�瀹氳窛绂?
-	this->setPosition(nowPos + dir*speed);
-	this->distance += speed;
+	this->setPosition(nowPos + dir*buffedSpeed);
+	this->distance += buffedSpeed;
 	//濡傛灉褰撳墠鏂瑰悜鐭㈤噺x鏂瑰悜涓庝笂涓�娆′笉鍚岋紝鍒欒浆鍚?
 	if (lastdir.x*dir.x < 0)
 	{
 		this->changeDir = 1 - this->changeDir;
-		this->actSprite->setFlippedX(this->changeDir);
+		if (actSprite!=nullptr)
+			this->actSprite->setFlippedX(this->changeDir);
 	}
 	//鏇存柊涓婁竴娆℃柟鍚戝悜閲?
 	lastdir = dir;
@@ -132,7 +136,6 @@ void Enemy::moveEnemy(float dt)
 	if (this->isDead())
 	{
 		//先渐隐消失，再删除
-		
 		auto dead = FadeOut::create(0.3);
 		auto deadFunc = CallFunc::create([this]() {this->removeFromParent(); });
 		auto deadSeq = Sequence::create(dead, deadFunc, NULL);

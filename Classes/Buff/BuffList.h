@@ -24,7 +24,7 @@ public:
 		buffs.emplace_back(new T(args...));
 	}
 
-	// 参数buff必须为new的对象，buff失效时列表将尝试delete
+	// 参数buff必须为new的对象，buff失效时列表将尝试delete；相同flag的buff后放入的会替换掉先放入的
 	void pushBuff(Buff* buff);
 
 	// 使用方法举例：double buffedDamage=list.calcBuffedValue(&Buff::damageOut, originDamage);

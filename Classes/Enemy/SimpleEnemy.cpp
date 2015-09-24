@@ -52,6 +52,22 @@ bool SimpleEnemy::init()
 	return true;
 }
 
+void SimpleEnemy::update(float delta)
+{
+	Enemy::update(delta);
+
+	unsigned int flag = getBuffFlag();
+	if (flag&BUFF_FROZEN)
+	{
+		actSprite->setColor(Color3B(200, 200, 255));
+	}
+	if (flag&BUFF_DEEPFROZEN)
+	{
+		actSprite->setColor(Color3B(127, 127, 255));
+	}
+
+}
+
 int SimpleEnemy::maxHP()
 {
 	return maxhp;

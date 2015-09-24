@@ -31,7 +31,7 @@ bool Buff::isFinished() const
 void Buff::update(double deltaSec)
 {
 	timeLeft -= deltaSec;
-	if (deltaSec <= 0)
+	if (timeLeft <= 0)
 		finished = true;
 }
 

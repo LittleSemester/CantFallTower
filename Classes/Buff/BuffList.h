@@ -11,6 +11,11 @@ private:
 
 	std::deque<Buff*> buffs;
 
+protected:
+
+	virtual void onBuffBegin(Buff* buff);
+	virtual void onBuffEnd(Buff* buff);
+
 public:
 
 	BuffList();

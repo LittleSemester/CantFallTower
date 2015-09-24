@@ -21,11 +21,20 @@ void BuffList::pushBuff(Buff* buff)
 	for (auto iter = buffs.begin(); iter != buffs.end();)
 	{
 		if ((*iter)->getFlag() == flag)
+		{
+			Buff* t = *iter;
 			iter = buffs.erase(iter);
+			if (t != nullptr)
+			{
+				onBuffEnd(t);
+				delete t;
+			}
+		}
 		else
 			++iter;
 	}
 	buffs.emplace_back(buff);
+	onBuffBegin(buff);
 }
 
 double BuffList::calcBuffedValue(double (Buff::*func)(double), double origin)
@@ -71,7 +80,13 @@ void BuffList::updateBuff(double deltaSec)
 	{
 		if ((*iter)->isFinished())
 		{
+			Buff* t = *iter;
 			iter = buffs.erase(iter);
+			if (t != nullptr)
+			{
+				onBuffEnd(t);
+				delete t;
+			}
 		}
 		else
 		{
@@ -89,7 +104,20 @@ void BuffList::clear()
 		buff = buffs.front();
 		buffs.pop_front();
 		if (buff != nullptr)
+		{
+			onBuffEnd(buff);
 			delete buff;
+		}
 	}
 	buffs.clear();
+}
+
+void BuffList::onBuffBegin(Buff* buff)
+{
+
+}
+
+void BuffList::onBuffEnd(Buff* buff)
+{
+
 }

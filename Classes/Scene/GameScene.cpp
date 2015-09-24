@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "Enemy\SimpleEnemy.h"
 #include "Tower\Tower.h"
+#include "Skill/FastFreeze.h"
 
 USING_NS_CC;
 
@@ -51,12 +52,22 @@ bool GameScene::init()
 	//加载纹理到内存中
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Ice_picture.plist");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Ice_Attack.plist");
+
 	//加入触摸处理
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
 	listener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+	
+	currSkill = nullptr;
+
+	/*
+	auto skill = FastFreeze::create();
+	currSkill = dynamic_cast<Skill*>(skill);
+	addChild(skill);
+	*/
+
 	return true;
 }
 
@@ -177,60 +188,87 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 	}
 
 	Vec2 now = touch->getLocation();
-	log("touch %f %f", now.x, now.y);
-	TMXTiledMap * ourMap = (TMXTiledMap*)this->getChildByTag(0);
-	//row为横坐标，col为纵坐标
-	this->nowRow = (int)(now.x / 56.9);
-	this->nowCol = 10-(int)(now.y / 56.9);
-	log("%d %d", nowRow, nowCol);
-	//获取点击块id
-	int touchID = ourMap->getLayer("Layer1")->getTileGIDAt(Vec2(nowRow, nowCol));
-	log("touch ID %d", touchID);
-	//初始化可放塔标记
-	bool canTouch = false;
-	//检查该块是否可以建塔
-	if (!ourMap->getPropertiesForGID(touchID).isNull())
-	{
-		auto tileTemp = ourMap->getPropertiesForGID(touchID).asValueMap();
-		if (!tileTemp.empty())
-		{
-			canTouch = true;
-			log("canTouch");
-		}
-	}
 
-	if (canTouch)
+	if (currSkill != nullptr) // 使用技能
 	{
-		//可以建塔，弹出选择面板
-		if(towerInfo[nowCol][nowRow])
+		if (!currSkill->onTouchBegan(now))
+			currSkill = nullptr;
+	}
+	else // 建塔
+	{
+
+		log("touch %f %f", now.x, now.y);
+		TMXTiledMap * ourMap = (TMXTiledMap*)this->getChildByTag(0);
+		//row为横坐标，col为纵坐标
+		this->nowRow = (int)(now.x / 56.9);
+		this->nowCol = 10 - (int)(now.y / 56.9);
+		log("%d %d", nowRow, nowCol);
+		//获取点击块id
+		int touchID = ourMap->getLayer("Layer1")->getTileGIDAt(Vec2(nowRow, nowCol));
+		log("touch ID %d", touchID);
+		//初始化可放塔标记
+		bool canTouch = false;
+		//检查该块是否可以建塔
+		if (!ourMap->getPropertiesForGID(touchID).isNull())
 		{
-			//如果已经有塔，变卖或升级
+			auto tileTemp = ourMap->getPropertiesForGID(touchID).asValueMap();
+			if (!tileTemp.empty())
+			{
+				canTouch = true;
+				log("canTouch");
+			}
+		}
+
+		if (canTouch)
+		{
+			//可以建塔，弹出选择面板
+			if (towerInfo[nowCol][nowRow])
+			{
+				//如果已经有塔，变卖或升级
+			}
+			else
+			{
+				addTDSelect(nowRow, 10 - nowCol);
+			}
 		}
 		else
 		{
-			addTDSelect(nowRow, 10 - nowCol);
-		}
-	}
-	else
-	{
-		//不可建塔，弹出错误提示
-		auto tips = Sprite::create("notips.png");
-		tips->setPosition(Vec2(nowRow * 56.9+28.45, (10 - nowCol) * 56.9+28.45));
-		this->addChild(tips);
-		tips->runAction(
-			Sequence::create(
+			//不可建塔，弹出错误提示
+			auto tips = Sprite::create("notips.png");
+			tips->setPosition(Vec2(nowRow * 56.9 + 28.45, (10 - nowCol) * 56.9 + 28.45));
+			this->addChild(tips);
+			tips->runAction(
+				Sequence::create(
 				DelayTime::create(0.8),
 				CallFunc::create(CC_CALLBACK_0(Sprite::removeFromParent, tips)), NULL));
+		}
 	}
+
 	return true;
 }
 
 void GameScene::onTouchMoved(Touch * touch, Event * unused_event)
 {
+	Vec2 now = touch->getLocation();
+
+	if (currSkill != nullptr) // 使用技能
+	{
+		if (!currSkill->onTouchMoved(now))
+			currSkill = nullptr;
+	}
+
 }
 
 void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 {
+	Vec2 now = touch->getLocation();
+
+	if (currSkill != nullptr) // 使用技能
+	{
+		currSkill->onTouchEnded(now);
+		currSkill = nullptr;
+	}
+
 }
 
 //塔的选择

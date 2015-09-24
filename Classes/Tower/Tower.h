@@ -19,7 +19,7 @@ enum TowerType
 class Enemy;
 class GameScene;
 
-class Tower : public cocos2d::Node
+class Tower : public cocos2d::Node, public BuffList
 {
 protected:
 
@@ -38,6 +38,9 @@ protected:
 	virtual void onFire() = 0;
 
 	void doFire(float delta);
+
+	virtual void onBuffBegin(Buff* buff);
+	virtual void onBuffEnd(Buff* buff);
 
 public:
 

@@ -24,6 +24,11 @@ protected:
 
 	cocos2d::Sprite* actSprite;//建立一个成员变量精灵承载行走动画
 
+	virtual void updateBuffState();
+
+	virtual void onBuffBegin(Buff* buff);
+	virtual void onBuffEnd(Buff* buff);
+
 	static double calcDefencedDamage(double damage, double defence);
 
 public:

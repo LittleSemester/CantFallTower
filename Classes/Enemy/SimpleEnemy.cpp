@@ -28,25 +28,26 @@ bool SimpleEnemy::init()
 		return false;
 
 	//这里要统一好动画的形式，要么用plist要么用统一命名的图片序列
-	auto Walk = Animation::create();
+	walk = Animation::create();
 	for (int i = 1; i <= 10; i++)
 	{
 		char szName[100];
 		sprintf(szName, "gw%d.png", i);
-		Walk->addSpriteFrameWithFile(szName);
+		walk->addSpriteFrameWithFile(szName);
 	}
 	for (int i = 9; i >= 4; i--)
 	{
 		char szName[100];
 		sprintf(szName, "gw%d.png", i);
-		Walk->addSpriteFrameWithFile(szName);
+		walk->addSpriteFrameWithFile(szName);
 	}
-	Walk->setDelayPerUnit(0.1);
+	walk->setDelayPerUnit(0.05);
 
-	auto AniWalk = Animate::create(Walk);
-	auto RepeatWalk = RepeatForever::create(AniWalk);
+	aniWalk = Animate::create(walk);
+	auto repeatWalk = RepeatForever::create(aniWalk);
+	repeatWalk->setTag(52013);
 	actSprite = Sprite::create();
-	actSprite->runAction(RepeatWalk);
+	actSprite->runAction(repeatWalk);
 	addChild(actSprite);
 
 	return true;
@@ -56,15 +57,6 @@ void SimpleEnemy::update(float delta)
 {
 	Enemy::update(delta);
 
-	unsigned int flag = getBuffFlag();
-	if (flag&BUFF_FROZEN)
-	{
-		actSprite->setColor(Color3B(200, 200, 255));
-	}
-	if (flag&BUFF_DEEPFROZEN)
-	{
-		actSprite->setColor(Color3B(127, 127, 255));
-	}
 
 }
 
@@ -92,4 +84,24 @@ SimpleEnemy* SimpleEnemy::create(int type)
 		pRet = NULL;
 		return NULL;
 	}
+}
+
+void SimpleEnemy::updateBuffState()
+{
+	Enemy::updateBuffState();
+
+	double playSpeed = calcBuffedValue(&Buff::speed, 1.0);
+	walk->setDelayPerUnit(playSpeed < 1e-7 ? INFINITY : 0.05 / playSpeed); 
+
+	aniWalk = Animate::create(walk);
+
+	//aniWalk->retain();
+
+	auto repeatWalk = RepeatForever::create(aniWalk);
+	actSprite->stopActionByTag(52013);
+	repeatWalk->setTag(52013);
+	actSprite->runAction(repeatWalk);
+
+	//aniWalk->release();
+
 }

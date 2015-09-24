@@ -86,3 +86,12 @@ void Tower::doFire(float delta)
 	fire();
 }
 
+void Tower::onBuffBegin(Buff* buff)
+{
+	this->schedule(CC_SCHEDULE_SELECTOR(Tower::doFire), interval / calcBuffedValue(&Buff::speed, 1.0));
+}
+
+void Tower::onBuffEnd(Buff* buff)
+{
+	this->schedule(CC_SCHEDULE_SELECTOR(Tower::doFire), interval / calcBuffedValue(&Buff::speed, 1.0));
+}

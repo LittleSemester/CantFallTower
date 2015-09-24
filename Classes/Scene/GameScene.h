@@ -11,11 +11,14 @@
 
 class Enemy;
 class Entity;
+class Skill;
 
 using namespace cocostudio::timeline;
 class GameScene:public cocos2d::Layer
 {
 protected:
+
+	Skill* currSkill; // 在点击技能图标并且准备选择位置/目标的时候指向该项技能的新建对象，否则应为nullptr
 
 	cocos2d::Vector<Enemy*> enemyList;
 

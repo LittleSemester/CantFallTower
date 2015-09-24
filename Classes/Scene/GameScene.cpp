@@ -62,9 +62,10 @@ bool GameScene::init()
 	
 	currSkill = nullptr;
 
+	/*
 	currSkill = Hurricane::create();
 	currSkill->setPositionZ(10);
-	addChild(currSkill);
+	addChild(currSkill);*/
 
 	return true;
 }
@@ -285,7 +286,7 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 	if (currSkill != nullptr) // 使用技能
 	{
 		currSkill->onTouchEnded(now);
-		//currSkill = nullptr;
+		currSkill = nullptr;
 	}
 
 }

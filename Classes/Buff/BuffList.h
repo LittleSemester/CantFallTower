@@ -42,5 +42,6 @@ public:
 	void updateBuff(double deltaSec);
 
 	void clear();
+	void clearBuffWithFlag(unsigned int flag);
 
 };

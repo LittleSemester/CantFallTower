@@ -53,6 +53,7 @@ void Hurricane::triggleSkill()
 	}
 	for (Enemy* enemy : hitList)
 	{
+		enemy->clearBuffWithFlag(BUFF_CURED | BUFF_CHEERUP | BUFF_DEFUP | BUFF_RUSH | BUFF_INVINCIBLE);
 		enemy->dealDamage(50);
 	}
 }

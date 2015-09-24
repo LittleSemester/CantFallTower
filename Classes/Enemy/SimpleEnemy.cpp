@@ -57,13 +57,20 @@ void SimpleEnemy::update(float delta)
 	Enemy::update(delta);
 
 	unsigned int flag = getBuffFlag();
-	if (flag&BUFF_FROZEN)
+	if (flag == BUFF_NONE)
 	{
-		actSprite->setColor(Color3B(200, 200, 255));
+		actSprite->setColor(Color3B(255, 255, 255));
 	}
-	if (flag&BUFF_DEEPFROZEN)
+	else
 	{
-		actSprite->setColor(Color3B(127, 127, 255));
+		if (flag&BUFF_FROZEN)
+		{
+			actSprite->setColor(Color3B(200, 200, 255));
+		}
+		if (flag&BUFF_DEEPFROZEN)
+		{
+			actSprite->setColor(Color3B(127, 127, 255));
+		}
 	}
 
 }

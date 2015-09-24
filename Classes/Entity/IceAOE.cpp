@@ -60,7 +60,7 @@ void IceAOE::onEnter()
 void IceAOE::onDealDamage(Enemy * enemy)
 {
 	enemy->dealDamage(baseDamage);
-	auto buff = new SimpleBuff(2, 0, 0, 0, 0.5);
+	auto buff = new SimpleBuff(2, 1.0, 1.0, 1.0, 0.5);
 	buff->setFlag(BUFF_FROZEN);
 	enemy->pushBuff(buff);
 }

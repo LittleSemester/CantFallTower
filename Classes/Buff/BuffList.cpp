@@ -82,7 +82,6 @@ void BuffList::updateBuff(double deltaSec)
 		{
 			Buff* t = *iter;
 			iter = buffs.erase(iter);
-			onBuffEnd(t);
 			if (t != nullptr)
 			{
 				onBuffEnd(t);

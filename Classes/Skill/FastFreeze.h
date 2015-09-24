@@ -10,8 +10,6 @@ class FastFreeze : public Skill
 {
 private:
 
-
-
 public:
 
 	explicit FastFreeze();
@@ -19,8 +17,17 @@ public:
 
 	virtual bool init();
 
+	virtual bool onTouchBegan(const cocos2d::Vec2& touchPos);
+	virtual bool onTouchMoved(const cocos2d::Vec2& touchPos);
+	virtual bool onTouchEnded(const cocos2d::Vec2& touchPos);
+
+	virtual bool needSelectPos();
+
 	virtual double getCoolDown();
 	virtual int getMaxCount();
+
+	CREATE_FUNC(FastFreeze);
+
 
 };
 

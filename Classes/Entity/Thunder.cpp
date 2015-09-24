@@ -16,28 +16,28 @@ bool Thunder::init()
 	if (!Entity::init())
 		return false;
 
-	auto anisprite = Sprite::create("Thunder/Thunder_Picture.png");
 	auto animation = Animation::create();
 
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Sprite/Thunder/Thunder_Picture.plist", anisprite->getTexture());
+	//auto anisprite = Sprite::create("Thunder/Thunder_Picture.png");
+	//SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Sprite/Thunder/Thunder_Picture.plist", anisprite->getTexture());
 
 	char szName[100];
-	for (int i = 0; i <= 4; i++)
+	for (int i = 1; i <= 10; ++i)
 	{
-		sprintf(szName, "Thunder Attack/Thunder_Attack_%02d.png", i);
-		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(szName);
-		animation->addSpriteFrame(frame);
+		sprintf(szName, "Thunder/thunder%02d.png", i);
+		animation->addSpriteFrameWithFile(szName);
 	}
 
-	animation->setDelayPerUnit(0.08);
-	animation->setLoops(2);
+	animation->setDelayPerUnit(0.05);
+	animation->setLoops(1);
 
 	auto sprite = Sprite::create();
 	auto animate = Animate::create(animation);
 	auto deadFunc = CallFunc::create([this]() {this->removeFromParent(); });
 	auto sequence = Sequence::create(animate, deadFunc, NULL);
-	sprite->setPositionY(20);
-	sprite->setScale(1.5);
+	sprite->setScale(0.2);
+	sprite->setAnchorPoint(Vec2(0.5, 0.05));
+	sprite->setPositionY(-20.0);
 	sprite->runAction(sequence);
 
 	this->addChild(sprite);

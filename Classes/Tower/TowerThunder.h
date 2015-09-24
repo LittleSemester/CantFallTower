@@ -14,6 +14,7 @@ protected:
 	virtual void onFire();
 
 
+
 public:
 
 	explicit TowerThunder();

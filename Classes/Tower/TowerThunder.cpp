@@ -38,6 +38,8 @@ void TowerThunder::onFire()
 
 }
 
+
+
 bool TowerThunder::init()
 {
 	if (!Tower::init())

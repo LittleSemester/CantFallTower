@@ -81,6 +81,9 @@
     <ClCompile Include="..\Classes\Tower\TowerIce.cpp">
       <Filter>src\Tower</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entity\IceAOE.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Tower\TowerIce.h">
       <Filter>src\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\IceAOE.h">
+      <Filter>src\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

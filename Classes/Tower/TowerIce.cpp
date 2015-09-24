@@ -1,6 +1,6 @@
 #include "TowerIce.h"
 #include "Entity/Missile.h"
-
+#include "Entity/IceAOE.h"
 USING_NS_CC;
 
 
@@ -62,5 +62,8 @@ void TowerIce::onFire()
 	//	star->setTarget(p);
 	//	mainScene->addChild(star);
 	//}
-
+	auto iceAtk = IceAOE::createIceAOE();
+	iceAtk->setPosition(this->getPosition());
+	iceAtk->setScale(0.5);
+	mainScene->addChild(iceAtk);
 }

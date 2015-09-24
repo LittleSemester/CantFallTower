@@ -50,7 +50,7 @@ bool GameScene::init()
 
 	//加载纹理到内存中
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Ice_picture.plist");
-
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Ice_Attack.plist");
 	//加入触摸处理
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);

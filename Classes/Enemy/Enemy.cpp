@@ -130,6 +130,12 @@ Enemy * Enemy::createEnemy(int type)
 			sprintf(szName, "gw%d.png", i);
 			Walk->addSpriteFrameWithFile(szName);
 		}
+		for (int i = 9; i >= 4; i--)
+		{
+			char szName[100];
+			sprintf(szName, "gw%d.png", i);
+			Walk->addSpriteFrameWithFile(szName);
+		}
 		//璁剧疆甯у簭鍒楅棿闅?
 		Walk->setDelayPerUnit(0.1);
 		//鍒涘缓甯у姩鐢?
@@ -185,7 +191,8 @@ void Enemy::EnemyMove(float dt)
 	if (sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y)) < 3)
 	{
 		nextPoint++;
-		this->ActSprite->setColor(Color3B(0, 0, 100));
+		//减速变蓝
+		//this->ActSprite->setColor(Color3B(74, 177, 250));
 		//如果到达了终点
 		if (nextPoint == GameScene::allPoint.size())
 		{

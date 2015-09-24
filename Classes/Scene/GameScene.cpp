@@ -48,6 +48,9 @@ bool GameScene::init()
 
 	schedule(schedule_selector(GameScene::EnemyCreat),1 );
 
+	//加载纹理到内存中
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Ice_picture.plist");
+
 	//加入触摸处理
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
@@ -241,17 +244,30 @@ void GameScene::addTDSelect(int r, int c)
 	auto bt01 = Sprite::create("Thunder_Tower_00.png");
 	auto bt01_sel = Sprite::create("Thunder_Tower_00.png");
 	bt01_sel->setScale(1.1);
+	
+	SpriteFrame* spF = SpriteFrameCache::getInstance()->getSpriteFrameByName("Ice Tower/Ice_Tower_00.png");
+	auto bt02 = Sprite::createWithSpriteFrame(spF);
+	auto bt02_sel= Sprite::createWithSpriteFrame(spF);
+	bt02->setScale(0.6);
+	bt02_sel->setScale(0.66);
+
 	//将该sprite转为Menu接收用户事件
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem01->setTag(10);
 	menuItem01->setAnchorPoint(Vec2(0.5, 0));
+	
+	auto menuItem02 = MenuItemSprite::create(bt02, bt02_sel, CC_CALLBACK_1(GameScene::selectTD, this));
+	menuItem02->setTag(11);
+	menuItem02->setAnchorPoint(Vec2(0, 0));
+
 	//用menu容纳menuItem
-	auto menuTD = Menu::create(menuItem01, nullptr);
+	auto menuTD = Menu::create(menuItem01, menuItem02, nullptr);
 	
 	menuTD->setPosition(Vec2::ZERO);
 	tPos->addChild(menuTD);
 
 	menuItem01->setPosition(Vec2(Size.x / 2, Size.y));
+	menuItem02->setPosition(Vec2(Size.x, Size.y));
 
 	tPos->setTag(100);
 	this->addChild(tPos);
@@ -270,6 +286,15 @@ void GameScene::selectTD(Ref * obj)
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
+		break;
+	}
+	case 11:
+	{
+		Tower * TD = Tower::createTower(TOWER_ICE, nowRow, nowCol);
+		this->addChild(TD);
+		//标记该位置已经建塔
+		towerInfo[nowCol][nowRow] = true;
+		break;
 	}
 	default:
 		break;

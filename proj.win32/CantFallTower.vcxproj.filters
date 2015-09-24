@@ -81,6 +81,9 @@
     <ClCompile Include="..\Classes\Entity\Thunder.cpp">
       <Filter>src\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Tower\TowerIce.cpp">
+      <Filter>src\Tower</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -131,10 +134,17 @@
     <ClInclude Include="..\Classes\Entity\Thunder.h">
       <Filter>src\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerIce.h">
+      <Filter>src\Tower</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\res\Tower\Ice_Attack.plist" />
+    <None Include="..\Resources\res\Tower\Ice_picture.plist" />
   </ItemGroup>
 </Project>

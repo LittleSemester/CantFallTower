@@ -51,9 +51,6 @@
     <ClCompile Include="..\Classes\Buff\BuffList.cpp">
       <Filter>src\Buff</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Enemy\TestEnemy.cpp">
-      <Filter>src\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene\GameScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
@@ -78,11 +75,17 @@
     <ClCompile Include="..\Classes\Entity\MissileStar.cpp">
       <Filter>src\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Thunder.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Tower\TowerIce.cpp">
       <Filter>src\Tower</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\IceAOE.cpp">
       <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Enemy\SimpleEnemy.cpp">
+      <Filter>src\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,9 +106,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Buff\BuffList.h">
       <Filter>src\Buff</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Enemy\TestEnemy.h">
-      <Filter>src\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\GameScene.h">
       <Filter>src\Scene</Filter>
@@ -131,11 +131,17 @@
     <ClInclude Include="..\Classes\Entity\MissileStar.h">
       <Filter>src\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Thunder.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Tower\TowerIce.h">
       <Filter>src\Tower</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Entity\IceAOE.h">
       <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Enemy\SimpleEnemy.h">
+      <Filter>src\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

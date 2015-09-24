@@ -82,11 +82,14 @@ bool Missile::judgeSingleEnemy(Enemy* enemy)
 
 void Missile::setTarget(Enemy* enemy)
 {
+	if (enemy == nullptr)
+		return;
 	if (target != nullptr)
 		target->release();
-	if (enemy != nullptr)
-		target = enemy;
+	target = enemy;
 	target->retain();
+	targetReached = false;
+	remainTime = 1.0;
 }
 
 #include "MissileStar.h"

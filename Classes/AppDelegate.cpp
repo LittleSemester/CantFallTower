@@ -48,6 +48,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("res/Map");
 	FileUtils::getInstance()->addSearchPath("res/Enemy");
 	FileUtils::getInstance()->addSearchPath("res/Tower");
+	FileUtils::getInstance()->addSearchPath("res/Sprite");
 
     // create a scene. it's an autorelease object
 	//测试游戏场景

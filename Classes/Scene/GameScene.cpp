@@ -1,5 +1,5 @@
 #include "GameScene.h"
-#include "Enemy\Enemy.h"
+#include "Enemy\SimpleEnemy.h"
 #include "Tower\Tower.h"
 
 USING_NS_CC;
@@ -88,7 +88,7 @@ void GameScene::EnemyCreat(float dt)
 	{
 		//产生的敌人未达到最大数量则继续产生
 		++enemyCreated;
-		auto newEnemy = Enemy::createEnemy(1);
+		auto newEnemy = SimpleEnemy::create(1);
 		addChild(newEnemy);
 		enemyList.pushBack(newEnemy);
 	}

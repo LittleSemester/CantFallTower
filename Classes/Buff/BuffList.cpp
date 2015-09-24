@@ -15,8 +15,17 @@ BuffList::~BuffList()
 
 void BuffList::pushBuff(Buff* buff)
 {
-	if (buff != nullptr)
-		buffs.emplace_back(buff);
+	if (buff == nullptr)
+		return;
+	unsigned int flag = buff->getFlag();
+	for (auto iter = buffs.begin(); iter != buffs.end();)
+	{
+		if ((*iter)->getFlag() == flag)
+			iter = buffs.erase(iter);
+		else
+			++iter;
+	}
+	buffs.emplace_back(buff);
 }
 
 double BuffList::calcBuffedValue(double (Buff::*func)(double), double origin)

@@ -27,15 +27,29 @@ bool IceAOE::init()
 	{
 		return false;
 	}
+
+	auto splash = Sprite::create("Ice/Ice_Attack_05.png");
+	splash->setScale(0.0);
+	auto scale = ScaleTo::create(0.6, 3.0);
+	splash->runAction(scale);
+	auto fade = FadeOut::create(0.1);
+	splash->runAction(Sequence::create(DelayTime::create(0.3), fade, NULL));
+	addChild(splash);
+
 	auto par = ParticleSystemQuad::create("Ice_Attack.plist");
 	par->setTexture(Director::getInstance()->getTextureCache()->addImage("penquan.png"));
 	//设置粒子发射时长
 	par->setDuration(0.01);
 	//设置粒子速度，可改变范围
-	par->setSpeed(300);
+	par->setSpeed(260);
+	par->setSpeedVar(80);
+	par->setTotalParticles(200);
 	addChild(par);
 
-	this->scheduleOnce(schedule_selector(IceAOE::update), 0.5);
+	auto dead = CallFunc::create([this](){this->removeFromParent(); });
+	this->runAction(Sequence::create(DelayTime::create(1.0), dead, NULL));
+
+	this->scheduleOnce(CC_SCHEDULE_SELECTOR(IceAOE::update), 0.3);
 	return true;
 }
 

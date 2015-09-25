@@ -3,6 +3,7 @@
 #include "Tower/Tower.h"
 #include "Skill/Hurricane.h"
 #include "Skill/FastFreeze.h"
+#include "Skill/ShakingWave.h"
 USING_NS_CC;
 using namespace cocos2d::ui;
 
@@ -292,6 +293,8 @@ void GameScene::selectSkill(Ref * obj)
 	case 33:
 	{
 		//超震声波
+		currSkill = ShakingWave::create();
+		addChild(currSkill);
 		break;
 	}
 	default:

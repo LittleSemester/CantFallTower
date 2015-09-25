@@ -66,6 +66,8 @@ public:
 	//加载技能图标
 	void loadSkillPattern();
 
+	//加载状态栏
+	void loadStatus();
 	//选中技能
 	void selectSkill(Ref * obj);
 

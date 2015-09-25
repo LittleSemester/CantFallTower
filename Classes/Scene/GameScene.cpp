@@ -1,8 +1,8 @@
 ﻿#include "GameScene.h"
-#include "Enemy\SimpleEnemy.h"
-#include "Tower\Tower.h"
+#include "Enemy/SimpleEnemy.h"
+#include "Tower/Tower.h"
 #include "Skill/Hurricane.h"
-
+#include "Skill/FastFreeze.h"
 USING_NS_CC;
 using namespace cocos2d::ui;
 
@@ -69,6 +69,7 @@ bool GameScene::init()
 	addChild(currSkill);*/
 
 	loadSkillPattern();
+	loadStatus();
 
 	return true;
 }
@@ -234,6 +235,24 @@ void GameScene::loadSkillPattern()
 	this->addChild(skillMenu);
 }
 
+void GameScene::loadStatus()
+{
+	auto box = Sprite::create("ui_longbox.png");
+	box->setPosition(Vec2(480, 610));
+	addChild(box);
+
+	auto money = Sprite::create("GamesScreen_money.png");
+	money->setPosition(30,23);
+	money->setScale(0.9);
+	box->addChild(money,100);
+
+	auto hp = Sprite::create("GamesScreen_live.png");
+	hp->setPosition(120, 23);
+	hp->setScale(0.7);
+	box->addChild(hp,100);
+
+}
+
 void GameScene::selectSkill(Ref * obj)
 {
 	//移除建塔面板
@@ -243,24 +262,31 @@ void GameScene::selectSkill(Ref * obj)
 	}
 	
 	auto item = (MenuItemSprite *)obj;
-	if (selectedSkill == item->getTag())
+	
+	if (selectedSkill == item->getTag() && currSkill!=nullptr)
 	{
 		
-		item->setOpacity(255);
+		//item->setOpacity(255);
 		selectedSkill = -1;
+		currSkill = nullptr;
+		return;
 	}
-	item->setOpacity(200);
+	//item->setOpacity(200);
 	selectedSkill = item->getTag();
 	switch (item->getTag())
 	{
 	case 31:
 	{
 		//急速冷却技能
+		currSkill = FastFreeze::create();
+		addChild(currSkill);
 		break;
 	}
 	case 32:
 	{
 		//强袭飓风
+		currSkill = Hurricane::create();
+		addChild(currSkill);
 		break;
 	}
 	case 33:
@@ -288,6 +314,8 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 	{
 		if (!currSkill->onTouchBegan(now))
 			currSkill = nullptr;
+		auto menu = this->getChildByTag(selectedSkill);
+
 	}
 	else // 建塔
 	{
@@ -371,7 +399,7 @@ void GameScene::addTDSelect(int r, int c)
 {
 	//造塔点显示图片做标注
 	auto tPos = Sprite::create("towerSel.png");
-	Vec2 Size = tPos->getContentSize();
+	Vec2 nowSize = tPos->getContentSize();
 	//造塔点上方显示要造的塔
 	//设置按钮未选择和选择的图片
 	auto bt01 = Sprite::create("Thunder_Tower_00.png");
@@ -395,14 +423,23 @@ void GameScene::addTDSelect(int r, int c)
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem01->setTag(10);
 	menuItem01->setAnchorPoint(Vec2(0.5, 0));
-	
+	auto price1 = Sprite::create("ui_towerprice150.png");
+	price1->setPosition(Vec2(nowSize.x/2, 65));
+	menuItem01->addChild(price1);
+
 	auto menuItem02 = MenuItemSprite::create(bt02, bt02_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem02->setTag(11);
 	menuItem02->setAnchorPoint(Vec2(0, 0));
+	auto price2 = Sprite::create("ui_towerprice160.png");
+	price2->setPosition(Vec2(nowSize.x / 2, 65));
+	menuItem02->addChild(price2);
 
 	auto menuItem03 = MenuItemSprite::create(bt03, bt03_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem03->setTag(12);
 	menuItem03->setAnchorPoint(Vec2(1, 0));
+	auto price3 = Sprite::create("ui_towerprice180.png");
+	price3->setPosition(Vec2(nowSize.x / 2, 65));
+	menuItem03->addChild(price3);
 
 	//用menu容纳menuItem
 	auto menuTD = Menu::create(menuItem01, menuItem02, menuItem03, nullptr);
@@ -410,9 +447,9 @@ void GameScene::addTDSelect(int r, int c)
 	menuTD->setPosition(Vec2::ZERO);
 	tPos->addChild(menuTD);
 
-	menuItem01->setPosition(Vec2(Size.x / 2, Size.y));
-	menuItem02->setPosition(Vec2(Size.x, Size.y));
-	menuItem03->setPosition(Vec2(0, Size.y));
+	menuItem01->setPosition(Vec2(nowSize.x / 2, nowSize.y));
+	menuItem02->setPosition(Vec2(nowSize.x, nowSize.y));
+	menuItem03->setPosition(Vec2(0, nowSize.y));
 
 	tPos->setTag(100);
 	this->addChild(tPos);

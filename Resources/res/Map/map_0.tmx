@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="17" height="11" tilewidth="64" tileheight="64" nextobjectid="7">
- <tileset firstgid="1" name="Road_map02" tilewidth="64" tileheight="64" tilecount="25">
-  <image source="Road_map02.png" width="320" height="320"/>
+ <tileset firstgid="1" name="Road_map02" tilewidth="64" tileheight="64" tilecount="60">
+  <image source="Road_map02.png" width="645" height="384"/>
   <tile id="20">
+   <properties>
+    <property name="canBuild" value="1"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="canBuild" value="0"/>
+   </properties>
+  </tile>
+  <tile id="59">
    <properties>
     <property name="canBuild" value="1"/>
    </properties>
@@ -10,15 +20,15 @@
  </tileset>
  <layer name="Layer1" width="17" height="11">
   <data encoding="base64" compression="zlib">
-   eJwTY2BgEBtkWASImYjALDj0i5KAOaE0NjMYiXSHMB4zOAnYj46x+QeXG4nF1HAHSEyAyPDgx2MGqZia6QoAaq0NVA==
+   eJyN0MkKgzAQBuAoUpeD1OXiwQp6cOmiomKVvv9z9RcihDAxOXxEw2S2kTE2ajwMYnoY+PdP4Ev/okTKscEOFdgGHEUvYo30ov4h5GdO5LAM+yh5fE3kCDX1X8SdPM+Zo+HnDVzwFDkD4W2g6OMOEcTE+zd8iFkKw31ksMKXmKWFDp6avVB7OE0ww3IR0xB3fxyMHlY=
   </data>
  </layer>
  <objectgroup name="Obj1">
   <object id="1" x="199" y="160"/>
-  <object id="2" x="866" y="160"/>
-  <object id="3" x="863" y="286"/>
-  <object id="4" x="222" y="286"/>
-  <object id="5" x="230" y="545"/>
+  <object id="2" x="865" y="160"/>
+  <object id="3" x="863" y="281"/>
+  <object id="4" x="228" y="288"/>
+  <object id="5" x="230" y="540"/>
   <object id="6" x="903" y="545"/>
  </objectgroup>
 </map>

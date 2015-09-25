@@ -24,6 +24,11 @@ protected:
 
 	void clearRemovedEnemyFromList();
 
+	int money;//当前金钱
+	int ourHealth;//玩家HP
+	int nowWave;//当前波数
+
+	int selectedSkill;//已选中的技能
 public:
 
 	static cocos2d::Scene* createScene();
@@ -35,12 +40,13 @@ public:
 	static cocos2d::Vector<TDPoint*> allPoint;//保存所有路径转弯点
 
 	int enemyMaxCount; //敌人最大数量
-	int enemyCreated;
+	int enemyCreated;	
 	
 	void EnemyCreat(float dt);//产生一波怪物
 
 	// 用于单一Entity进行判定检测，一般情况下由Entity自身调用，指定singleEnemy以判定单个目标（会检查目标有效性）
 	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy = nullptr);
+
 
 	int getEnemyInDistance(cocos2d::Vector<Enemy*>& list, const cocos2d::Vec2& pos, double dist);	
 	Enemy* getNearestEnemy(const cocos2d::Vec2& pos, double dist = INFINITY);
@@ -56,6 +62,12 @@ public:
 
 	int nowRow, nowCol;//点击处的行列信息，供造塔过程使用
 	int towerInfo[11][17];//建塔信息,行列信息完全和二维数组相同，左上角为原点，屏幕原点,11行，17列
+
+	//加载技能图标
+	void loadSkillPattern();
+
+	//选中技能
+	void selectSkill(Ref * obj);
 
 	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
 	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);	

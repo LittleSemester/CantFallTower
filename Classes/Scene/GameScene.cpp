@@ -4,6 +4,7 @@
 #include "Skill/Hurricane.h"
 
 USING_NS_CC;
+using namespace cocos2d::ui;
 
 Vector<TDPoint*> GameScene::allPoint;//保存所有路径转弯点
 
@@ -61,11 +62,13 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 	
 	currSkill = nullptr;
-
+	selectedSkill = -1;//初始化已选中技能
 	/*
 	currSkill = Hurricane::create();
 	currSkill->setPositionZ(10);
 	addChild(currSkill);*/
+
+	loadSkillPattern();
 
 	return true;
 }
@@ -198,6 +201,78 @@ int GameScene::getEnemyInArea(cocos2d::Vector<Enemy*>& list, const std::function
 
 
 
+void GameScene::loadSkillPattern()
+{
+	auto btn_Ice = Sprite::create("UI_Skill_Ice.png");
+	auto btn_Ice_sel = Sprite::create("UI_Skill_Ice.png");
+	btn_Ice_sel->setScale(1.1);
+
+	auto btn_Wind = Sprite::create("UI_Skill_Wind.png");
+	auto btn_Wind_sel = Sprite::create("UI_Skill_Wind.png");
+	btn_Wind_sel->setScale(1.1);
+
+	auto btn_Wave = Sprite::create("UI_Skill_Wave.png");
+	auto btn_Wave_sel = Sprite::create("UI_Skill_Wave.png");
+	btn_Wave_sel->setScale(1.1);
+
+	Vec2 btn_Size = btn_Ice->getContentSize();
+
+	auto skillIce = MenuItemSprite::create(btn_Ice, btn_Ice_sel, CC_CALLBACK_1(GameScene::selectSkill, this));
+	auto skillWind = MenuItemSprite::create(btn_Wind, btn_Wind_sel, CC_CALLBACK_1(GameScene::selectSkill, this));
+	auto skillWave = MenuItemSprite::create(btn_Wave, btn_Wave_sel, CC_CALLBACK_1(GameScene::selectSkill, this));
+	skillIce->setTag(31);
+	skillIce->setPosition(-btn_Size.x, 0);
+
+	skillWind->setTag(32);
+	skillWind->setPosition(0, 0);
+
+	skillWave->setTag(33);
+	skillWave->setPosition(btn_Size.x, 0);
+
+	Menu * skillMenu = Menu::create(skillIce, skillWind, skillWave, nullptr);
+	skillMenu->setPosition(Vec2(800, 50));
+	this->addChild(skillMenu);
+}
+
+void GameScene::selectSkill(Ref * obj)
+{
+	//移除建塔面板
+	if (this->getChildByTag(100) != nullptr)
+	{
+		this->removeChildByTag(100);
+	}
+	
+	auto item = (MenuItemSprite *)obj;
+	if (selectedSkill == item->getTag())
+	{
+		
+		item->setOpacity(255);
+		selectedSkill = -1;
+	}
+	item->setOpacity(200);
+	selectedSkill = item->getTag();
+	switch (item->getTag())
+	{
+	case 31:
+	{
+		//急速冷却技能
+		break;
+	}
+	case 32:
+	{
+		//强袭飓风
+		break;
+	}
+	case 33:
+	{
+		//超震声波
+		break;
+	}
+	default:
+		break;
+	}
+}
+
 //触摸事件
 bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 {
@@ -254,7 +329,7 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 		else
 		{
 			//不可建塔，弹出错误提示
-			auto tips = Sprite::create("notips.png");
+			auto tips = Sprite::create("UI_X.png");
 			tips->setPosition(Vec2(nowRow * 56.9 + 28.45, (10 - nowCol) * 56.9 + 28.45));
 			this->addChild(tips);
 			tips->runAction(
@@ -295,7 +370,7 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 void GameScene::addTDSelect(int r, int c)
 {
 	//造塔点显示图片做标注
-	auto tPos = Sprite::create("notips.png");
+	auto tPos = Sprite::create("towerSel.png");
 	Vec2 Size = tPos->getContentSize();
 	//造塔点上方显示要造的塔
 	//设置按钮未选择和选择的图片

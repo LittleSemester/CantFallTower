@@ -14,8 +14,12 @@ protected:
 	int maxhp;
 	int def;
 
+	int frameFly;
+
 	cocos2d::Animation* walk;
 	cocos2d::Animate* aniWalk;
+
+	virtual void onBuffBegin(Buff* buff);
 
 	virtual void updateBuffState();
 

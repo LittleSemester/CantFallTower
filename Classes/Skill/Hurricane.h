@@ -4,25 +4,17 @@
 #ifndef _SKILL_HURRICANE_H_
 #define _SKILL_HURRICANE_H_
 
-#include "Skill.h"
+#include "RowSkill.h"
 
-class Hurricane : public Skill
+class Hurricane : public RowSkill
 {
 protected:
 
-	cocos2d::Vec2 touchBeganPos;
-	bool vertical;
+	virtual void triggleSkill();
 
-	void triggleSkill();
 	void createHurricane(const cocos2d::Vec2& beginPos, float angle);
 
 public:
-
-	virtual bool onTouchBegan(const cocos2d::Vec2& touchPos);
-	virtual bool onTouchMoved(const cocos2d::Vec2& touchPos);
-	virtual bool onTouchEnded(const cocos2d::Vec2& touchPos);
-
-	virtual bool needSelectPos();
 
 	virtual double getCoolDown();
 

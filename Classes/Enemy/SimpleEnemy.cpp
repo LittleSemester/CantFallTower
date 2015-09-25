@@ -105,3 +105,41 @@ void SimpleEnemy::updateBuffState()
 	//aniWalk->release();
 
 }
+
+void SimpleEnemy::onBuffBegin(Buff* buff)
+{
+	Enemy::onBuffBegin(buff);
+	if (buff->getFlag() & BUFF_DIZZY)
+	{
+		frameFly = 0;
+		actSprite->schedule([this](float){
+			actSprite->setPositionY(20 - 0.2 * (frameFly - 10) * (frameFly - 10));
+			++frameFly;
+		}, 1.0 / 60, 20, 0.0, "fly");
+		actSprite->scheduleOnce([this](float){actSprite->setPositionY(0.0); }, 0.34, "flystop");
+
+		auto dizzy = Sprite::create();
+		auto ani = Animation::create();
+
+		char szName[100];
+		for (int i = 0; i <= 2; ++i)
+		{
+			sprintf(szName, "Yun/Dizzy_Buff_%02d.png", i);
+			ani->addSpriteFrameWithFile(szName);
+		}
+
+		ani->setDelayPerUnit(0.095);
+		dizzy->runAction(Sequence::create(
+			Repeat::create(Animate::create(ani), 7),
+			CallFunc::create([dizzy](){dizzy->removeFromParent(); }),
+			nullptr));
+
+		Size s = actSprite->getContentSize();
+		dizzy->setPosition(s.width*0.5, s.height);
+		dizzy->setScale(0.6);
+		//dizzy->setLocalZOrder(10);
+
+		actSprite->addChild(dizzy);
+
+	}
+}

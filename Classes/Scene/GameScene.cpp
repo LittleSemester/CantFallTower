@@ -72,6 +72,12 @@ bool GameScene::init()
 	loadSkillPattern();
 	loadStatus();
 
+	this->ourHealth = 20;
+	this->money = 400;
+	this->nowWave = 1;
+
+
+
 	return true;
 }
 

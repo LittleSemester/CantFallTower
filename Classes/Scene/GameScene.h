@@ -29,6 +29,9 @@ protected:
 	int nowWave;//当前波数
 
 	int selectedSkill;//已选中的技能
+	
+	
+
 public:
 
 	static cocos2d::Scene* createScene();

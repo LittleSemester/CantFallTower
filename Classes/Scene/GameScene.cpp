@@ -163,7 +163,7 @@ int GameScene::getEnemyInDistance(Vector<Enemy*>& list, const Vec2& pos, double 
 	{
 		if (enemy->isDead())
 			continue;
-		if (enemy->getPosition().distance(pos) <= dist)
+		if (enemy->getPosition().distance(pos) <= dist && !list.contains(enemy))
 		{
 			list.pushBack(enemy);
 			++res;
@@ -198,7 +198,7 @@ int GameScene::getEnemyInArea(cocos2d::Vector<Enemy*>& list, const std::function
 	{
 		if (enemy->isDead())
 			continue;
-		if (inArea(enemy->getPosition()))
+		if (inArea(enemy->getPosition()) && !list.contains(enemy))
 		{
 			list.pushBack(enemy);
 			++res;

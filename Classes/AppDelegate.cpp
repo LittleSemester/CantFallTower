@@ -2,6 +2,8 @@
 #include "HelloWorldScene.h"
 #include "Scene/MainScene.h"
 #include "Scene/GameScene.h"
+#include "Scene/LoseScene.h"
+#include "Scene/WinScene.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {

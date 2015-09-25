@@ -108,6 +108,12 @@
     <ClCompile Include="..\Classes\Scene\MainScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\LoseScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\WinScene.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -183,6 +189,12 @@
       <Filter>src\Skill</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\MainScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\LoseScene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\WinScene.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>

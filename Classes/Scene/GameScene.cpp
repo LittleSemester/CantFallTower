@@ -4,6 +4,7 @@
 #include "Skill/FastFreeze.h"
 
 USING_NS_CC;
+using namespace cocos2d::ui;
 
 Vector<TDPoint*> GameScene::allPoint;//保存所有路径转弯点
 
@@ -175,6 +176,10 @@ Enemy* GameScene::getNearestEnemy(const Vec2& pos, double dist/*=INFINITY*/)
 }
 
 
+
+void GameScene::loadSkillPattern()
+{
+}
 
 //触摸事件
 bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)

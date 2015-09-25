@@ -24,6 +24,10 @@ protected:
 
 	void clearRemovedEnemyFromList();
 
+	int money;//当前金钱
+	int ourHealth;//玩家HP
+	int nowWave;//当前波数
+
 public:
 
 	static cocos2d::Scene* createScene();
@@ -35,7 +39,7 @@ public:
 	static cocos2d::Vector<TDPoint*> allPoint;//保存所有路径转弯点
 
 	int enemyMaxCount; //敌人最大数量
-	int enemyCreated;
+	int enemyCreated;	
 	
 	void EnemyCreat(float dt);//产生一波怪物
 
@@ -44,6 +48,7 @@ public:
 
 	void getEnemyInDistance(cocos2d::Vector<Enemy*>& list, const cocos2d::Vec2& pos, double dist);
 	
+	//获取离点击最近的敌人
 	Enemy* getNearestEnemy(const cocos2d::Vec2& pos, double dist=INFINITY);
 
 	void initAllPoints();//加载敌人行走路径点
@@ -53,6 +58,9 @@ public:
 
 	int nowRow, nowCol;//点击处的行列信息，供造塔过程使用
 	int towerInfo[11][17];//建塔信息,行列信息完全和二维数组相同，左上角为原点，屏幕原点,11行，17列
+
+	//加载技能图标
+	void loadSkillPattern();
 
 	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
 	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);	

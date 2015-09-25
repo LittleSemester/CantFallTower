@@ -123,7 +123,7 @@ void BuffList::clearBuffWithFlag(unsigned int flag)
 			iter = buffs.erase(iter);
 			continue;
 		}
-		if (buff->getFlag() ^ flag)
+		if (buff->getFlag() & flag)
 		{
 			iter = buffs.erase(iter);
 			onBuffEnd(buff);

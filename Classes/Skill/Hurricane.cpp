@@ -5,31 +5,6 @@
 
 USING_NS_CC;
 
-bool Hurricane::onTouchBegan(const cocos2d::Vec2& touchPos)
-{
-	touchBeganPos = touchPos;
-	return true;
-}
-
-bool Hurricane::onTouchMoved(const cocos2d::Vec2& touchPos)
-{
-	return true;
-}
-
-bool Hurricane::onTouchEnded(const cocos2d::Vec2& touchPos)
-{
-	Vec2 vec = touchPos - touchBeganPos;
-	vertical = ((int)(vec.getAngle() * 2 / M_PI + 2.5) & 1);
-	mainScene->alignPosition(touchBeganPos);
-	triggleSkill();
-	return true;
-}
-
-bool Hurricane::needSelectPos()
-{
-	return true;
-}
-
 double Hurricane::getCoolDown()
 {
 	return 20.0;
@@ -64,7 +39,7 @@ void Hurricane::createHurricane(const cocos2d::Vec2& beginPos, float angle)
 	auto aniHrc = Animation::create();
 
 	spriteHrc->setPosition(beginPos);
-	spriteHrc->setPositionZ(-3.0);
+	spriteHrc->setZOrder(10);
 	spriteHrc->setAnchorPoint(Vec2(0.5, 0.25));
 	
 	char szName[100];
@@ -89,15 +64,16 @@ void Hurricane::createHurricane(const cocos2d::Vec2& beginPos, float angle)
 			Vec2(RandomHelper::random_real(-40.0, 40.0), RandomHelper::random_real(-40.0, 40.0)));
 		air->setScale(RandomHelper::random_real(0.5, 0.8));
 		air->setRotation(RandomHelper::random_real(0.0, M_PI * 2));
+		air->setOpacity(0);
 		air->runAction(RotateBy::create(1.0, RandomHelper::random_real(-120.0, 120.0)));
 		air->runAction(ScaleTo::create(1.0, RandomHelper::random_real(0.8, 1.2)));
 		air->runAction(MoveBy::create(1.0, Vec2(
 			RandomHelper::random_real(-10.0, 10.0),
 			RandomHelper::random_real(-10.0, 10.0))));
 		air->runAction(Sequence::create(
-			FadeIn::create(0.2),
+			FadeTo::create(0.2, 180),
 			DelayTime::create(0.3),
-			FadeOut::create(0.5),
+			FadeTo::create(0.5, 0),
 			CallFunc::create([air](){air->removeFromParent(); }),
 			nullptr));
 		this->addChild(air);

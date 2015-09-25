@@ -163,6 +163,7 @@ node_modules/
 *.tlog
 *.idb
 Debug.*
+Release.*
 
 # RIA/Silverlight projects
 Generated_Code/

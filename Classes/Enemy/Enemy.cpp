@@ -106,8 +106,16 @@ void Enemy::moveEnemy(float dt)
 	//计算出方向向�?
 	Vec2 dir = (nextPos - nowPos) / sqrt((nextPos.x - nowPos.x)*(nextPos.x - nowPos.x) + (nextPos.y - nowPos.y)*(nextPos.y - nowPos.y));
 	//根据速度沿着该方向去行走一定距�?
-	this->setPosition(nowPos + dir*buffedDist);
-	this->distance += buffedDist;
+	if (buffedDist* dir.length() < (nextPos - nowPos).length())
+	{
+		this->setPosition(nowPos + dir*buffedDist);
+		this->distance += buffedDist;
+	}
+	else
+	{
+		this->setPosition(nextPos);
+		this->distance += (nextPos - nowPos).length();
+	}
 	//如果当前方向矢量x方向与上一次不同，则转�?
 	if (lastdir.x*dir.x < 0)
 	{

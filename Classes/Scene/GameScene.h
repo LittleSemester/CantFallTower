@@ -28,6 +28,7 @@ protected:
 	int ourHealth;//玩家HP
 	int nowWave;//当前波数
 
+	int selectedSkill;//已选中的技能
 public:
 
 	static cocos2d::Scene* createScene();
@@ -64,6 +65,9 @@ public:
 
 	//加载技能图标
 	void loadSkillPattern();
+
+	//选中技能
+	void selectSkill(Ref * obj);
 
 	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
 	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);	

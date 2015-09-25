@@ -98,7 +98,7 @@ void BuffList::updateBuff(double deltaSec)
 
 void BuffList::clear()
 {
-	Buff* buff = 0;
+	Buff* buff = nullptr;
 	while (!buffs.empty())
 	{
 		buff = buffs.front();
@@ -111,6 +111,31 @@ void BuffList::clear()
 	}
 	buffs.clear();
 }
+
+void BuffList::clearBuffWithFlag(unsigned int flag)
+{
+	Buff* buff = nullptr;
+	for (auto iter = buffs.begin(); iter != buffs.end();)
+	{
+		buff = (*iter);
+		if (buff == nullptr)
+		{
+			iter = buffs.erase(iter);
+			continue;
+		}
+		if (buff->getFlag() ^ flag)
+		{
+			iter = buffs.erase(iter);
+			onBuffEnd(buff);
+			delete buff;
+		}
+		else
+		{
+			++iter;
+		}
+	}
+}
+
 
 void BuffList::onBuffBegin(Buff* buff)
 {

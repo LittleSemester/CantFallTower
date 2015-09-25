@@ -46,10 +46,13 @@ public:
 	// 用于单一Entity进行判定检测，一般情况下由Entity自身调用，指定singleEnemy以判定单个目标（会检查目标有效性）
 	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy = nullptr);
 
-	void getEnemyInDistance(cocos2d::Vector<Enemy*>& list, const cocos2d::Vec2& pos, double dist);
-	
-	//获取离点击最近的敌人
-	Enemy* getNearestEnemy(const cocos2d::Vec2& pos, double dist=INFINITY);
+
+	int getEnemyInDistance(cocos2d::Vector<Enemy*>& list, const cocos2d::Vec2& pos, double dist);	
+	Enemy* getNearestEnemy(const cocos2d::Vec2& pos, double dist = INFINITY);
+
+	int getEnemyInArea(cocos2d::Vector<Enemy*>& list, const std::function<bool(const cocos2d::Vec2&)> inArea);
+
+	void alignPosition(cocos2d::Vec2& pos);
 
 	void initAllPoints();//加载敌人行走路径点
 

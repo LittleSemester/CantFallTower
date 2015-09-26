@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>enemy_1</key>
+		<dict>
+			<key>animpic</key>
+			<array>
+			<string>gw/gw1.png</string>
+			<string>gw/gw2.png</string>
+			<string>gw/gw3.png</string>
+			<string>gw/gw4.png</string>
+			<string>gw/gw5.png</string>
+			<string>gw/gw6.png</string>
+			<string>gw/gw7.png</string>
+			<string>gw/gw8.png</string>
+			<string>gw/gw9.png</string>
+			<string>gw/gw10.png</string>
+			<string>gw/gw9.png</string>
+			<string>gw/gw8.png</string>
+			<string>gw/gw7.png</string>
+			<string>gw/gw6.png</string>
+			<string>gw/gw5.png</string>
+			<string>gw/gw4.png</string>
+			</array>
+			<key>animdelay</key>
+			<real>0.05</real>
+			<key>maxHp</key>
+			<integer>300</integer>
+			<key>defence</key>
+			<integer>0</integer>
+			<key>speed</key>
+			<real>50</real>
+			<key>buffs</key>
+			<array>
+				<dict>
+					<key>time</key>
+					<real>12</real>
+					<key>effects</key>
+					<string>1.0,1.0,1.0,2.0</string>
+					<key>flag</key>
+					<integer>64</integer>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</plist>

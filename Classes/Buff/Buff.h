@@ -68,6 +68,11 @@ public:
 		double speed;
 		double damageOnce;
 		double cureOnce;
+		BuffMultiplier()
+		{
+			defence = damageOut = damageIn = damageIn = 1.0;
+			damageOnce = cureOnce = 0.0;
+		}
 	};
 
 	SimpleBuff(double timeSec, const BuffMultiplier& multiplier);
@@ -82,6 +87,11 @@ public:
 	inline void setFlag(unsigned int newflag)
 	{
 		flag = newflag;
+	}
+
+	inline static size_t maxMultiplier()
+	{
+		return sizeof(BuffMultiplier) / sizeof(double);
 	}
 
 protected:
@@ -103,7 +113,7 @@ private:
 	template<typename... Args>
 	void setMultiplier(int curr, double first, Args... remain)
 	{
-		if (curr < sizeof(BuffMultiplier) / sizeof(double))
+		if (curr < maxMultiplier())
 		{
 			*((double*)&mul + curr) = first;
 			setMultiplier(curr + 1, remain...);

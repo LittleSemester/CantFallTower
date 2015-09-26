@@ -6,41 +6,51 @@
 USING_NS_CC;
 
 
-SimpleEnemy::SimpleEnemy(int type)
+SimpleEnemy::SimpleEnemy(const std::string& type)
 {
 	this->type = type;
-	switch (type)
-	{
-	case 1:
-		//初始化怪物属性，这里预计改为从plist读取
-		this->speed = 120;
-		this->maxhp = 100;
-		this->def = 0;
-		break;
-	default:
-		break;
-	}
 }
 
 bool SimpleEnemy::init()
 {
+	// 这里plist属性的读取要先于Enemy::init，以便各属性能正常通过虚函数被基类读取
+	auto dict = Dictionary::createWithContentsOfFile("enemies.plist");
+	auto props = dynamic_cast<Dictionary*>(dict->objectForKey(type));
+	if (props == nullptr)
+		return false;
+
+	this->maxhp = props->valueForKey("maxHp")->intValue();
+	this->def = props->valueForKey("defence")->intValue();
+	this->speed = props->valueForKey("speed")->doubleValue();
+
+	// 基类初始化
 	if (!Enemy::init())
 		return false;
 
 	//这里要统一好动画的形式，要么用plist要么用统一命名的图片序列
+	auto arrPic = dynamic_cast<Array*>(props->objectForKey("animpic"));
+	if (arrPic == nullptr)
+		return false;
+
 	walk = Animation::create();
-	for (int i = 1; i <= 10; i++)
+	int sizeAnim = arrPic->count();
+	for (int i = 0; i < sizeAnim; ++i)
 	{
-		char szName[100];
-		sprintf(szName, "gw%d.png", i);
-		walk->addSpriteFrameWithFile(szName);
+		walk->addSpriteFrameWithFile(dynamic_cast<String*>(arrPic->getObjectAtIndex(i))->getCString());
 	}
-	for (int i = 9; i >= 4; i--)
-	{
-		char szName[100];
-		sprintf(szName, "gw%d.png", i);
-		walk->addSpriteFrameWithFile(szName);
-	}
+
+// 	for (int i = 1; i <= 10; i++)
+// 	{
+// 		char szName[100];
+// 		sprintf(szName, "gw%d.png", i);
+// 		walk->addSpriteFrameWithFile(szName);
+// 	}
+// 	for (int i = 9; i >= 4; i--)
+// 	{
+// 		char szName[100];
+// 		sprintf(szName, "gw%d.png", i);
+// 		walk->addSpriteFrameWithFile(szName);
+// 	}
 	walk->setDelayPerUnit(0.05);
 
 	aniWalk = Animate::create(walk);
@@ -49,6 +59,34 @@ bool SimpleEnemy::init()
 	actSprite = Sprite::create();
 	actSprite->runAction(repeatWalk);
 	addChild(actSprite);
+
+	// 初始化Buff
+	auto arrbuff = dynamic_cast<Array*>(props->objectForKey("buffs"));
+	if (arrbuff != nullptr)
+	{
+		int sizeBuff = arrbuff->count();
+		for (int i = 0; i < sizeBuff; ++i)
+		{
+			auto dictBuff = dynamic_cast<Dictionary*>(arrbuff->getObjectAtIndex(i));
+			double timeLimit = dictBuff->valueForKey("time")->doubleValue();
+			auto effectString = dictBuff->valueForKey("effects");
+			const char* c = effectString->getCString();
+			int maxEffects = SimpleBuff::maxMultiplier();
+			SimpleBuff::BuffMultiplier mul;
+			double* p = (double*)&mul;
+			for (int j = 0; j < maxEffects; ++j)
+			{
+				if (sscanf(c, "%lf", p) != 1)
+					break;
+				++p;
+				while ((*c != ',') && (*c != 0))++c;
+				if (*c == ',')++c;
+			}
+			auto buff = new SimpleBuff(timeLimit, mul);
+			buff->setFlag(dictBuff->valueForKey("flag")->uintValue());
+			this->pushBuff(buff);
+		}
+	}
 
 	return true;
 }
@@ -70,7 +108,7 @@ int SimpleEnemy::defence()
 	return def;
 }
 
-SimpleEnemy* SimpleEnemy::create(int type)
+SimpleEnemy* SimpleEnemy::create(const std::string& type)
 {
 	SimpleEnemy *pRet = new(std::nothrow) SimpleEnemy(type);
 	if (pRet && pRet->init())

@@ -28,15 +28,15 @@ bool SimpleEnemy::init()
 		return false;
 
 	//这里要统一好动画的形式，要么用plist要么用统一命名的图片序列
-	auto arr = dynamic_cast<Array*>(props->objectForKey("animpic"));
-	if (arr == nullptr)
+	auto arrPic = dynamic_cast<Array*>(props->objectForKey("animpic"));
+	if (arrPic == nullptr)
 		return false;
 
 	walk = Animation::create();
-	int sizeAnim = arr->count();
+	int sizeAnim = arrPic->count();
 	for (int i = 0; i < sizeAnim; ++i)
 	{
-		walk->addSpriteFrameWithFile(dynamic_cast<String*>(arr->getObjectAtIndex(i))->getCString());
+		walk->addSpriteFrameWithFile(dynamic_cast<String*>(arrPic->getObjectAtIndex(i))->getCString());
 	}
 
 // 	for (int i = 1; i <= 10; i++)
@@ -59,6 +59,34 @@ bool SimpleEnemy::init()
 	actSprite = Sprite::create();
 	actSprite->runAction(repeatWalk);
 	addChild(actSprite);
+
+	// 初始化Buff
+	auto arrbuff = dynamic_cast<Array*>(props->objectForKey("buffs"));
+	if (arrbuff != nullptr)
+	{
+		int sizeBuff = arrbuff->count();
+		for (int i = 0; i < sizeBuff; ++i)
+		{
+			auto dictBuff = dynamic_cast<Dictionary*>(arrbuff->getObjectAtIndex(i));
+			double timeLimit = dictBuff->valueForKey("time")->doubleValue();
+			auto effectString = dictBuff->valueForKey("effects");
+			const char* c = effectString->getCString();
+			int maxEffects = SimpleBuff::maxMultiplier();
+			SimpleBuff::BuffMultiplier mul;
+			double* p = (double*)&mul;
+			for (int j = 0; j < maxEffects; ++j)
+			{
+				if (sscanf(c, "%lf", p) != 1)
+					break;
+				++p;
+				while ((*c != ',') && (*c != 0))++c;
+				if (*c == ',')++c;
+			}
+			auto buff = new SimpleBuff(timeLimit, mul);
+			buff->setFlag(dictBuff->valueForKey("flag")->uintValue());
+			this->pushBuff(buff);
+		}
+	}
 
 	return true;
 }

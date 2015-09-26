@@ -31,6 +31,17 @@
 			<integer>0</integer>
 			<key>speed</key>
 			<real>50</real>
+			<key>buffs</key>
+			<array>
+				<dict>
+					<key>time</key>
+					<real>12</real>
+					<key>effects</key>
+					<string>1.0,1.0,1.0,2.0</string>
+					<key>flag</key>
+					<integer>64</integer>
+				</dict>
+			</array>
 		</dict>
 	</dict>
 </plist>

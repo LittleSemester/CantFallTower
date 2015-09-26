@@ -1,22 +1,12 @@
-// ç¼–ç ï¼šUtf-8 without BOM
-// Created by LuiCat
-
-#include "TowerThunder.h"
-#include "Entity/Thunder.h"
+#include "TowerStar.h"
 
 USING_NS_CC;
 
-TowerThunder::TowerThunder()
-{
-	attack = 20;
-	radius = 100;
-	interval = 0.5;
-}
 
-void TowerThunder::onFire()
+void TowerStar::onFire()
 {
 	Enemy* p = nullptr;
-	//æ”¹ä¸ºé€‰æ‹©èµ°è¿‡è·ç¦»æœ€è¿œçš„æ•Œäººæ”»å‡»
+	//¹¥»÷·¶Î§ÄÚµÄËùÓÐµÐÈË
 	float dist = -INFINITY, t;
 	for (Enemy* enemy : enemyInRange)
 	{
@@ -30,17 +20,26 @@ void TowerThunder::onFire()
 
 	if (p != nullptr)
 	{
-		auto thunder = Thunder::create();
+		/*auto thunder = Thunder::create();
 		thunder->setPosition(p->getPosition());
 		thunder->setTarget(p);
-		mainScene->addChild(thunder);
+		mainScene->addChild(thunder);*/
 	}
+}
 
+TowerStar::TowerStar()
+{
+	radius = 100;
+	attack = 15;
+	interval = 0.7;
 }
 
 
+TowerStar::~TowerStar()
+{
+}
 
-bool TowerThunder::init()
+bool TowerStar::init()
 {
 	if (!Tower::init())
 		return false;
@@ -51,14 +50,14 @@ bool TowerThunder::init()
 	for (int i = 0; i <= 4; i++)
 	{
 		char szName[100];
-		sprintf(szName, "Thunder_Tower_%02d.png", i);
+		sprintf(szName, "Star/Star_Tower_%02d.png", i);
 		aniTower->addSpriteFrameWithFile(szName);
 	}
 
-	//è®¾ç½®å¸§åºåˆ—é—´éš”
+	//ÉèÖÃÖ¡ÐòÁÐ¼ä¸ô
 	aniTower->setDelayPerUnit(0.1);
 
-	//åˆ›å»ºå¸§åŠ¨ç”»
+	//´´½¨Ö¡¶¯»­
 	auto ani = Animate::create(aniTower);
 	auto repeatT = RepeatForever::create(ani);
 	spriteTD->runAction(repeatT);
@@ -66,4 +65,3 @@ bool TowerThunder::init()
 
 	return true;
 }
-

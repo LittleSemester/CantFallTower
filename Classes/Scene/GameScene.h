@@ -95,6 +95,13 @@ public:
 	void pauseCallBack(cocos2d::Ref* pSender, cocos2d::ui::CheckBox::EventType type);
 
 	void setCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+
+	void contiCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+
+	void againCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+
+	void retCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+
 };
 
 #endif

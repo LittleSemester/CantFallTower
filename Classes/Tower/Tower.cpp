@@ -62,7 +62,6 @@ Tower * Tower::createTower(int type, int row, int col)
 
 	if (newTD != nullptr)
 		newTD->setRowColumn(row, col);
-
 	return newTD;
 }
 

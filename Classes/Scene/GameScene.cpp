@@ -5,6 +5,7 @@
 #include "Skill/FastFreeze.h"
 #include "Skill/ShakingWave.h"
 #include "Scene/WinScene.h"
+#include "Scene/MainScene.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -275,7 +276,7 @@ void GameScene::loadStatus()
 	Button * set = Button::create("ui_set.png");;
 	set->setPosition(Vec2(400, 0));
 	set->setScale(0.8);
-	set->setOpacity(200);
+	set->setOpacity(225);
 	set->addTouchEventListener(CC_CALLBACK_2(GameScene::setCallBack, this));
 
 	CheckBox * speed = CheckBox::create();
@@ -514,8 +515,12 @@ void GameScene::addTDSelect(int r, int c)
 	//火焰塔
 	auto bt03 = Sprite::create("Fire_Tower_01.png");
 	auto bt03_sel= Sprite::create("Fire_Tower_01.png");
-
 	bt03_sel->setScale(1.1);
+
+	//星落之塔
+	auto bt04 = Sprite::create("Star/Star_Tower_02.png");
+	auto bt04_sel = Sprite::create("Star/Star_Tower_02.png");
+	bt04_sel->setScale(1.1);
 
 	//将该sprite转为Menu接收用户事件
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
@@ -538,6 +543,8 @@ void GameScene::addTDSelect(int r, int c)
 	auto price3 = Sprite::create("ui_towerprice180.png");
 	price3->setPosition(Vec2(nowSize.x / 2, 65));
 	menuItem03->addChild(price3);
+
+	auto menuItem04 = MenuItemSprite::create(bt04, bt04_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 
 	//用menu容纳menuItem
 	auto menuTD = Menu::create(menuItem01, menuItem02, menuItem03, nullptr);
@@ -717,8 +724,114 @@ void GameScene::setCallBack(cocos2d::Ref* pSender, Widget::TouchEventType type)
 		black->setName("black");
 		addChild(black);
 		stopTouch = true;
+		
+		auto box = Layout::create();
+		box->setName("backBox");
+		auto backbox = Sprite::create("ui_setbox.png");
+		box->setPosition(Vec2(480, 320));
+		box->addChild(backbox);
+		Button* ret = Button::create("GameScreen_backmenu.png");
+		box->addChild(ret);
+
+		Button* again = Button::create("GameScreen_tryagain.png");
+		box->addChild(again);
+
+		Button* conti = Button::create("GameScreen_win_goon.png");
+		box->addChild(conti);
+		
+		conti->addTouchEventListener(CC_CALLBACK_2(GameScene::contiCallBack, this));
+
+		addChild(box);
+		conti->setPosition(Vec2(0, 130));
+		ret->setPosition(Vec2(0, -130));
+
 	}
 		break;
+	case Widget::TouchEventType::CANCELED:
+		break;
+	default:
+		break;
+	}
+}
+
+void GameScene::contiCallBack(cocos2d::Ref* pSender, Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case Widget::TouchEventType::BEGAN:
+		break;
+	case Widget::TouchEventType::MOVED:
+		break;
+	case Widget::TouchEventType::ENDED:
+	{
+		auto backBox = this->getChildByName("backBox");
+		auto vecChild = backBox->getChildren();
+		for (auto eachChild : vecChild)
+		{
+			eachChild->removeFromParent();
+		}
+		backBox->removeFromParent();
+		auto black = this->getChildByName("black");
+		black->removeFromParent();
+
+		CheckBox* speedItem = (CheckBox*)getChildByName("status")->getChildByName("speed");
+		if (speedItem->getSelectedState())
+		{
+			GameScene::getScheduler()->setTimeScale(2.0);
+		}
+		else
+		{
+			GameScene::getScheduler()->setTimeScale(1.0);
+		}
+
+		stopTouch = false;
+		
+		break;
+	}
+	case Widget::TouchEventType::CANCELED:
+		break;
+	default:
+		break;
+	}
+}
+
+void GameScene::againCallBack(cocos2d::Ref* pSender, Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case Widget::TouchEventType::BEGAN:
+		break;
+	case Widget::TouchEventType::MOVED:
+		break;
+	case Widget::TouchEventType::ENDED:
+	{
+		auto nextScene = GameScene::createScene();
+		auto Trans = TransitionFadeTR::create(1.0, nextScene);
+		Director::getInstance()->replaceScene(Trans);
+		break;
+	}
+	case Widget::TouchEventType::CANCELED:
+		break;
+	default:
+		break;
+	}
+}
+
+void GameScene::retCallBack(cocos2d::Ref * pSender, Widget::TouchEventType type)
+{
+	switch (type)
+	{
+	case Widget::TouchEventType::BEGAN:
+		break;
+	case Widget::TouchEventType::MOVED:
+		break;
+	case Widget::TouchEventType::ENDED:
+	{
+		auto nextScene = MainScene::createScene();
+		auto Trans = TransitionFadeTR::create(1.0, nextScene);
+		Director::getInstance()->replaceScene(Trans);
+		break;
+	}
 	case Widget::TouchEventType::CANCELED:
 		break;
 	default:

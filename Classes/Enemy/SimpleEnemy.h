@@ -5,12 +5,13 @@
 #define _SIMPLE_ENTITY_H_
 
 #include "Enemy.h"
+#include <string>
 
 class SimpleEnemy : public Enemy
 {
 protected:
 
-	int type;//怪物类型
+	std::string type; //怪物类型
 	int maxhp;
 	int def;
 
@@ -25,7 +26,7 @@ protected:
 
 public:
 
-	explicit SimpleEnemy(int type);
+	explicit SimpleEnemy(const std::string& type);
 
 	virtual bool init();
 	virtual void update(float delta);
@@ -33,7 +34,7 @@ public:
 	virtual int maxHP();
 	virtual int defence();
 
-	static SimpleEnemy* create(int type);
+	static SimpleEnemy* create(const std::string& type);
 
 };
 

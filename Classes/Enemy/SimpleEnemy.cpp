@@ -6,24 +6,24 @@
 USING_NS_CC;
 
 
-SimpleEnemy::SimpleEnemy(int type)
+SimpleEnemy::SimpleEnemy(const std::string& type)
 {
 	this->type = type;
-	switch (type)
-	{
-	case 1:
-		//初始化怪物属性，这里预计改为从plist读取
-		this->speed = 120;
-		this->maxhp = 100;
-		this->def = 0;
-		break;
-	default:
-		break;
-	}
 }
 
 bool SimpleEnemy::init()
 {
+	// 这里plist属性的读取要先于Enemy::init，以便各属性能正常通过虚函数被基类读取
+	auto dict = Dictionary::createWithContentsOfFile("enemies.plist");
+	auto props = dynamic_cast<Dictionary*>(dict->objectForKey(type));
+	if (props == nullptr)
+		return false;
+
+	this->maxhp = props->valueForKey("maxHp")->intValue();
+	this->def = props->valueForKey("defence")->intValue();
+	this->speed = props->valueForKey("speed")->doubleValue();
+
+	// 基类初始化
 	if (!Enemy::init())
 		return false;
 
@@ -70,7 +70,7 @@ int SimpleEnemy::defence()
 	return def;
 }
 
-SimpleEnemy* SimpleEnemy::create(int type)
+SimpleEnemy* SimpleEnemy::create(const std::string& type)
 {
 	SimpleEnemy *pRet = new(std::nothrow) SimpleEnemy(type);
 	if (pRet && pRet->init())

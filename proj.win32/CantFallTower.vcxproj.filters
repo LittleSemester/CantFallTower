@@ -123,6 +123,9 @@
     <ClCompile Include="..\Classes\Scene\WinScene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Util\StageLoader.cpp">
+      <Filter>src\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -214,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\WinScene.h">
       <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\StageLoader.h">
+      <Filter>src\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

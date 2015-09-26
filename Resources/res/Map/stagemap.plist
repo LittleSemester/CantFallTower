@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>stagename</key>
+		<string>Stage 1</string>
+		<key>background</key>
+		<string>Map_Ground_02.jpg</string>
+		<key>tilemap</key>
+		<string>map_0.tmx</string>
+		<key>infinite</key>
+		<false/>
+		<key>waves</key>
+		<array>
+			<dict>
+				<key>count</key>
+				<integer>20</integer>
+				<key>delay</key>
+				<real>2</real>
+				<key>enemies</key>
+				<array>
+					<string>enemy_1</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>20</integer>
+				<key>delay</key>
+				<real>1</real>
+				<key>enemies</key>
+				<array>
+					<string>enemy_1</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>20</integer>
+				<key>delay</key>
+				<real>0.5</real>
+				<key>enemies</key>
+				<array>
+					<string>enemy_1</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>20</integer>
+				<key>delay</key>
+				<real>0.1</real>
+				<key>enemies</key>
+				<array>
+					<string>enemy_1</string>
+				</array>
+			</dict>
+		</array>
+	</dict>
+</plist>

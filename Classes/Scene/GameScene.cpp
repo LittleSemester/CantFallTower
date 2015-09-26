@@ -23,19 +23,28 @@ Scene * GameScene::createScene()
 	return scene;
 }
 
+GameScene::~GameScene()
+{
+	delete stageLoader;
+	stageLoader = nullptr;
+}
+
 bool GameScene::init()
 {
 	if (!Layer::init())
 	{
 		return false;
 	}
+
+	stageLoader = new StageLoader("stagemap.plist");
+
 	//娣诲姞鑳屾櫙鍥剧墖
-	auto spriteBG = Sprite::create("Map_Ground_02.jpg");
+	auto spriteBG = Sprite::create(stageLoader->getBackGroundFileName());
 	addChild(spriteBG);
 	spriteBG->setPosition(Vec2(480, 320));
 
 	//娣诲姞鍦板浘鏂囦欢
-	auto Map = TMXTiledMap::create("map_0.tmx");
+	auto Map = TMXTiledMap::create(stageLoader->getTileMapFileName());
 	addChild(Map);
 	Map->setTag(0);//灏嗗湴鍥炬枃浠禩ag璁剧疆涓?
 
@@ -44,12 +53,7 @@ bool GameScene::init()
 	//初始化建塔信息
 	memset(towerInfo, 0, sizeof(towerInfo));
 
-	//设置敌人数量
-	enemyMaxCount = 20;
-	//产生一大波怪物
-	enemyCreated = 0;
-
-	schedule(schedule_selector(GameScene::EnemyCreat),1 );
+	schedule(CC_SCHEDULE_SELECTOR(GameScene::tryCreateEnemy), stageLoader->getEnemySpawnDelay());
 
 	//加载纹理到内存中
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Ice_picture.plist");
@@ -76,6 +80,7 @@ bool GameScene::init()
 	this->money = 400;
 	this->nowWave = 1;
 
+	this->currentWaveFinished = false;
 
 
 	return true;
@@ -103,21 +108,36 @@ void GameScene::initAllPoints()
 }
 
 
-void GameScene::EnemyCreat(float dt)
+void GameScene::tryCreateEnemy(float dt)
 {
-	if (enemyCreated < enemyMaxCount)
+	if (currentWaveFinished) // 所有的怪都已经出场，判断怪物是否全清
 	{
-		//产生的敌人未达到最大数量则继续产生
-		++enemyCreated;
-		auto newEnemy = SimpleEnemy::create("enemy_1");
-		addChild(newEnemy);
-		enemyList.pushBack(newEnemy);
+		clearRemovedEnemyFromList();
+		if (enemyList.size() == 0)
+		{
+			if (stageLoader->toggleNextWave())
+			{
+				// 进入下一波
+				currentWaveFinished = false;
+				schedule(CC_SCHEDULE_SELECTOR(GameScene::tryCreateEnemy), stageLoader->getEnemySpawnDelay());
+			}
+			else
+			{
+				unschedule(CC_SCHEDULE_SELECTOR(GameScene::tryCreateEnemy));
+				// todo: 关卡结束
+			}
+		}
 	}
-	clearRemovedEnemyFromList();
-	if (enemyList.size() == 0)
+	else
 	{
-		//褰撲骇鐢熺殑鎬墿鍏ㄨ娑堢伃閲嶇疆鎬墿鐢熸垚
-		enemyCreated = 0;
+		auto newEnemy = stageLoader->createNextEnemy();
+		if (newEnemy == nullptr) // 本波结束
+			currentWaveFinished = true;
+		else // 产生的敌人未达到最大数量
+		{
+			addChild(newEnemy);
+			enemyList.pushBack(newEnemy);
+		}
 	}
 }
 

@@ -7,6 +7,7 @@
 #include "Util/TDPoint.h"
 #include "Entity/Entity.h"
 #include "Enemy/Enemy.h"
+#include "Util/StageLoader.h"
 #include <cmath>
 
 class Enemy;
@@ -28,24 +29,25 @@ protected:
 	int ourHealth;//玩家HP
 	int nowWave;//当前波数
 
+	bool currentWaveFinished;
+
 	int selectedSkill;//已选中的技能
 	
-	
+	StageLoader* stageLoader;
 
 public:
 
 	static cocos2d::Scene* createScene();
 	
+	virtual ~GameScene();
+
 	virtual bool init();
 
 	CREATE_FUNC(GameScene);
 
 	static cocos2d::Vector<TDPoint*> allPoint;//保存所有路径转弯点
-
-	int enemyMaxCount; //敌人最大数量
-	int enemyCreated;	
 	
-	void EnemyCreat(float dt);//产生一波怪物
+	void tryCreateEnemy(float dt);// 尝试在本波产生一个怪物，或者检测怪物是否全清
 
 	// 用于单一Entity进行判定检测，一般情况下由Entity自身调用，指定singleEnemy以判定单个目标（会检查目标有效性）
 	void judgeEntityBounding(Entity* entity, Enemy* singleEnemy = nullptr);

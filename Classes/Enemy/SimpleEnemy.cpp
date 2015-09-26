@@ -28,19 +28,29 @@ bool SimpleEnemy::init()
 		return false;
 
 	//这里要统一好动画的形式，要么用plist要么用统一命名的图片序列
+	auto arr = dynamic_cast<Array*>(props->objectForKey("animpic"));
+	if (arr == nullptr)
+		return false;
+
 	walk = Animation::create();
-	for (int i = 1; i <= 10; i++)
+	int sizeAnim = arr->count();
+	for (int i = 0; i < sizeAnim; ++i)
 	{
-		char szName[100];
-		sprintf(szName, "gw%d.png", i);
-		walk->addSpriteFrameWithFile(szName);
+		walk->addSpriteFrameWithFile(dynamic_cast<String*>(arr->getObjectAtIndex(i))->getCString());
 	}
-	for (int i = 9; i >= 4; i--)
-	{
-		char szName[100];
-		sprintf(szName, "gw%d.png", i);
-		walk->addSpriteFrameWithFile(szName);
-	}
+
+// 	for (int i = 1; i <= 10; i++)
+// 	{
+// 		char szName[100];
+// 		sprintf(szName, "gw%d.png", i);
+// 		walk->addSpriteFrameWithFile(szName);
+// 	}
+// 	for (int i = 9; i >= 4; i--)
+// 	{
+// 		char szName[100];
+// 		sprintf(szName, "gw%d.png", i);
+// 		walk->addSpriteFrameWithFile(szName);
+// 	}
 	walk->setDelayPerUnit(0.05);
 
 	aniWalk = Animate::create(walk);

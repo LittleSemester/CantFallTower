@@ -3,6 +3,8 @@
 #include "Enemy.h"
 #include "Scene/GameScene.h"
 #include "ui/CocosGUI.h"
+#include "Scene/LoseScene.h"
+#include "Scene/WinScene.h"
 using namespace cocos2d::ui;
 using namespace cocos2d;
 
@@ -134,10 +136,22 @@ void Enemy::moveEnemy(float dt)
 		//如果到达了终点
 		if (nextPoint == GameScene::allPoint.size())
 		{
-			log("Escape successfully");
+			//掉血
+			GameScene * ourScene =(GameScene*) this->getParent();
+			int nowhealth = ourScene->getHealth() - 1;
+			ourScene->setHealth(nowhealth);
+			
 			//删除怪物
 			this->removeFromParent();
 			this->finished = true;
+			
+			//Gameover转场
+			if (nowhealth == 0)
+			{
+				auto nextScene = LoseScene::createScene();
+				auto Trans = TransitionFadeTR::create(1.0, nextScene);
+				Director::getInstance()->replaceScene(Trans);
+			}
 		}
 	}
 

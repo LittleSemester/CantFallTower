@@ -4,6 +4,8 @@
 #include "Skill/Hurricane.h"
 #include "Skill/FastFreeze.h"
 #include "Skill/ShakingWave.h"
+#include "Scene/WinScene.h"
+
 USING_NS_CC;
 using namespace cocos2d::ui;
 
@@ -72,12 +74,9 @@ bool GameScene::init()
 	loadSkillPattern();
 	loadStatus();
 
-	this->ourHealth = 20;
-	this->money = 400;
-	this->nowWave = 1;
+	
 
-
-
+	
 	return true;
 }
 
@@ -85,6 +84,10 @@ bool GameScene::init()
 //鍔犺浇鏁屼汉琛岃蛋璺緞鐐?
 void GameScene::initAllPoints()
 {
+	if (allPoint.size() > 0)
+	{
+		allPoint.clear();
+	}
 	//寰楀埌tmx鍦板浘
 	TMXTiledMap* ourMap = (TMXTiledMap*)this->getChildByTag(0);
 	auto Group = ourMap->getObjectGroup("Obj1");//鑾峰彇瀵硅薄灞傛暟鎹?
@@ -116,8 +119,20 @@ void GameScene::EnemyCreat(float dt)
 	clearRemovedEnemyFromList();
 	if (enemyList.size() == 0)
 	{
-		//褰撲骇鐢熺殑鎬墿鍏ㄨ娑堢伃閲嶇疆鎬墿鐢熸垚
+		//一波敌人结束后
 		enemyCreated = 0;
+		int nextWave = getWave() + 1;
+		if (nextWave > sumWave)
+		{
+			//消灭了全部敌人，转场胜利
+			auto nextScene = WinScene::createScene();
+			auto Trans = TransitionFadeTR::create(1.0, nextScene);
+			Director::getInstance()->replaceScene(Trans);
+		}
+		else
+		{
+			setWave(nextWave);
+		}
 	}
 }
 
@@ -239,24 +254,91 @@ void GameScene::loadSkillPattern()
 
 	Menu * skillMenu = Menu::create(skillIce, skillWind, skillWave, nullptr);
 	skillMenu->setPosition(Vec2(800, 50));
+	skillMenu->setTag(30);
 	this->addChild(skillMenu);
 }
 
 void GameScene::loadStatus()
 {
+	stopTouch = false;
 	auto box = Sprite::create("ui_longbox.png");
-	box->setPosition(Vec2(480, 610));
-	addChild(box);
+	box->setScaleY(1.3);
 
 	auto money = Sprite::create("GamesScreen_money.png");
-	money->setPosition(30,23);
 	money->setScale(0.9);
-	box->addChild(money,100);
 
 	auto hp = Sprite::create("GamesScreen_live.png");
-	hp->setPosition(120, 23);
 	hp->setScale(0.7);
-	box->addChild(hp,100);
+
+	auto wave = Sprite::create("GamesScreen_enemy.png");
+
+	Button * set = Button::create("ui_set.png");;
+	set->setPosition(Vec2(400, 0));
+	set->setScale(0.8);
+	set->setOpacity(200);
+	set->addTouchEventListener(CC_CALLBACK_2(GameScene::setCallBack, this));
+
+	CheckBox * speed = CheckBox::create();
+	speed->loadTextureBackGround("ui_x2.png");
+	speed->loadTextureFrontCross("ui_x1.png");
+	speed->setPosition(Vec2(275, 0));
+	speed->setScale(0.7);
+	speed->addEventListener(CC_CALLBACK_2(GameScene::speedCallBack, this));
+	speed->setName("speed");
+
+	CheckBox * pause = CheckBox::create();
+	pause->loadTextureBackGround("ui_pause.png");
+	pause->loadTextureFrontCross("ui_begin.png");
+	pause->setPosition(Vec2(150, 0));
+	pause->setScale(0.7);
+	pause->addEventListener(CC_CALLBACK_2(GameScene::pauseCallBack, this));
+	pause->setName("pause");
+
+	//初始化状态
+	this->ourHealth = 20;
+	this->money = 400;
+	this->nowWave = 1;
+	this->sumWave = 2;
+
+	TTFConfig myTTF;
+	myTTF.fontFilePath = "fonts/Marker Felt.ttf";
+	myTTF.fontSize = 28;
+	myTTF.glyphs = GlyphCollection::DYNAMIC;
+		
+	labHealth = (Label*)Label::createWithTTF(myTTF, "20");
+	labMoney = (Label*)Label::createWithTTF(myTTF,"20");
+	labWave = (Label*)Label::createWithTTF(myTTF, "20");
+	labHealth->setName("health");
+	labMoney->setName("money");
+	labWave->setName("wave");
+
+	//状态栏容器
+	auto status = Layout::create();
+	status->setName("status");
+	addChild(status);
+
+	//加入各个图标
+	labHealth->setPosition(Vec2(-210, 0));
+	labMoney->setPosition(Vec2(-360, 0));
+	status->setPosition(Vec2(480, 610));
+	money->setPosition(Vec2(-400, 0));
+	hp->setPosition(Vec2(-250, 0));
+	wave->setPosition(Vec2(-100, 0));
+
+
+	status->addChild(box);
+	status->addChild(money);
+	status->addChild(hp);
+	status->addChild(wave);
+	status->addChild(set);
+	status->addChild(speed);
+	status->addChild(pause);
+	status->addChild(labMoney);
+	status->addChild(labHealth);
+	status->addChild(labWave);
+	this->setMoney(this->money);
+	this->setWave(this->nowWave);
+	this->setHealth(this->ourHealth);
 
 }
 
@@ -272,13 +354,14 @@ void GameScene::selectSkill(Ref * obj)
 	
 	if (selectedSkill == item->getTag() && currSkill!=nullptr)
 	{
-		
-		//item->setOpacity(255);
+		//再次点击相同技能则取消释放
+		item->setScale(1.0);
+
 		selectedSkill = -1;
 		currSkill = nullptr;
 		return;
 	}
-	//item->setOpacity(200);
+	item->setScale(1.1);
 	selectedSkill = item->getTag();
 	switch (item->getTag())
 	{
@@ -311,6 +394,8 @@ void GameScene::selectSkill(Ref * obj)
 //触摸事件
 bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 {
+	if (stopTouch)
+		return false;
 	//移除建塔面板
 	if (this->getChildByTag(100) != nullptr)
 	{
@@ -399,6 +484,10 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 	{
 		currSkill->onTouchEnded(now);
 		currSkill = nullptr;
+		//使用完技能图标还原
+		auto menu = this->getChildByTag(30);
+		auto skill = menu->getChildByTag(selectedSkill);
+		skill->setScale(1.0);
 	}
 
 }
@@ -510,4 +599,129 @@ void GameScene::alignPosition(cocos2d::Vec2& pos)
 	int i = (int)(pos.x / 56.9);
 	int j = (int)(pos.y / 56.9);
 	pos.set((i + 0.5)*56.9, (j + 0.5)*56.9);
+}
+
+
+int GameScene::getMoney()
+{
+	return money;
+}
+
+int GameScene::getHealth()
+{
+	return ourHealth;
+}
+
+int GameScene::getWave()
+{
+	return nowWave;
+}
+
+void GameScene::setHealth(int newHealth)
+{
+	ourHealth = newHealth;
+	if (labHealth != nullptr)
+	{
+		std::string str = Value(ourHealth).asString();
+		labHealth->setString(str);
+	}
+}
+
+void GameScene::setMoney(int newMoney)
+{
+	money = newMoney;
+	if (labMoney != nullptr)
+	{
+		auto str = Value(money).asString();
+		labMoney->setString(str);
+	}
+}
+
+void GameScene::setWave(int newWave)
+{
+	nowWave = newWave;
+	if (labWave != nullptr)
+	{
+		auto str1 = Value(nowWave).asString();
+		auto str2 = Value(sumWave).asString();
+
+		labWave->setString(str1+"/"+str2);
+	}
+}
+
+void GameScene::speedCallBack(Ref* pSender, CheckBox::EventType type)
+{
+	if (stopTouch)
+		return;
+	CheckBox* pauseItem = (CheckBox*)getChildByName("status")->getChildByName("pause");
+	if (pauseItem->getSelectedState())
+		return;
+	switch (type)
+	{
+	case CheckBox::EventType::SELECTED:
+		GameScene::getScheduler()->setTimeScale(2.0);
+		break;
+	case CheckBox::EventType::UNSELECTED:
+	{
+		GameScene::getScheduler()->setTimeScale(1.0);
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+void GameScene::pauseCallBack(Ref* pSender, CheckBox::EventType type)
+{
+	if (stopTouch)
+		return;
+	switch (type)
+	{
+	case CheckBox::EventType::SELECTED:
+		GameScene::getScheduler()->setTimeScale(0.0);
+		break;
+	case CheckBox::EventType::UNSELECTED:
+	{
+		CheckBox* speedItem = (CheckBox*)getChildByName("status")->getChildByName("speed");
+		if (speedItem->getSelectedState())
+		{
+			GameScene::getScheduler()->setTimeScale(2.0);
+		}
+		else
+		{
+			GameScene::getScheduler()->setTimeScale(1.0);
+		}
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+void GameScene::setCallBack(cocos2d::Ref* pSender, Widget::TouchEventType type)
+{
+	if (stopTouch)
+		return;
+	switch (type)
+	{
+	case Widget::TouchEventType::BEGAN:
+		break;
+	case Widget::TouchEventType::MOVED:
+		break;
+	case Widget::TouchEventType::ENDED:
+	{
+		GameScene::getScheduler()->setTimeScale(0.0);
+		auto black = Sprite::create("black.png");
+		black->setOpacity(200);
+		black->setPosition(Vec2(480, 320));
+		black->setName("black");
+		addChild(black);
+		stopTouch = true;
+	}
+		break;
+	case Widget::TouchEventType::CANCELED:
+		break;
+	default:
+		break;
+	}
 }

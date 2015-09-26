@@ -55,7 +55,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("res/Skill");
 	FileUtils::getInstance()->addSearchPath("res/Scene");
 	FileUtils::getInstance()->addSearchPath("res/Buff");
-
+	FileUtils::getInstance()->addSearchPath("res/fonts");
     // create a scene. it's an autorelease object
 	//测试游戏场景
     //auto scene = GameScene::createScene();

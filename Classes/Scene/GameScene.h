@@ -27,13 +27,21 @@ protected:
 
 	int money;//当前金钱
 	int ourHealth;//玩家HP
-	int nowWave;//当前波数
-
+		
 	bool currentWaveFinished;
+
+	StageLoader* stageLoader;
+
+	int nowWave;//当前波数
+	int sumWave;//总波数
 
 	int selectedSkill;//已选中的技能
 	
-	StageLoader* stageLoader;
+	bool stopTouch;
+	
+	cocos2d::Label* labMoney;
+	cocos2d::Label* labHealth;
+	cocos2d::Label* labWave;
 
 public:
 
@@ -80,6 +88,25 @@ public:
 	virtual void onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *unused_event);	
 	virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event);
 
+	int getMoney();
+	void setMoney(int newMoney);
+	int getHealth();
+	void setHealth(int newHealth);
+	int getWave();
+	void setWave(int newWave);
+
+
+	void speedCallBack(cocos2d::Ref* pSender, cocos2d::ui::CheckBox::EventType type);
+
+	void pauseCallBack(cocos2d::Ref* pSender, cocos2d::ui::CheckBox::EventType type);
+
+	void setCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+
+	void contiCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+
+	void againCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+
+	void retCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
 };
 

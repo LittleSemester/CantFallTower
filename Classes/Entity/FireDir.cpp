@@ -39,7 +39,6 @@ bool FireDir::init()
 	this->addChild(sprite);
 
 	this->remainTime = 0.5;
-	this->speedGradient = 1.4;
 	this->baseDamage = 7.0;
 
 	return true;

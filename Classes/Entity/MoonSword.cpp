@@ -39,7 +39,6 @@ bool MoonSword::init()
 	this->addChild(sprite);
 
 	this->remainTime = 0.5;
-	this->speedGradient = 1.4;
 	this->baseDamage = 10.0;
 
 	return true;
@@ -75,7 +74,7 @@ bool MoonSword::judgeSingleEnemy(Enemy * enemy)
 			this->enemyInRange.clear();
 			mainScene->getEnemyInDistance(this->enemyInRange, this->getPosition(), 100);
 			Enemy* nextEnemy;
-			if (this->enemyInRange.size() == 1)
+			if (this->enemyInRange.size() <= 1)
 				return true;
 			for (Enemy* next : this->enemyInRange)
 			{

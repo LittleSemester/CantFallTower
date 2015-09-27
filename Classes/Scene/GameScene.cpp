@@ -77,6 +77,9 @@ bool GameScene::init()
 	currSkill->setPositionZ(10);
 	addChild(currSkill);*/
 
+	// 缓存敌人SpriteFrame
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Monster.plist", Sprite::create("Monster.png")->getTexture());
+
 	loadSkillPattern();
 	loadStatus();
 	

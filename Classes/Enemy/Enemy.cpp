@@ -16,6 +16,7 @@ Enemy::Enemy()
 	this->finished = false;
 	this->distance = 0;
 	this->speed = 100;
+	this->height = 50;
 }
 
 Enemy::~Enemy()
@@ -36,9 +37,11 @@ bool Enemy::init()
 	hpBar->setTag(123);
 	hpBar->setPercent(100);
 	addChild(hpBar, 1);
-	hpBar->setPositionY(30);
+	hpBar->setPositionY(height-20);
 
 	actSprite = nullptr;
+
+	this->setLocalZOrder(5);
 
 	healthPoint = maxHP();
 

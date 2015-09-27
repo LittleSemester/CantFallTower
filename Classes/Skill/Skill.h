@@ -20,6 +20,8 @@ public:
 	explicit Skill();
 	virtual ~Skill()=0;
 
+	virtual bool init();
+
 	virtual void onEnter();
 
 	// 返回false以意外结束选择技能释放位置，技能将不释放；三者全部返回true则触摸结束时技能将被释放

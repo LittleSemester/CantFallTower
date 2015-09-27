@@ -27,6 +27,8 @@ bool Tower::init()
 
 	this->schedule(CC_SCHEDULE_SELECTOR(Tower::doFire), interval);
 
+	onChangeLevel(1);
+
 	return true;
 }
 
@@ -71,15 +73,6 @@ Tower * Tower::createTower(int type, int row, int col)
 		break;
 	}
 
-	if (newTD != nullptr)
-	{
-		newTD->setRowColumn(row, col);
-		//加上等级星数显示
-		auto level = Sprite::create("level1.png");
-		level->setName("level");
-		newTD->addChild(level);
-		level->setPosition(Vec2(0, 28));
-	}
 	return newTD;
 }
 
@@ -125,7 +118,16 @@ bool Tower::upgrate()
 
 bool Tower::onChangeLevel(int level)
 {
-	return false;
+	if (newTD != nullptr)
+	{
+		newTD->setRowColumn(row, col);
+		//加上等级星数显示
+		auto level = Sprite::create("level1.png");
+		level->setName("level");
+		newTD->addChild(level);
+		level->setPosition(Vec2(0, 28));
+	}
+	return true;
 }
 
 int Tower::getMoney(int level /*= 1*/)

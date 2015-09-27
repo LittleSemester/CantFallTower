@@ -29,3 +29,11 @@ void Entity::onEnter()
 		removeFromParent();
 }
 
+bool Entity::init()
+{
+	if (!Node::init())
+		return false;
+	this->setLocalZOrder(7);
+	return true;
+}
+

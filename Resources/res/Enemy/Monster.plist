@@ -3176,7 +3176,7 @@
                 <key>sourceSize</key>
                 <string>{64,58}</string>
             </dict>
-            <key>Snow/Snow_Boss_00 .png</key>
+            <key>Snow/Snow_Boss_00.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{613,80},{120,109}}</string>
@@ -3384,7 +3384,7 @@
                 <key>sourceSize</key>
                 <string>{164,133}</string>
             </dict>
-            <key>Snow/Snow_Boss_Die_00 .png</key>
+            <key>Snow/Snow_Boss_Die_00.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{914,579},{109,108}}</string>
@@ -3813,7 +3813,7 @@
                 <key>sourceSize</key>
                 <string>{42,32}</string>
             </dict>
-            <key>Snow/Snow_Men_0 1.png</key>
+            <key>Snow/Snow_Men_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{789,1323},{44,44}}</string>

@@ -2,50 +2,86 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
-		<key>enemy_1</key>
+		<key>Snow_Men</key>
 		<dict>
 			<key>animpic</key>
 			<array>
-			<string>gw/gw1.png</string>
-			<string>gw/gw2.png</string>
-			<string>gw/gw3.png</string>
-			<string>gw/gw4.png</string>
-			<string>gw/gw5.png</string>
-			<string>gw/gw6.png</string>
-			<string>gw/gw7.png</string>
-			<string>gw/gw8.png</string>
-			<string>gw/gw9.png</string>
-			<string>gw/gw10.png</string>
-			<string>gw/gw9.png</string>
-			<string>gw/gw8.png</string>
-			<string>gw/gw7.png</string>
-			<string>gw/gw6.png</string>
-			<string>gw/gw5.png</string>
-			<string>gw/gw4.png</string>
+				<string>Snow/Snow_Men_00.png</string>
+				<string>Snow/Snow_Men_01.png</string>
+				<string>Snow/Snow_Men_02.png</string>
+				<string>Snow/Snow_Men_03.png</string>
+				<string>Snow/Snow_Men_04.png</string>
+				<string>Snow/Snow_Men_05.png</string>
+				<string>Snow/Snow_Men_06.png</string>
+				<string>Snow/Snow_Men_07.png</string>
+				<string>Snow/Snow_Men_08.png</string>
+				<string>Snow/Snow_Men_09.png</string>
+				<string>Snow/Snow_Men_08.png</string>
+				<string>Snow/Snow_Men_07.png</string>
+				<string>Snow/Snow_Men_06.png</string>
+				<string>Snow/Snow_Men_05.png</string>
+				<string>Snow/Snow_Men_04.png</string>
+				<string>Snow/Snow_Men_03.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
+			<key>height</key>
+			<real>55</real>
 			<key>maxHp</key>
 			<integer>300</integer>
 			<key>defence</key>
 			<integer>0</integer>
 			<key>speed</key>
 			<real>50</real>
+		</dict>
+	</dict>
+	<dict>
+		<key>Snow_Boss</key>
+		<dict>
+			<key>animpic</key>
+			<array>
+				<string>Snow/Snow_Boss_00.png</string>
+				<string>Snow/Snow_Boss_01.png</string>
+				<string>Snow/Snow_Boss_02.png</string>
+				<string>Snow/Snow_Boss_03.png</string>
+				<string>Snow/Snow_Boss_04.png</string>
+				<string>Snow/Snow_Boss_05.png</string>
+				<string>Snow/Snow_Boss_06.png</string>
+				<string>Snow/Snow_Boss_07.png</string>
+				<string>Snow/Snow_Boss_08.png</string>
+				<string>Snow/Snow_Boss_09.png</string>
+				<string>Snow/Snow_Boss_10.png</string>
+				<string>Snow/Snow_Boss_11.png</string>
+				<string>Snow/Snow_Boss_12.png</string>
+				<string>Snow/Snow_Boss_13.png</string>
+				<string>Snow/Snow_Boss_14.png</string>
+				<string>Snow/Snow_Boss_15.png</string>
+			</array>
+			<key>animdelay</key>
+			<real>0.05</real>
+			<key>height</key>
+			<real>100</real>
+			<key>maxHp</key>
+			<integer>1400</integer>
+			<key>defence</key>
+			<integer>5</integer>
+			<key>speed</key>
+			<real>30</real>
 			<key>buffs</key>
 			<array>
 				<dict>
 					<key>time</key>
 					<real>12</real>
 					<key>effects</key>
-					<string>1.0,1.0,1.0,2.0,0.0,0.0</string>
+					<string>1.0,1.0,1.0,1.5,0.0,0.0</string>
 					<key>flag</key>
 					<integer>64</integer>
 				</dict>
 				<dict>
 					<key>time</key>
-					<real>30</real>
+					<real>120</real>
 					<key>effects</key>
-					<string>1.0,1.0,0.8,1.0,0.0,5.0</string>
+					<string>1.0,1.0,0.8,1.0,0.0,2.0</string>
 					<key>flag</key>
 					<integer>20</integer>
 				</dict>

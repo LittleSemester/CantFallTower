@@ -19,7 +19,7 @@
 				<real>2</real>
 				<key>enemies</key>
 				<array>
-					<string>enemy_1</string>
+					<string>Snow_Men</string>
 				</array>
 			</dict>
 			<dict>
@@ -29,7 +29,7 @@
 				<real>1</real>
 				<key>enemies</key>
 				<array>
-					<string>enemy_1</string>
+					<string>Snow_Men</string>
 				</array>
 			</dict>
 			<dict>
@@ -39,7 +39,17 @@
 				<real>0.5</real>
 				<key>enemies</key>
 				<array>
-					<string>enemy_1</string>
+					<string>Snow_Men</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>2</integer>
+				<key>delay</key>
+				<real>5</real>
+				<key>enemies</key>
+				<array>
+					<string>Snow_Boss</string>
 				</array>
 			</dict>
 			<dict>
@@ -49,7 +59,31 @@
 				<real>0.1</real>
 				<key>enemies</key>
 				<array>
-					<string>enemy_1</string>
+					<string>Snow_Men</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>20</integer>
+				<key>delay</key>
+				<real>0.5</real>
+				<key>enemies</key>
+				<array>
+					<string>Snow_Boss</string>
+					<string>Snow_Men</string>
+					<string>Snow_Men</string>
+					<string>Snow_Men</string>
+					<string>Snow_Men</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>10</integer>
+				<key>delay</key>
+				<real>1</real>
+				<key>enemies</key>
+				<array>
+					<string>Snow_Boss</string>
 				</array>
 			</dict>
 		</array>

@@ -68,7 +68,7 @@ void StarFall::onEnter()
 
 void StarFall::setTarget(Enemy * enemy)
 {
-	if (enemy == nullptr)
+	if (enemy == nullptr || target == enemy)
 		return;
 	if (target != nullptr)
 		target->release();

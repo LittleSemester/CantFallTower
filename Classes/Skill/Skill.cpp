@@ -13,6 +13,14 @@ Skill::~Skill()
 
 }
 
+bool Skill::init()
+{
+	if (!Node::init())
+		return false;
+	this->setLocalZOrder(8);
+	return true;
+}
+
 double Skill::getCoolDown()
 {
 	return 0.0;

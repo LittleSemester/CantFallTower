@@ -28,6 +28,8 @@ public:
 	explicit Entity();
 	virtual ~Entity();
 
+	virtual bool init();
+
 	inline double getBaseDamage() const
 	{
 		return baseDamage;

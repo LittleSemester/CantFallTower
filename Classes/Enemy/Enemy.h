@@ -13,6 +13,8 @@ protected:
 
 	int healthPoint;
 	double speed;//怪物速度
+	
+	double height;
 
 	float distance;//已走过的路
 	bool finished;//是否正在播放死亡动画或正在删除该Enemy

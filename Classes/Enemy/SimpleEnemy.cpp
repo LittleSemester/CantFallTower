@@ -22,6 +22,7 @@ bool SimpleEnemy::init()
 	this->maxhp = props->valueForKey("maxHp")->intValue();
 	this->def = props->valueForKey("defence")->intValue();
 	this->speed = props->valueForKey("speed")->doubleValue();
+	this->height = props->valueForKey("height")->doubleValue();
 
 	// 基类初始化
 	if (!Enemy::init())
@@ -36,7 +37,9 @@ bool SimpleEnemy::init()
 	int sizeAnim = arrPic->count();
 	for (int i = 0; i < sizeAnim; ++i)
 	{
-		walk->addSpriteFrameWithFile(dynamic_cast<String*>(arrPic->getObjectAtIndex(i))->getCString());
+		auto frame=SpriteFrameCache::getInstance()->getSpriteFrameByName(
+			dynamic_cast<String*>(arrPic->getObjectAtIndex(i))->getCString());
+		walk->addSpriteFrame(frame);
 	}
 
 // 	for (int i = 1; i <= 10; i++)
@@ -58,6 +61,8 @@ bool SimpleEnemy::init()
 	repeatWalk->setTag(52013);
 	actSprite = Sprite::create();
 	actSprite->runAction(repeatWalk);
+	actSprite->setAnchorPoint(Vec2(0.5, 0.0));
+	actSprite->setPositionY(-20.0);
 	addChild(actSprite);
 
 	// 初始化Buff
@@ -188,10 +193,10 @@ void SimpleEnemy::doBuffDizzy()
 {
 	frameFly = 0;
 	actSprite->schedule([this](float){
-		actSprite->setPositionY(20 - 0.2 * (frameFly - 10) * (frameFly - 10));
+		actSprite->setPositionY(0.2 * (frameFly - 10) * (frameFly - 10));
 		++frameFly;
 	}, 1.0 / 60, 20, 0.0, "fly");
-	actSprite->scheduleOnce([this](float){actSprite->setPositionY(0.0); }, 0.34, "flystop");
+	actSprite->scheduleOnce([this](float){actSprite->setPositionY(-20.0); }, 0.34, "flystop");
 
 	auto dizzy = Sprite::create();
 	auto ani = Animation::create();
@@ -261,7 +266,7 @@ void SimpleEnemy::doBuffDef(bool on)
 
 	auto def = Sprite::create("Jianshang/Jianshang_Buff_00.png");
 	def->runAction(RepeatForever::create(Sequence::create(FadeTo::create(1, 130), FadeTo::create(1, 255), nullptr)));
-	def->setPositionY(50.0);
+	def->setPositionY(height);
 	def->setScale(0.5);
 	def->setTag(BUFF_TAG_DEF);
 

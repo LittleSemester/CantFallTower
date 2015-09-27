@@ -72,7 +72,14 @@ Tower * Tower::createTower(int type, int row, int col)
 	}
 
 	if (newTD != nullptr)
+	{
 		newTD->setRowColumn(row, col);
+		//加上等级星数显示
+		auto level = Sprite::create("level1.png");
+		level->setName("level");
+		newTD->addChild(level);
+		level->setPosition(Vec2(0, 28));
+	}
 	return newTD;
 }
 

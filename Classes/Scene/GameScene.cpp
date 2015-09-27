@@ -516,23 +516,27 @@ void GameScene::addTDSelect(int r, int c)
 	auto bt01 = Sprite::create("Thunder_Tower_00.png");
 	auto bt01_sel = Sprite::create("Thunder_Tower_00.png");
 	bt01_sel->setScale(1.1);
-	
+	bt01->setOpacity(200);
+
 	//冰塔
 	SpriteFrame* spF = SpriteFrameCache::getInstance()->getSpriteFrameByName("Ice Tower/Ice_Tower_00.png");
 	auto bt02 = Sprite::createWithSpriteFrame(spF);
 	auto bt02_sel= Sprite::createWithSpriteFrame(spF);
 	bt02->setScale(0.6);
 	bt02_sel->setScale(0.66);
+	bt02->setOpacity(200);
 
 	//火焰塔
 	auto bt03 = Sprite::create("Fire_Tower_01.png");
 	auto bt03_sel= Sprite::create("Fire_Tower_01.png");
 	bt03_sel->setScale(1.1);
+	bt03->setOpacity(200);
 
 	//星落之塔
 	auto bt04 = Sprite::create("Star/Star Tower/Star_Tower_02.png");
 	auto bt04_sel = Sprite::create("Star/Star Tower/Star_Tower_02.png");
 	bt04->setScale(0.6);
+	bt04->setOpacity(200);
 	bt04_sel->setScale(0.66);
 
 	//月刃之塔
@@ -540,39 +544,43 @@ void GameScene::addTDSelect(int r, int c)
 	auto bt05_sel = Sprite::create("Moon/Moon Tower/Moon_Tower_00.png");
 	bt05->setScale(0.5);
 	bt05_sel->setScale(0.55);
+	bt05->setOpacity(200);
 
 	//将该sprite转为Menu接收用户事件
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem01->setTag(10);
 	menuItem01->setAnchorPoint(Vec2(0.5, 0));
-	auto price1 = Sprite::create("ui_towerprice150.png");
-	price1->setPosition(Vec2(nowSize.x/2, 65));
+	auto price1 = createPrice(200);
 	menuItem01->addChild(price1);
 
 	auto menuItem02 = MenuItemSprite::create(bt02, bt02_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem02->setTag(11);
 	menuItem02->setAnchorPoint(Vec2(0, 0));
-	auto price2 = Sprite::create("ui_towerprice160.png");
-	price2->setPosition(Vec2(nowSize.x / 2, 65));
+	auto price2 = createPrice(200);
 	menuItem02->addChild(price2);
 
 	auto menuItem03 = MenuItemSprite::create(bt03, bt03_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem03->setTag(12);
 	menuItem03->setAnchorPoint(Vec2(1, 0));
-	auto price3 = Sprite::create("ui_towerprice180.png");
-	price3->setPosition(Vec2(nowSize.x / 2, 65));
+	auto price3 = createPrice(200);
 	menuItem03->addChild(price3);
 
 	auto menuItem04 = MenuItemSprite::create(bt04, bt04_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem04->setTag(13);
 	menuItem04->setAnchorPoint(Vec2(0,0));
+	auto price4 = createPrice(200);
+	menuItem04->addChild(price4);
+	price4->setPosition(18, 65);
 
 	auto menuItem05 = MenuItemSprite::create(bt05, bt05_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem05->setTag(14);
 	menuItem05->setAnchorPoint(Vec2(1, 0));
+	auto price5 = createPrice(200);
+	menuItem05->addChild(price5);
+	price5->setPosition(Vec2(18, 65));
 
 	//用menu容纳menuItem
-	auto menuTD = Menu::create(menuItem01, menuItem02, menuItem03, menuItem04, menuItem05, nullptr);
+	auto menuTD = Menu::create(menuItem05, menuItem01, menuItem02, menuItem03, menuItem04, nullptr);
 	
 	menuTD->setPosition(Vec2::ZERO);
 	tPos->addChild(menuTD);
@@ -580,7 +588,7 @@ void GameScene::addTDSelect(int r, int c)
 	menuItem01->setPosition(Vec2(nowSize.x / 2, nowSize.y));
 	menuItem02->setPosition(Vec2(nowSize.x, nowSize.y));
 	menuItem03->setPosition(Vec2(0, nowSize.y));
-	menuItem04->setPosition(Vec2(2*nowSize.x, nowSize.y));
+	menuItem04->setPosition(Vec2(2*nowSize.x+10, nowSize.y));
 	menuItem05->setPosition(Vec2(-nowSize.x/2, 1*nowSize.y));
 	tPos->setTag(100);
 	this->addChild(tPos);
@@ -925,4 +933,78 @@ void GameScene::retCallBack(cocos2d::Ref * pSender, Widget::TouchEventType type)
 	default:
 		break;
 	}
+}
+
+void GameScene::updateTD(int r, int c)
+{
+	auto tPos = Sprite::create("towerSel.png");
+	Vec2 nowSize = tPos->getContentSize();
+
+	auto btn_up = updatePrice(250);
+	auto btn_up_sel = updatePrice(250);
+	btn_up_sel->setScale(1.1);
+
+	auto menuItemUp = MenuItemSprite::create(btn_up, btn_up_sel, CC_CALLBACK_1(GameScene::selectUpdate, this));
+	menuItemUp->setName("update");
+
+	auto btn_re = sellPrice(125);
+	auto btn_re_sel = sellPrice(125);
+	btn_re_sel->setScale(1.1);
+
+	auto menuItemRe = MenuItemSprite::create(btn_re, btn_re_sel, CC_CALLBACK_1(GameScene::selectUpdate, this));
+	menuItemRe->setName("remove");
+
+	auto menuTD = Menu::create(menuItemUp,menuItemRe, nullptr);
+
+}
+
+void GameScene::selectUpdate(cocos2d::Ref * obj)
+{
+	auto item = (MenuItemSprite *)obj;
+
+}
+
+cocos2d::Sprite * GameScene::createPrice(int money)
+{
+	auto price = Sprite::create("ui_towerprice.png");
+	price->setPosition(Vec2(28, 65));
+	price->setOpacity(200);
+	TTFConfig myTTF;
+	myTTF.fontFilePath = "fonts/Marker Felt.ttf";
+	myTTF.fontSize = 16;
+	myTTF.glyphs = GlyphCollection::DYNAMIC;
+	std::string strMoney = std::to_string(money);
+	Label* labPrice = Label::createWithTTF(myTTF, strMoney);
+	price->addChild(labPrice);
+	labPrice->setPosition(36, 10);
+	return price;
+}
+
+cocos2d::Sprite * GameScene::updatePrice(int money)
+{
+	Sprite* price;
+	if (money > this->money)
+	{
+		price = Sprite::create("ui_cantupdate.png");
+	}
+	else
+	{
+		price = Sprite::create("ui_update.png");
+	}
+	price->setPosition(Vec2(0, 0));
+	price->setOpacity(200);
+	TTFConfig myTTF;
+	myTTF.fontFilePath = "fonts/Marker Felt.ttf";
+	myTTF.fontSize = 16;
+	myTTF.glyphs = GlyphCollection::DYNAMIC;
+	std::string strMoney = std::to_string(money);
+	Label* labPrice = Label::createWithTTF(myTTF, strMoney);
+	price->addChild(labPrice);
+	labPrice->setPosition(0, -10);
+	return price;
+}
+
+cocos2d::Sprite * GameScene::sellPrice(int money)
+{
+	return nullptr;
 }

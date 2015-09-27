@@ -75,6 +75,7 @@ public:
 
 	int nowRow, nowCol;//点击处的行列信息，供造塔过程使用
 	int towerInfo[11][17];//建塔信息,行列信息完全和二维数组相同，左上角为原点，屏幕原点,11行，17列
+	Tower* towerObjs[11][17];
 
 	//加载技能图标
 	void loadSkillPattern();
@@ -108,6 +109,16 @@ public:
 
 	void retCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
+	cocos2d::Sprite* createPrice(int money);
+
+	cocos2d::Sprite* updatePrice(int money);
+
+	cocos2d::Sprite* sellPrice(int money);
+
+	void updateTD(int r, int c);
+
+	//升级塔的回调函数
+	void selectUpdate(cocos2d::Ref* obj);
 };
 
 #endif

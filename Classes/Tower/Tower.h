@@ -31,6 +31,8 @@ protected:
 
 	TowerType type;//塔的类型
 
+	int currLevel;
+
 	GameScene* mainScene;
 
 	cocos2d::Vector<Enemy*> enemyInRange;
@@ -42,6 +44,9 @@ protected:
 	virtual void onBuffBegin(Buff* buff);
 	virtual void onBuffEnd(Buff* buff);
 
+	// 重载这个函数以自定义改变级别时的变动
+	virtual bool onChangeLevel(int level);
+
 public:
 
 	explicit Tower();
@@ -51,6 +56,11 @@ public:
 	virtual void onEnter();
 
 	void setRowColumn(int row, int col);
+
+	// 重载这个函数以控制建塔或升级塔需要的金币，默认参数level=1表示建塔的费用，其余表示升塔的费用
+	virtual int getMoney(int level = 1);
+	// 升级塔，onChangeLevel返回false时函数将返回false，表示升级失败或者到达顶级
+	bool upgrate();
 
 	static Tower* createTower(int type, int row, int col);
 

@@ -266,9 +266,10 @@ void GameScene::loadSkillPattern()
 	skillWave->setPosition(btn_Size.x, 0);
 
 	Menu * skillMenu = Menu::create(skillIce, skillWind, skillWave, nullptr);
+	skillMenu->setName("skillMenu");
 	skillMenu->setPosition(Vec2(800, 50));
 	skillMenu->setTag(30);
-	this->addChild(skillMenu);
+	this->addChild(skillMenu,50);
 }
 
 void GameScene::loadStatus()
@@ -328,7 +329,7 @@ void GameScene::loadStatus()
 	//状态栏容器
 	auto status = Layout::create();
 	status->setName("status");
-	addChild(status);
+	addChild(status,50);
 
 	//加入各个图标
 	labHealth->setPosition(Vec2(-210, 0));
@@ -376,6 +377,12 @@ void GameScene::selectSkill(Ref * obj)
 		selectedSkill = -1;
 		currSkill = nullptr;
 		return;
+	}
+	if (selectedSkill != item->getTag() && currSkill != nullptr)
+	{
+		//点击其他技能则取消当前选中技能
+		auto lastSkill = (MenuItemSprite *)this->getChildByName("skillMenu")->getChildByTag(selectedSkill);
+		lastSkill->setScale(1.0);
 	}
 	item->setScale(1.1);
 	selectedSkill = item->getTag();
@@ -594,7 +601,7 @@ void GameScene::addTDSelect(int r, int c)
 	menuItem04->setPosition(Vec2(2*nowSize.x+10, nowSize.y));
 	menuItem05->setPosition(Vec2(-nowSize.x/2, 1*nowSize.y));
 	tPos->setTag(100);
-	this->addChild(tPos);
+	this->addChild(tPos,20);
 
 	tPos->setPosition(r*56.9 + 28.45, c*56.9 + 28.45);
 }

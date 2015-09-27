@@ -20,6 +20,7 @@ public:
 
 	void btnExitCalback(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
+	void btnIntroCalback(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 };
 
 #endif

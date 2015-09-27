@@ -73,6 +73,9 @@ Tower * Tower::createTower(int type, int row, int col)
 		break;
 	}
 
+	if (newTD != nullptr)
+		newTD->setRowColumn(row, col);
+
 	return newTD;
 }
 
@@ -118,15 +121,12 @@ bool Tower::upgrate()
 
 bool Tower::onChangeLevel(int level)
 {
-	if (newTD != nullptr)
-	{
-		newTD->setRowColumn(row, col);
-		//加上等级星数显示
-		auto level = Sprite::create("level1.png");
-		level->setName("level");
-		newTD->addChild(level);
-		level->setPosition(Vec2(0, 28));
-	}
+	//鍔犱笂绛夌骇鏄熸暟鏄剧ず
+	auto levelstar = Sprite::create("level1.png");
+	levelstar->setName("level");
+	levelstar->setPosition(Vec2(0, 28));
+	levelstar->setLocalZOrder(3);
+	addChild(levelstar);
 	return true;
 }
 

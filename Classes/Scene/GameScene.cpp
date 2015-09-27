@@ -26,6 +26,12 @@ Scene * GameScene::createScene()
 	return scene;
 }
 
+GameScene::~GameScene()
+{
+	delete stageLoader;
+	stageLoader = nullptr;
+}
+
 bool GameScene::init()
 {
 	if (!Layer::init())
@@ -34,13 +40,15 @@ bool GameScene::init()
 	}
 	GameScene::getScheduler()->setTimeScale(1.0);
 
+	stageLoader = new StageLoader("stagemap.plist");
+
 	//娣诲姞鑳屾櫙鍥剧墖
-	auto spriteBG = Sprite::create("Map_Ground_02.jpg");
+	auto spriteBG = Sprite::create(stageLoader->getBackGroundFileName());
 	addChild(spriteBG);
 	spriteBG->setPosition(Vec2(480, 320));
 
 	//娣诲姞鍦板浘鏂囦欢
-	auto Map = TMXTiledMap::create("map_0.tmx");
+	auto Map = TMXTiledMap::create(stageLoader->getTileMapFileName());
 	addChild(Map);
 	Map->setTag(0);//灏嗗湴鍥炬枃浠禩ag璁剧疆涓?
 
@@ -49,12 +57,7 @@ bool GameScene::init()
 	//初始化建塔信息
 	memset(towerInfo, 0, sizeof(towerInfo));
 
-	//设置敌人数量
-	enemyMaxCount = 20;
-	//产生一大波怪物
-	enemyCreated = 0;
-
-	schedule(schedule_selector(GameScene::EnemyCreat),1 );
+	schedule(CC_SCHEDULE_SELECTOR(GameScene::tryCreateEnemy), stageLoader->getEnemySpawnDelay());
 
 	//加载纹理到内存中
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Ice_picture.plist");
@@ -76,9 +79,6 @@ bool GameScene::init()
 
 	loadSkillPattern();
 	loadStatus();
-
-	
-
 	
 	return true;
 }
@@ -109,32 +109,39 @@ void GameScene::initAllPoints()
 }
 
 
-void GameScene::EnemyCreat(float dt)
+void GameScene::tryCreateEnemy(float dt)
 {
-	if (enemyCreated < enemyMaxCount)
+	if (currentWaveFinished) // 所有的怪都已经出场，判断怪物是否全清
 	{
-		//产生的敌人未达到最大数量则继续产生
-		++enemyCreated;
-		auto newEnemy = SimpleEnemy::create("enemy_1");
-		addChild(newEnemy);
-		enemyList.pushBack(newEnemy);
-	}
-	clearRemovedEnemyFromList();
-	if (enemyList.size() == 0)
-	{
-		//一波敌人结束后
-		enemyCreated = 0;
-		int nextWave = getWave() + 1;
-		if (nextWave > sumWave)
+		clearRemovedEnemyFromList();
+		if (enemyList.size() == 0)
 		{
-			//消灭了全部敌人，转场胜利
-			auto nextScene = WinScene::createScene();
-			auto Trans = TransitionFadeTR::create(1.0, nextScene);
-			Director::getInstance()->replaceScene(Trans);
+			if (stageLoader->toggleNextWave())
+			{
+				// 进入下一波
+				currentWaveFinished = false;
+				setWave(stageLoader->getCurrentWave()+1);
+				schedule(CC_SCHEDULE_SELECTOR(GameScene::tryCreateEnemy), stageLoader->getEnemySpawnDelay());
+			}
+			else
+			{
+				// 关卡结束
+				unschedule(CC_SCHEDULE_SELECTOR(GameScene::tryCreateEnemy));
+				auto nextScene = WinScene::createScene();
+				auto Trans = TransitionFadeTR::create(1.0, nextScene);
+				Director::getInstance()->replaceScene(Trans);
+			}
 		}
-		else
+	}
+	else
+	{
+		auto newEnemy = stageLoader->createNextEnemy();
+		if (newEnemy == nullptr) // 本波结束
+			currentWaveFinished = true;
+		else // 产生的敌人未达到最大数量
 		{
-			setWave(nextWave);
+			addChild(newEnemy);
+			enemyList.pushBack(newEnemy);
 		}
 	}
 }
@@ -301,7 +308,7 @@ void GameScene::loadStatus()
 	this->ourHealth = 20;
 	this->money = 400;
 	this->nowWave = 1;
-	this->sumWave = 2;
+	this->sumWave = stageLoader->getWaveCount();
 
 	TTFConfig myTTF;
 	myTTF.fontFilePath = "fonts/Marker Felt.ttf";
@@ -339,9 +346,12 @@ void GameScene::loadStatus()
 	status->addChild(labMoney);
 	status->addChild(labHealth);
 	status->addChild(labWave);
+
 	this->setMoney(this->money);
 	this->setWave(this->nowWave);
 	this->setHealth(this->ourHealth);
+
+	this->currentWaveFinished = false;
 
 }
 

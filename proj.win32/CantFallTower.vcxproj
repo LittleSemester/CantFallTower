@@ -177,6 +177,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Tower\TowerMoon.cpp" />
     <ClCompile Include="..\Classes\Tower\TowerStar.cpp" />
     <ClCompile Include="..\Classes\Tower\TowerThunder.cpp" />
+    <ClCompile Include="..\Classes\Util\StageLoader.cpp" />
     <ClCompile Include="..\Classes\Util\TDPoint.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -212,6 +213,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Tower\TowerMoon.h" />
     <ClInclude Include="..\Classes\Tower\TowerStar.h" />
     <ClInclude Include="..\Classes\Tower\TowerThunder.h" />
+    <ClInclude Include="..\Classes\Util\StageLoader.h" />
     <ClInclude Include="..\Classes\Util\TDPoint.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

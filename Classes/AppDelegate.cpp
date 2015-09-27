@@ -4,6 +4,7 @@
 #include "Scene/GameScene.h"
 #include "Scene/LoseScene.h"
 #include "Scene/WinScene.h"
+#include "Util/StageData.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -56,6 +57,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("res/Scene");
 	FileUtils::getInstance()->addSearchPath("res/Buff");
 	FileUtils::getInstance()->addSearchPath("res/fonts");
+
+	StageData::getInstance()->pushStageFileName("stage1.plist");
+
     // create a scene. it's an autorelease object
 	//测试游戏场景
     //auto scene = GameScene::createScene();

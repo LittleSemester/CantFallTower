@@ -175,10 +175,21 @@ void Enemy::updateBuffState()
 	if (actSprite != nullptr)
 	{
 		Color3B color(255, 255, 255);
+		if (flag&BUFF_DEFUP)
+		{
+			color = Color3B(190, 190, 190);
+		}
+		if (flag&BUFF_CURED)
+		{
+			color = Color3B(180, 255, 180);
+		}
+		if (flag&BUFF_RUSH)
+		{
+			color = Color3B(200, 255, 255);
+		}
 		if (flag&BUFF_FROZEN)
 		{
 			color = Color3B(200, 200, 255);
-			actSprite->setColor(Color3B(200, 200, 255));
 		}
 		if (flag&BUFF_DEEPFROZEN)
 		{

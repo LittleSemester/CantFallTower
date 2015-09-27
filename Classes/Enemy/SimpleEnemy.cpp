@@ -147,37 +147,154 @@ void SimpleEnemy::updateBuffState()
 void SimpleEnemy::onBuffBegin(Buff* buff)
 {
 	Enemy::onBuffBegin(buff);
-	if (buff->getFlag() & BUFF_DIZZY)
+	unsigned int flag = buff->getFlag();
+	if (flag & BUFF_DIZZY)
 	{
-		frameFly = 0;
-		actSprite->schedule([this](float){
-			actSprite->setPositionY(20 - 0.2 * (frameFly - 10) * (frameFly - 10));
-			++frameFly;
-		}, 1.0 / 60, 20, 0.0, "fly");
-		actSprite->scheduleOnce([this](float){actSprite->setPositionY(0.0); }, 0.34, "flystop");
-
-		auto dizzy = Sprite::create();
-		auto ani = Animation::create();
-
-		char szName[100];
-		for (int i = 0; i <= 2; ++i)
-		{
-			sprintf(szName, "Yun/Dizzy_Buff_%02d.png", i);
-			ani->addSpriteFrameWithFile(szName);
-		}
-
-		ani->setDelayPerUnit(0.095);
-		dizzy->runAction(Sequence::create(
-			Repeat::create(Animate::create(ani), 7),
-			CallFunc::create([dizzy](){dizzy->removeFromParent(); }),
-			nullptr));
-
-		Size s = actSprite->getContentSize();
-		dizzy->setPosition(s.width*0.5, s.height);
-		dizzy->setScale(0.6);
-		//dizzy->setLocalZOrder(10);
-
-		actSprite->addChild(dizzy);
-
+		doBuffDizzy();
 	}
+	if (flag & BUFF_RUSH)
+	{
+		doBuffRush(true);
+	}
+	if (flag & BUFF_DEFUP)
+	{
+		doBuffDef(true);
+	}
+	if (flag & BUFF_CURED)
+	{
+		doBuffCured(true);
+	}
+}
+
+void SimpleEnemy::onBuffEnd(Buff* buff)
+{
+	Enemy::onBuffEnd(buff);
+	unsigned int flag = getBuffFlag();
+	if (!(flag & BUFF_RUSH))
+	{
+		doBuffRush(false);
+	}
+	if (!(flag & BUFF_DEFUP))
+	{
+		doBuffDef(false);
+	}
+	if (!(flag & BUFF_CURED))
+	{
+		doBuffCured(false);
+	}
+}
+
+void SimpleEnemy::doBuffDizzy()
+{
+	frameFly = 0;
+	actSprite->schedule([this](float){
+		actSprite->setPositionY(20 - 0.2 * (frameFly - 10) * (frameFly - 10));
+		++frameFly;
+	}, 1.0 / 60, 20, 0.0, "fly");
+	actSprite->scheduleOnce([this](float){actSprite->setPositionY(0.0); }, 0.34, "flystop");
+
+	auto dizzy = Sprite::create();
+	auto ani = Animation::create();
+
+	char szName[100];
+	for (int i = 0; i <= 2; ++i)
+	{
+		sprintf(szName, "Yun/Dizzy_Buff_%02d.png", i);
+		ani->addSpriteFrameWithFile(szName);
+	}
+
+	ani->setDelayPerUnit(0.095);
+	dizzy->runAction(Sequence::create(
+		Repeat::create(Animate::create(ani), 7),
+		CallFunc::create([dizzy](){dizzy->removeFromParent(); }),
+		nullptr));
+
+	Size s = actSprite->getContentSize();
+	dizzy->setPosition(s.width*0.5, s.height);
+	dizzy->setScale(0.6);
+	//dizzy->setLocalZOrder(10);
+
+	actSprite->addChild(dizzy);
+}
+
+void SimpleEnemy::doBuffRush(bool on)
+{
+	if (!on)
+	{
+		removeChildByTag(BUFF_TAG_RUSH);
+		return;
+	}
+
+	if(getChildByTag(BUFF_TAG_RUSH) != nullptr)
+		return;
+
+	auto rush = Sprite::create();
+	auto ani = Animation::create();
+
+	char szName[100];
+	for (int i = 0; i <= 4; ++i)
+	{
+		sprintf(szName, "Jiasu/Rush_Buff_%02d.png", i);
+		ani->addSpriteFrameWithFile(szName);
+	}
+
+	ani->setDelayPerUnit(0.16);
+	rush->runAction(RepeatForever::create(Animate::create(ani)));
+	rush->setScale(0.8, 0.5);
+	rush->setOpacity(120);
+	rush->setAnchorPoint(Vec2(0.45, 0.4));
+	rush->setTag(BUFF_TAG_RUSH);
+
+	this->addChild(rush);
+}
+
+void SimpleEnemy::doBuffDef(bool on)
+{
+	if (!on)
+	{
+		removeChildByTag(BUFF_TAG_DEF);
+		return;
+	}
+
+	if (getChildByTag(BUFF_TAG_DEF) != nullptr)
+		return;
+
+	auto def = Sprite::create("Jianshang/Jianshang_Buff_00.png");
+	def->runAction(RepeatForever::create(Sequence::create(FadeTo::create(1, 130), FadeTo::create(1, 255), nullptr)));
+	def->setPositionY(50.0);
+	def->setScale(0.5);
+	def->setTag(BUFF_TAG_DEF);
+
+	this->addChild(def);
+}
+
+void SimpleEnemy::doBuffCured(bool on)
+{
+	if (!on)
+	{
+		removeChildByTag(BUFF_TAG_CURED);
+		return;
+	}
+
+	if (getChildByTag(BUFF_TAG_CURED) != nullptr)
+		return;
+
+	auto cure = Sprite::create();
+	auto ani = Animation::create();
+
+	char szName[100];
+	for (int i = 0; i <= 24; ++i)
+	{
+		sprintf(szName, "Jiaxue/Jiaxue_Buff_%02d.png", i);
+		ani->addSpriteFrameWithFile(szName);
+	}
+
+	ani->setDelayPerUnit(0.05);
+	cure->runAction(RepeatForever::create(Animate::create(ani)));
+	cure->setScale(1.5);
+	//cure->setOpacity(200);
+	//cure->setAnchorPoint(Vec2(0.45, 0.4));
+	cure->setTag(BUFF_TAG_CURED);
+
+	this->addChild(cure);
 }

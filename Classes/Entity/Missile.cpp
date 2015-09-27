@@ -82,7 +82,7 @@ bool Missile::judgeSingleEnemy(Enemy* enemy)
 
 void Missile::setTarget(Enemy* enemy)
 {
-	if (enemy == nullptr)
+	if (enemy == nullptr || enemy == target)
 		return;
 	if (target != nullptr)
 		target->release();

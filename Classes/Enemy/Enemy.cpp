@@ -66,6 +66,11 @@ int Enemy::defence()
 	return 0;
 }
 
+int Enemy::reward()
+{
+	return 0;
+}
+
 int Enemy::dealDamage(double damage, bool direct/*=false*/)
 {
 	if (!direct)
@@ -237,3 +242,4 @@ void Enemy::onBuffEnd(Buff* buff)
 {
 	updateBuffState();
 }
+

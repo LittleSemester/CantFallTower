@@ -18,6 +18,7 @@ protected:
 	std::string type; //怪物类型
 	int maxhp;
 	int def;
+	int money;
 
 	int frameFly;
 
@@ -44,6 +45,7 @@ public:
 
 	virtual int maxHP();
 	virtual int defence();
+	virtual int reward();
 
 	static SimpleEnemy* create(const std::string& type);
 

@@ -18,6 +18,8 @@
       <integer>0</integer>
       <key>speed</key>
       <real>50</real>
+      <key>money</key>
+      <real>10</real>
     </dict>
     <key>Snow_Sheep</key>
     <dict>
@@ -41,6 +43,8 @@
       <integer>0</integer>
       <key>speed</key>
       <real>60</real>
+      <key>money</key>
+      <real>20</real>
       <key>buffs</key>
       <array>
         <dict>
@@ -76,6 +80,8 @@
       <integer>0</integer>
       <key>speed</key>
       <real>50</real>
+      <key>money</key>
+      <real>10</real>
     </dict>
 		<key>Snow_Men</key>
 		<dict>
@@ -108,6 +114,8 @@
 			<integer>0</integer>
 			<key>speed</key>
 			<real>30</real>
+      <key>money</key>
+      <real>20</real>
 		</dict>
 		<key>Snow_Boss</key>
 		<dict>
@@ -140,6 +148,8 @@
 			<integer>5</integer>
 			<key>speed</key>
 			<real>30</real>
+      <key>money</key>
+      <real>200</real>
 			<key>buffs</key>
 			<array>
 				<dict>

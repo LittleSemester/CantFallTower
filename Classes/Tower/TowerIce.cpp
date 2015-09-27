@@ -7,9 +7,17 @@ USING_NS_CC;
 
 TowerIce::TowerIce()
 {
-	attack = 30;
+	attack = 7;
 	radius = 100;
 	interval = 1;
+	//各个级别需要金钱
+	cost[1] = 160;
+	cost[2] = 200;
+	cost[3] = 240;
+	sell[1] = 80;
+	sell[2] = 180;
+	sell[3] = 300;
+	currLevel = 1;
 }
 
 bool TowerIce::init()

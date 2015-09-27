@@ -76,6 +76,7 @@ Tower * Tower::createTower(int type, int row, int col)
 	if (newTD != nullptr)
 		newTD->setRowColumn(row, col);
 
+
 	return newTD;
 }
 
@@ -90,6 +91,16 @@ void Tower::fire()
 {
 	if (enemyInRange.size() > 0)
 		onFire();
+}
+
+int Tower::getCurrLevel()
+{
+	return currLevel;
+}
+
+int Tower::getSellMoney(int Level)
+{
+	return sell[Level];
 }
 
 void Tower::doFire(float delta)
@@ -121,8 +132,22 @@ bool Tower::upgrate()
 
 bool Tower::onChangeLevel(int level)
 {
+	//删除先前的星数显示
+	Sprite* lastStar =(Sprite*) this->getChildByName("level");
+	if (lastStar != nullptr)
+	{
+		lastStar->removeFromParent();
+	}
 	//加上等级星数显示
-	auto levelstar = Sprite::create("level1.png");
+	char nowLevel[20];
+	memset(nowLevel, 0, sizeof(nowLevel));
+	sprintf(nowLevel, "level%d", level);
+	nowLevel[6] = '.';
+	nowLevel[7] = 'p';
+	nowLevel[8] = 'n';
+	nowLevel[9] = 'g';
+	std::string strLevel = nowLevel;
+	auto levelstar = Sprite::create(strLevel);
 	levelstar->setName("level");
 	levelstar->setPosition(Vec2(0, 28));
 	levelstar->setLocalZOrder(3);
@@ -132,5 +157,5 @@ bool Tower::onChangeLevel(int level)
 
 int Tower::getMoney(int level /*= 1*/)
 {
-	return 0;
+	return cost[level];
 }

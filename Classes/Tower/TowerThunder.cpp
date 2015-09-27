@@ -11,6 +11,14 @@ TowerThunder::TowerThunder()
 	attack = 20;
 	radius = 100;
 	interval = 0.5;
+	//各个级别需要金钱
+	cost[1] = 150;
+	cost[2] = 200;
+	cost[3] = 250;
+	sell[1] = 75;
+	sell[2] = 175;
+	sell[3] = 300;
+	currLevel = 1;
 }
 
 void TowerThunder::onFire()

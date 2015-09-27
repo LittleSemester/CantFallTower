@@ -28,6 +28,8 @@ protected:
 	double attack;//攻击力
 	double radius;//攻击范围
 	double interval;//单次攻击时间
+	int cost[4];//每次升级的价格
+	int sell[4];//变卖所得价钱
 
 	TowerType type;//塔的类型
 
@@ -66,6 +68,9 @@ public:
 
 	void fire();
 
+	int getCurrLevel();
+
+	int getSellMoney(int Level);
 };
 
 #endif

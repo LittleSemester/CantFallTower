@@ -30,6 +30,14 @@ TowerStar::TowerStar()
 	radius = 100;
 	attack = 15;
 	interval = 0.8;
+	//各个级别需要金钱
+	cost[1] = 220;
+	cost[2] = 260;
+	cost[3] = 300;
+	sell[1] = 110;
+	sell[2] = 240;
+	sell[3] = 390;
+	currLevel = 1;
 }
 
 

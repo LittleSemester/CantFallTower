@@ -29,8 +29,16 @@ void TowerMoon::onFire()
 TowerMoon::TowerMoon()
 {
 	radius = 150;
-	attack = 9;
+	attack = 10.0;
 	interval = 1.0;
+	//各个级别需要金钱
+	cost[1] = 200;
+	cost[2] = 240;
+	cost[3] = 280;
+	sell[1] = 100;
+	sell[2] = 220;
+	sell[3] = 360;
+	currLevel = 1;
 }
 
 

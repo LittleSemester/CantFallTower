@@ -310,7 +310,7 @@ void GameScene::loadStatus()
 
 	//初始化状态
 	this->ourHealth = 20;
-	this->money = 400;
+	this->money = 1000;
 	this->nowWave = 1;
 	this->sumWave = stageLoader->getWaveCount();
 
@@ -366,7 +366,11 @@ void GameScene::selectSkill(Ref * obj)
 	{
 		this->removeChildByTag(100);
 	}
-	
+	//移除升级面板
+	if (this->getChildByTag(99) != nullptr)
+	{
+		this->removeChildByTag(99);
+	}
 	auto item = (MenuItemSprite *)obj;
 	
 	if (selectedSkill == item->getTag() && currSkill!=nullptr)
@@ -424,7 +428,11 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 	{
 		this->removeChildByTag(100);
 	}
-
+	//移除升级面板
+	if (this->getChildByTag(99) != nullptr)
+	{
+		this->removeChildByTag(99);
+	}
 	Vec2 now = touch->getLocation();
 
 	if (currSkill != nullptr) // 使用技能
@@ -465,6 +473,7 @@ bool GameScene::onTouchBegan(Touch * touch, Event * unused_event)
 			if (towerInfo[nowCol][nowRow])
 			{
 				//如果已经有塔，变卖或升级
+				updateTD(nowRow,10 - nowCol);
 			}
 			else
 			{
@@ -560,25 +569,25 @@ void GameScene::addTDSelect(int r, int c)
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem01->setTag(10);
 	menuItem01->setAnchorPoint(Vec2(0.5, 0));
-	auto price1 = createPrice(200);
+	auto price1 = createPrice(150);
 	menuItem01->addChild(price1);
 
 	auto menuItem02 = MenuItemSprite::create(bt02, bt02_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem02->setTag(11);
 	menuItem02->setAnchorPoint(Vec2(0, 0));
-	auto price2 = createPrice(200);
+	auto price2 = createPrice(160);
 	menuItem02->addChild(price2);
 
 	auto menuItem03 = MenuItemSprite::create(bt03, bt03_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem03->setTag(12);
 	menuItem03->setAnchorPoint(Vec2(1, 0));
-	auto price3 = createPrice(200);
+	auto price3 = createPrice(180);
 	menuItem03->addChild(price3);
 
 	auto menuItem04 = MenuItemSprite::create(bt04, bt04_sel, CC_CALLBACK_1(GameScene::selectTD, this));
 	menuItem04->setTag(13);
 	menuItem04->setAnchorPoint(Vec2(0,0));
-	auto price4 = createPrice(200);
+	auto price4 = createPrice(220);
 	menuItem04->addChild(price4);
 	price4->setPosition(18, 65);
 
@@ -613,43 +622,68 @@ void GameScene::selectTD(Ref * obj)
 	{
 	case 10:
 	{
+		//如果没钱
+		if (getMoney() < 150)
+			break;
 		Tower * TD = Tower::createTower(TOWER_THUNDER, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
+		towerObjs[nowCol][nowRow] = TD;
+		setMoney(getMoney() - 150);
 		break;
 	}
 	case 11:
 	{
+		//如果没钱
+		if (getMoney() < 160)
+			break;
 		Tower * TD = Tower::createTower(TOWER_ICE, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
+		towerObjs[nowCol][nowRow] = TD;
+		setMoney(getMoney() - 160);
 		break;
 	}
 	case 12:
 	{
+		//如果没钱
+		if (getMoney() < 180)
+			break;
 		Tower * TD = Tower::createTower(TOWER_FIRE, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
+		towerObjs[nowCol][nowRow] = TD;
+		setMoney(getMoney() - 180);
 		break;
 	}
 	case 13:
 		
 	{
+		//如果没钱
+		if (getMoney() < 220)
+			break;
 		Tower * TD = Tower::createTower(TOWER_ARROW, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
+		towerObjs[nowCol][nowRow] = TD;
+		setMoney(getMoney() - 220);
 		break;
 	}
 	case 14:
 	{
+		//如果没钱
+		if (getMoney() < 200)
+			break;
 		Tower * TD = Tower::createTower(TOWER_KNIFE, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
+		towerObjs[nowCol][nowRow] = TD;
+		setMoney(getMoney() - 200);
 		break;
 	}
 	default:
@@ -659,6 +693,11 @@ void GameScene::selectTD(Ref * obj)
 	if (this->getChildByTag(100) != nullptr)
 	{
 		this->removeChildByTag(100);
+	}
+	//移除升级面板
+	if (this->getChildByTag(99) != nullptr)
+	{
+		this->removeChildByTag(99);
 	}
 }
 
@@ -949,29 +988,87 @@ void GameScene::updateTD(int r, int c)
 {
 	auto tPos = Sprite::create("towerSel.png");
 	Vec2 nowSize = tPos->getContentSize();
+	Tower* thisTD = towerObjs[10-c][r];
+	thisTD->setName("thisTD");
+	Sprite *btn_up;
+	Sprite *btn_up_sel;
 
-	auto btn_up = updatePrice(250);
-	auto btn_up_sel = updatePrice(250);
-	btn_up_sel->setScale(1.1);
+	int nextLevel = thisTD->getCurrLevel() + 1;
+	if (nextLevel > 3)
+	{
+		btn_up = Sprite::create("ui_updatemax.png");
+		btn_up_sel = Sprite::create("ui_updatemax.png");
+	}
+	else
+	{
+		int needMoney = thisTD->getMoney(nextLevel);
+		btn_up = updatePrice(needMoney);
+		btn_up_sel = updatePrice(needMoney);
+		btn_up_sel->setScale(1.1);
+	}
 
 	auto menuItemUp = MenuItemSprite::create(btn_up, btn_up_sel, CC_CALLBACK_1(GameScene::selectUpdate, this));
-	menuItemUp->setName("update");
+	menuItemUp->setTag(20);
 
-	auto btn_re = sellPrice(125);
-	auto btn_re_sel = sellPrice(125);
+	int nowLevel = thisTD->getCurrLevel();
+	int sellMoney = thisTD->getSellMoney(nowLevel);
+	auto btn_re = sellPrice(sellMoney);
+	auto btn_re_sel = sellPrice(sellMoney);
 	btn_re_sel->setScale(1.1);
 
 	auto menuItemRe = MenuItemSprite::create(btn_re, btn_re_sel, CC_CALLBACK_1(GameScene::selectUpdate, this));
-	menuItemRe->setName("remove");
+	menuItemRe->setTag(21);
 
 	auto menuTD = Menu::create(menuItemUp,menuItemRe, nullptr);
+	menuTD->setPosition(Vec2::ZERO);
+	tPos->addChild(menuTD);
 
+
+	menuItemUp->setAnchorPoint(Vec2(1, 0.5));
+	menuItemRe->setAnchorPoint(Vec2(0, 0.5));
+	menuItemUp->setPosition(Vec2(0, nowSize.y/2));
+	menuItemRe->setPosition(Vec2(nowSize.x, nowSize.y/2));
+	tPos->setTag(99);
+	this->addChild(tPos, 25);
+
+	tPos->setPosition(r*56.9 + 28.45, c*56.9 + 28.45);
 }
 
 void GameScene::selectUpdate(cocos2d::Ref * obj)
 {
 	auto item = (MenuItemSprite *)obj;
-
+	Tower* thisTD =(Tower*) this->getChildByName("thisTD");
+	switch (item->getTag())
+	{
+	case 20:
+	{
+		//选择升级
+		if (thisTD->getCurrLevel() == 3)
+			break;
+		if (thisTD->getMoney(thisTD->getCurrLevel() + 1) > this->money)
+			break;
+		this->setMoney(this->money-thisTD->getMoney(thisTD->getCurrLevel()+1));
+		thisTD->upgrate();
+		
+		break;
+	}
+	case 21:
+	{
+		//选择变卖
+		this->setMoney(thisTD->getSellMoney(thisTD->getCurrLevel()) + this->money);
+		thisTD->removeFromParent();
+		towerInfo[nowCol][nowRow] = 0;
+		towerObjs[nowCol][nowRow] = nullptr;
+		break;
+	}
+	default:
+		break;
+	}
+	//移除升级面板
+	if (this->getChildByTag(99) != nullptr)
+	{
+		this->removeChildByTag(99);
+	}
 }
 
 cocos2d::Sprite * GameScene::createPrice(int money)
@@ -1010,11 +1107,23 @@ cocos2d::Sprite * GameScene::updatePrice(int money)
 	std::string strMoney = std::to_string(money);
 	Label* labPrice = Label::createWithTTF(myTTF, strMoney);
 	price->addChild(labPrice);
-	labPrice->setPosition(0, -10);
+	labPrice->setPosition(28, 8);
 	return price;
 }
 
 cocos2d::Sprite * GameScene::sellPrice(int money)
 {
-	return nullptr;
+	Sprite* sellPrice;
+	sellPrice = Sprite::create("ui_remove.png");
+	sellPrice->setPosition(Vec2(0, 0));
+	sellPrice->setOpacity(200);
+	TTFConfig myTTF;
+	myTTF.fontFilePath = "fonts/Marker Felt.ttf";
+	myTTF.fontSize = 16;
+	myTTF.glyphs = GlyphCollection::DYNAMIC;
+	std::string strMoney = std::to_string(money);
+	Label* labPrice = Label::createWithTTF(myTTF, strMoney);
+	sellPrice->addChild(labPrice);
+	labPrice->setPosition(28, 8);
+	return sellPrice;
 }

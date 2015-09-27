@@ -38,7 +38,7 @@ bool FireDir::init()
 	sprite->runAction(repeatFire);
 	this->addChild(sprite);
 
-	this->baseDamage = 7.0;
+	this->baseDamage = 10.0;
 	this->initSpeed = 250.0;
 
 	return true;

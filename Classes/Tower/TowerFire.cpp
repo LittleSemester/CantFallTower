@@ -6,9 +6,16 @@ USING_NS_CC;
 
 TowerFire::TowerFire()
 {
-	attack = 30;
+	attack = 10;
 	radius = 150;
 	interval = 0.7;
+	cost[1] = 180;
+	cost[2] = 220;
+	cost[3] = 260;
+	sell[1] = 90;
+	sell[2] = 200;
+	sell[3] = 330;
+	currLevel = 1;
 }
 
 void TowerFire::onFire()

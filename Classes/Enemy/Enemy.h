@@ -44,6 +44,7 @@ public:
 
 	virtual int maxHP();
 	virtual int defence();
+	virtual int reward();
 
 	// 对该敌人造成伤害，期间检查敌人各项属性和buff，指定direct=true造成直伤；返回最终伤害量
 	virtual int dealDamage(double damage, bool direct=false);

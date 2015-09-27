@@ -6,6 +6,7 @@
 #include "Skill/ShakingWave.h"
 #include "Scene/WinScene.h"
 #include "Scene/MainScene.h"
+#include "Util/StageData.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -40,7 +41,8 @@ bool GameScene::init()
 	}
 	GameScene::getScheduler()->setTimeScale(1.0);
 
-	stageLoader = new StageLoader("stagemap.plist");
+	const char* stage = StageData::getInstance()->getCurrentStageFileName();
+	stageLoader = new StageLoader(stage);
 
 	//娣诲姞鑳屾櫙鍥剧墖
 	auto spriteBG = Sprite::create(stageLoader->getBackGroundFileName());
@@ -130,6 +132,7 @@ void GameScene::tryCreateEnemy(float dt)
 			{
 				// 关卡结束
 				unschedule(CC_SCHEDULE_SELECTOR(GameScene::tryCreateEnemy));
+				StageData::getInstance()->toggleNextStage();
 				auto nextScene = WinScene::createScene();
 				auto Trans = TransitionFadeTR::create(1.0, nextScene);
 				Director::getInstance()->replaceScene(Trans);

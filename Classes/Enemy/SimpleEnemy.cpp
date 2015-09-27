@@ -22,6 +22,7 @@ bool SimpleEnemy::init()
 	this->maxhp = props->valueForKey("maxHp")->intValue();
 	this->def = props->valueForKey("defence")->intValue();
 	this->speed = props->valueForKey("speed")->doubleValue();
+	this->money = props->valueForKey("money")->doubleValue();
 	this->height = props->valueForKey("height")->doubleValue();
 
 	// 基类初始化
@@ -111,6 +112,11 @@ int SimpleEnemy::maxHP()
 int SimpleEnemy::defence()
 {
 	return def;
+}
+
+int SimpleEnemy::reward()
+{
+	return money;
 }
 
 SimpleEnemy* SimpleEnemy::create(const std::string& type)

@@ -2,6 +2,87 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+    <key>Template_Empty</key>
+    <dict>
+      <key>animpic</key>
+      <array>
+        <string>Some/Path_Here_00.png</string>
+      </array>
+      <key>animdelay</key>
+      <real>0.05</real>
+      <key>height</key>
+      <real>55</real>
+      <key>maxHp</key>
+      <integer>300</integer>
+      <key>defence</key>
+      <integer>0</integer>
+      <key>speed</key>
+      <real>50</real>
+      <key>money</key>
+      <real>10</real>
+    </dict>
+    <key>Snow_Sheep</key>
+    <dict>
+      <key>animpic</key>
+      <array>
+        <string>Snow/Snow_Sheep_00.png</string>
+        <string>Snow/Snow_Sheep_01.png</string>
+        <string>Snow/Snow_Sheep_02.png</string>
+        <string>Snow/Snow_Sheep_03.png</string>
+        <string>Snow/Snow_Sheep_04.png</string>
+        <string>Snow/Snow_Sheep_05.png</string>
+        <string>Snow/Snow_Sheep_06.png</string>
+      </array>
+      <key>animdelay</key>
+      <real>0.05</real>
+      <key>height</key>
+      <real>55</real>
+      <key>maxHp</key>
+      <integer>300</integer>
+      <key>defence</key>
+      <integer>0</integer>
+      <key>speed</key>
+      <real>60</real>
+      <key>money</key>
+      <real>20</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>12</real>
+          <key>effects</key>
+          <string>1.0,1.0,1.0,1.5,0.0,0.0</string>
+          <key>flag</key>
+          <integer>64</integer>
+        </dict>
+      </array>
+    </dict>
+    <key>Snow_Dog</key>
+    <dict>
+      <key>animpic</key>
+      <array>
+        <string>Snow/Snow_Dog_00.png</string>
+        <string>Snow/Snow_Dog_01.png</string>
+        <string>Snow/Snow_Dog_02.png</string>
+        <string>Snow/Snow_Dog_03.png</string>
+        <string>Snow/Snow_Dog_04.png</string>
+        <string>Snow/Snow_Dog_05.png</string>
+        <string>Snow/Snow_Dog_06.png</string>
+        <string>Snow/Snow_Dog_07.png</string>
+      </array>
+      <key>animdelay</key>
+      <real>0.05</real>
+      <key>height</key>
+      <real>40</real>
+      <key>maxHp</key>
+      <integer>120</integer>
+      <key>defence</key>
+      <integer>0</integer>
+      <key>speed</key>
+      <real>50</real>
+      <key>money</key>
+      <real>10</real>
+    </dict>
 		<key>Snow_Men</key>
 		<dict>
 			<key>animpic</key>
@@ -32,7 +113,9 @@
 			<key>defence</key>
 			<integer>0</integer>
 			<key>speed</key>
-			<real>50</real>
+			<real>30</real>
+      <key>money</key>
+      <real>20</real>
 		</dict>
 		<key>Snow_Boss</key>
 		<dict>
@@ -65,16 +148,10 @@
 			<integer>5</integer>
 			<key>speed</key>
 			<real>30</real>
+      <key>money</key>
+      <real>200</real>
 			<key>buffs</key>
 			<array>
-				<dict>
-					<key>time</key>
-					<real>12</real>
-					<key>effects</key>
-					<string>1.0,1.0,1.0,1.5,0.0,0.0</string>
-					<key>flag</key>
-					<integer>64</integer>
-				</dict>
 				<dict>
 					<key>time</key>
 					<real>120</real>

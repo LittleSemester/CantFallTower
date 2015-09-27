@@ -34,8 +34,6 @@
 			<key>speed</key>
 			<real>50</real>
 		</dict>
-	</dict>
-	<dict>
 		<key>Snow_Boss</key>
 		<dict>
 			<key>animpic</key>

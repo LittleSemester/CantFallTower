@@ -223,6 +223,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ResourceCompile Include="game.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Resources\res\Enemy\enemies.plist" />
+    <None Include="..\Resources\res\Enemy\Monster.plist" />
     <None Include="..\Resources\res\Tower\Ice_Attack.plist" />
     <None Include="..\Resources\res\Tower\Ice_picture.plist" />
   </ItemGroup>

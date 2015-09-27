@@ -215,6 +215,12 @@
   <ItemGroup>
     <None Include="..\Resources\res\Tower\Ice_Attack.plist" />
     <None Include="..\Resources\res\Tower\Ice_picture.plist" />
+    <None Include="..\Resources\res\Enemy\enemies.plist">
+      <Filter>Enemy</Filter>
+    </None>
+    <None Include="..\Resources\res\Enemy\Monster.plist">
+      <Filter>Enemy</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

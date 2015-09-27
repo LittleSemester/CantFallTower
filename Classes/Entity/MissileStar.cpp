@@ -17,6 +17,7 @@ bool MissileStar::init()
 
 	this->remainTime = 0.3;
 	this->baseDamage = 10.0;
+	this->initSpeed = 150.0;
 
 	return true;
 }

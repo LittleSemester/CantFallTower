@@ -16,7 +16,6 @@ bool MissileStar::init()
 	this->addChild(sprite);
 
 	this->remainTime = 0.3;
-	this->speedGradient = 1.3;
 	this->baseDamage = 10.0;
 
 	return true;

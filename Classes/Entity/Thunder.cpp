@@ -67,7 +67,7 @@ void Thunder::onEnter()
 
 void Thunder::setTarget(Enemy* enemy)
 {
-	if (enemy == nullptr)
+	if (enemy == nullptr || enemy == target)
 		return;
 	if (target != nullptr)
 		target->release();

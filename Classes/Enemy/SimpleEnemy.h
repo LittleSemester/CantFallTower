@@ -7,6 +7,10 @@
 #include "Enemy.h"
 #include <string>
 
+#define BUFF_TAG_RUSH 13312
+#define BUFF_TAG_DEF 13313
+#define BUFF_TAG_CURED 13314
+
 class SimpleEnemy : public Enemy
 {
 protected:
@@ -21,8 +25,15 @@ protected:
 	cocos2d::Animate* aniWalk;
 
 	virtual void onBuffBegin(Buff* buff);
+	virtual void onBuffEnd(Buff* buff);
 
 	virtual void updateBuffState();
+
+	void doBuffDizzy();
+
+	void doBuffRush(bool on = true);
+	void doBuffDef(bool on = true);
+	void doBuffCured(bool on = true);
 
 public:
 

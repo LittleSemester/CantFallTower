@@ -199,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="main.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Util\StageLoader.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerStar.h">
+      <Filter>Tower</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\res\Tower\Ice_Attack.plist" />

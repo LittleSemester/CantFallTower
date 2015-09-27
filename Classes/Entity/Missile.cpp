@@ -10,7 +10,7 @@ Missile::Missile()
 {
 	judgeDistance = 0.0;
 	remainTime = 1.0;
-	speedGradient = 1.0;
+	initSpeed = 200.0;
 	target = nullptr;
 }
 
@@ -38,29 +38,32 @@ void Missile::update(float delta)
 	if (isFinished())
 		return;
 
-	// 剩余飞行时间结束！
-	if (delta > remainTime)
-	{
-		targetReached = true;
-		delta = remainTime;
-	}
-
 	Vec2 vecThis = this->getPosition();
 	Vec2 vecTarget = target->getPosition();
 	Vec2 vecDist = vecTarget - vecThis;
+	double expectSpeed = vecDist.length() / remainTime;
+	if (expectSpeed < initSpeed)
+		expectSpeed = initSpeed;
 
-	// 按时间比例移动到合适地点
-	vecDist *= (targetReached ? 1.0 : speedGradient) * delta / remainTime;
-	vecThis += vecDist;
-	this->setPosition(vecThis);
-
-	remainTime -= delta;
-
-	// 如果先前标记了targetReached，则对target进行一次判定
-	if (targetReached)
+	// 剩余飞行时间结束或者到达目标
+	if (delta > remainTime || expectSpeed * delta >= vecDist.length())
 	{
+		targetReached = true;
+		// 对target进行一次判定
+		remainTime -= delta;
+		if (remainTime < 0)
+			remainTime = 0;
+		setPosition(target->getPosition());
 		acquireJudge();
 		removeFromParent();
+	}
+	else
+	{
+		vecDist.normalize();
+		vecDist *= expectSpeed*delta;
+		vecThis += vecDist;
+		this->setPosition(vecThis);
+		remainTime -= delta;
 	}
 
 }
@@ -82,7 +85,7 @@ bool Missile::judgeSingleEnemy(Enemy* enemy)
 
 void Missile::setTarget(Enemy* enemy)
 {
-	if (enemy == nullptr)
+	if (enemy == nullptr || enemy == target)
 		return;
 	if (target != nullptr)
 		target->release();

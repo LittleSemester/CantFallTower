@@ -20,7 +20,7 @@ protected:
 
 	double remainTime;
 	double judgeDistance;
-	double speedGradient;
+	double initSpeed;
 
 	Enemy* target;
 

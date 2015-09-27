@@ -85,7 +85,17 @@ int Enemy::dealDamage(double damage, bool direct/*=false*/)
 	return finalDamage;
 }
 
-
+void Enemy::dealCure(double cure)
+{
+	int finalCure = (int)cure;
+	if (finalCure > 0)
+	{
+		healthPoint += finalCure;
+		if (healthPoint > maxHP())
+			healthPoint = maxHP();
+		hpBar->setPercent(100.0 * healthPoint / maxHP());
+	}
+}
 
 double Enemy::calcDefencedDamage(double damage, double defence)
 {
@@ -168,28 +178,51 @@ void Enemy::moveEnemy(float dt)
 	}
 }
 
+void Enemy::cureEnemy(float dt)
+{
+	double cure = (int)getBuffValue(&Buff::cureOnce);
+	this->dealCure(cure);
+}
+
 void Enemy::updateBuffState()
 {
 	unsigned int flag = getBuffFlag();
 
 	if (actSprite != nullptr)
 	{
-		if (flag == BUFF_NONE)
+		Color3B color(255, 255, 255);
+		if (flag&BUFF_DEFUP)
 		{
-			actSprite->setColor(Color3B(255, 255, 255));
+			color = Color3B(190, 190, 190);
 		}
-		else
+		if (flag&BUFF_CURED)
 		{
-			if (flag&BUFF_FROZEN)
-			{
-				actSprite->setColor(Color3B(200, 200, 255));
-			}
-			if (flag&BUFF_DEEPFROZEN)
-			{
-				actSprite->setColor(Color3B(127, 127, 255));
-			}
+			color = Color3B(180, 255, 180);
 		}
+		if (flag&BUFF_RUSH)
+		{
+			color = Color3B(200, 255, 255);
+		}
+		if (flag&BUFF_FROZEN)
+		{
+			color = Color3B(200, 200, 255);
+		}
+		if (flag&BUFF_DEEPFROZEN)
+		{
+			color = Color3B(127, 127, 255);
+		}
+		actSprite->setColor(color);
 	}
+
+	if (flag&BUFF_CURED)
+	{
+		this->schedule(CC_SCHEDULE_SELECTOR(Enemy::cureEnemy), 0.2, CC_REPEAT_FOREVER, 0.2);
+	}
+	else
+	{
+		this->unschedule(CC_SCHEDULE_SELECTOR(Enemy::cureEnemy));
+	}
+
 }
 
 void Enemy::onBuffBegin(Buff* buff)

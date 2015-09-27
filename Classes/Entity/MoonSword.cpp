@@ -34,12 +34,13 @@ bool MoonSword::init()
 	auto repeatMoon = RepeatForever::create(ani);
 
 	sprite = Sprite::create();
-	sprite->setScale(0.7);
+	sprite->setScale(0.5);
 	sprite->runAction(repeatMoon);
 	this->addChild(sprite);
 
 	this->remainTime = 0.5;
 	this->baseDamage = 10.0;
+	this->initSpeed = 340.0;
 
 	return true;
 }

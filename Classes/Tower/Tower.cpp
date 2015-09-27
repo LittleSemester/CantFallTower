@@ -112,3 +112,23 @@ void Tower::onBuffEnd(Buff* buff)
 {
 	this->schedule(CC_SCHEDULE_SELECTOR(Tower::doFire), interval / calcBuffedValue(&Buff::speed, 1.0));
 }
+
+bool Tower::upgrate()
+{
+	if (onChangeLevel(currLevel + 1))
+	{
+		++currLevel;
+		return true;
+	}
+	return false;
+}
+
+bool Tower::onChangeLevel(int level)
+{
+	return false;
+}
+
+int Tower::getMoney(int level /*= 1*/)
+{
+	return 0;
+}

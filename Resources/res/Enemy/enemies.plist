@@ -37,9 +37,17 @@
 					<key>time</key>
 					<real>12</real>
 					<key>effects</key>
-					<string>1.0,1.0,1.0,2.0</string>
+					<string>1.0,1.0,1.0,2.0,0.0,0.0</string>
 					<key>flag</key>
 					<integer>64</integer>
+				</dict>
+				<dict>
+					<key>time</key>
+					<real>30</real>
+					<key>effects</key>
+					<string>1.0,1.0,0.8,1.0,0.0,5.0</string>
+					<key>flag</key>
+					<integer>20</integer>
 				</dict>
 			</array>
 		</dict>

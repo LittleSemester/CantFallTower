@@ -8,11 +8,13 @@
 #include "Entity/Entity.h"
 #include "Enemy/Enemy.h"
 #include "Util/StageLoader.h"
+#include "Tower/Tower.h"
 #include <cmath>
 
 class Enemy;
 class Entity;
 class Skill;
+class Tower;
 
 using namespace cocostudio::timeline;
 class GameScene:public cocos2d::Layer

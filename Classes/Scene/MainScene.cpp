@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 #include "Enemy/TestEnemy.h"
 #include "GameScene.h"
+#include "IntroScene.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -37,7 +38,7 @@ bool MainScene::init()
 		return false;
 	}
 
-	auto backGround = Sprite::create("MainScreen.png");
+	auto backGround = Sprite::create("MainScreen_back.png");
 	addChild(backGround);
 	backGround->setPosition(Vec2(480, 320));
 
@@ -46,14 +47,21 @@ bool MainScene::init()
 	btn_Start->setScale(0.8);
 	addChild(btn_Start);
 
+	Button * btn_Intro = Button::create("MainScreen_intro_button.png");
+	btn_Intro->setPosition(Vec2(480, 200));
+	btn_Intro->setScale(0.8);
+	addChild(btn_Intro);
+
 	Button * btn_Exit = Button::create("MainScreen_exit_button.png");
-	btn_Exit->setPosition(Vec2(480, 200));
+	btn_Exit->setPosition(Vec2(480, 100));
 	btn_Exit->setScale(0.8);
 	addChild(btn_Exit);
 
 	btn_Start->addTouchEventListener(CC_CALLBACK_2(MainScene::btnStartCalback, this));
 
 	btn_Exit->addTouchEventListener(CC_CALLBACK_2(MainScene::btnExitCalback, this));
+
+	btn_Intro->addTouchEventListener(CC_CALLBACK_2(MainScene::btnIntroCalback, this));
 
 	return true;
 }
@@ -83,6 +91,23 @@ void MainScene::btnExitCalback(Ref * pSender, cocos2d::ui::Widget::TouchEventTyp
 	case Widget::TouchEventType::ENDED:
 	{
 		Director::getInstance()->end();
+		break;
+	}
+	default:
+		break;
+	}
+}
+
+void MainScene::btnIntroCalback(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)
+{
+	switch (type)
+	{
+
+	case Widget::TouchEventType::ENDED:
+	{
+		auto PlayScene = IntroScene::createScene();
+		auto Trans = TransitionFadeTR::create(1.0, PlayScene);
+		Director::getInstance()->replaceScene(Trans);
 		break;
 	}
 	default:

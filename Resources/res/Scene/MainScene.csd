@@ -646,67 +646,67 @@
                     <PreSize X="0.0667" Y="0.1000" />
                     <FileData Type="Normal" Path="Thunder_Tower_01.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="defenderintroduce" ActionTag="1535375557" Tag="17" IconVisible="False" LeftMargin="142.5623" RightMargin="157.4377" TopMargin="27.1259" BottomMargin="272.8741" Scale9Width="300" Scale9Height="100" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="defenderintroduce" ActionTag="1535375557" Tag="17" IconVisible="False" LeftMargin="157.2654" RightMargin="142.7346" TopMargin="8.4260" BottomMargin="291.5740" Scale9Width="300" Scale9Height="100" ctype="ImageViewObjectData">
                     <Size X="300.0000" Y="100.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="292.5623" Y="322.8741" />
+                    <Position X="307.2654" Y="341.5740" />
                     <Scale ScaleX="1.0000" ScaleY="0.5364" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.4876" Y="0.8072" />
+                    <PrePosition X="0.5121" Y="0.8539" />
                     <PreSize X="0.5000" Y="0.2500" />
                     <FileData Type="Normal" Path="defintro.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="fireintro" ActionTag="336132483" Tag="19" IconVisible="False" LeftMargin="-34.5999" RightMargin="-55.4001" TopMargin="113.0088" BottomMargin="266.9912" FontSize="20" LabelText="攻击力高，击中怪物后爆炸有AOE伤害，升级增加攻击力，攻击范围及爆炸范围" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="fireintro" ActionTag="336132483" Tag="19" IconVisible="False" LeftMargin="-21.8973" RightMargin="-80.1027" TopMargin="109.1402" BottomMargin="267.8598" FontSize="20" LabelText="攻击力高，击中怪物后爆炸有AOE伤害，升级增加攻击力，攻击范围及爆炸范围" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="690.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5132" ScaleY="0.4311" />
-                    <Position X="319.5081" Y="275.6132" />
+                    <Position X="338.3398" Y="277.7745" />
                     <Scale ScaleX="0.6539" ScaleY="1.3095" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5325" Y="0.6890" />
+                    <PrePosition X="0.5639" Y="0.6944" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="Text_5" ActionTag="-304148534" Tag="21" IconVisible="False" LeftMargin="28.0549" RightMargin="-8.0549" TopMargin="218.1728" BottomMargin="161.8272" FontSize="20" LabelText="攻击力高，攻速快，单体伤害，升级增加攻速及攻击力和攻击范围" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="Text_5" ActionTag="-304148534" Tag="21" IconVisible="False" LeftMargin="43.5634" RightMargin="-23.5635" TopMargin="218.9330" BottomMargin="158.0670" FontSize="20" LabelText="攻击力高，攻速快，单体伤害，升级增加攻速及攻击力和攻击范围" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="580.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="318.0549" Y="171.8272" />
+                    <Position X="333.5634" Y="169.5670" />
                     <Scale ScaleX="0.7980" ScaleY="1.2122" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5301" Y="0.4296" />
+                    <PrePosition X="0.5559" Y="0.4239" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="Text_5_0" ActionTag="1333583765" Tag="22" IconVisible="False" LeftMargin="24.4937" RightMargin="-4.4937" TopMargin="279.9609" BottomMargin="100.0391" FontSize="20" LabelText="同时攻击攻击范围内所有怪物，升级增加攻击力、攻速和攻击范围" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="Text_5_0" ActionTag="1333583765" Tag="22" IconVisible="False" LeftMargin="43.3243" RightMargin="-23.3243" TopMargin="278.4610" BottomMargin="98.5390" FontSize="20" LabelText="同时攻击攻击范围内所有怪物，升级增加攻击力、攻速和攻击范围" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="580.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="314.4937" Y="110.0391" />
+                    <Position X="333.3243" Y="110.0390" />
                     <Scale ScaleX="0.7926" ScaleY="1.3182" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5242" Y="0.2751" />
+                    <PrePosition X="0.5555" Y="0.2751" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="Text_5_1" ActionTag="30122023" Tag="23" IconVisible="False" LeftMargin="25.2281" RightMargin="-5.2281" TopMargin="332.1650" BottomMargin="47.8350" FontSize="20" LabelText="攻击弹射周边怪物，升级增加攻速、攻击力及攻击范围及弹射次数" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="Text_5_1" ActionTag="30122023" Tag="23" IconVisible="False" LeftMargin="41.8439" RightMargin="-21.8439" TopMargin="330.6650" BottomMargin="46.3350" FontSize="20" LabelText="攻击弹射周边怪物，升级增加攻速、攻击力及攻击范围及弹射次数" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="580.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="315.2281" Y="57.8350" />
+                    <Position X="331.8439" Y="57.8350" />
                     <Scale ScaleX="0.7930" ScaleY="1.2122" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5254" Y="0.1446" />
+                    <PrePosition X="0.5531" Y="0.1446" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="Text_5_2" ActionTag="-324094783" Tag="24" IconVisible="False" LeftMargin="41.9497" RightMargin="8.0503" TopMargin="166.7572" BottomMargin="213.2428" FontSize="20" LabelText="攻击力低，AOE减速，群体伤害，升级增加攻击范围和减速程度" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                  <AbstractNodeData Name="Text_5_2" ActionTag="-324094783" Tag="24" IconVisible="False" LeftMargin="52.5659" RightMargin="-14.5659" TopMargin="165.2571" BottomMargin="211.7429" FontSize="20" LabelText="攻击力低，AOE减速，群体伤害，升级增加攻击范围和减速程度" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                     <Size X="550.0000" Y="20.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="316.9497" Y="223.2428" />
+                    <Position X="333.5659" Y="223.2429" />
                     <Scale ScaleX="0.8213" ScaleY="1.1061" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5282" Y="0.5581" />
+                    <PrePosition X="0.5559" Y="0.5581" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
@@ -726,75 +726,75 @@
               <AbstractNodeData Name="skill" ActionTag="1355103595" Tag="16" IconVisible="False" LeftMargin="600.0000" RightMargin="-600.0000" ClipAble="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="600.0000" Y="400.0000" />
                 <Children>
-                  <AbstractNodeData Name="title" ActionTag="1959281275" Tag="25" IconVisible="False" LeftMargin="153.1885" RightMargin="146.8115" TopMargin="23.4372" BottomMargin="276.5628" Scale9Width="300" Scale9Height="100" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="title" ActionTag="1959281275" Tag="25" IconVisible="False" LeftMargin="152.4789" RightMargin="147.5211" TopMargin="3.5443" BottomMargin="296.4557" Scale9Width="300" Scale9Height="100" ctype="ImageViewObjectData">
                     <Size X="300.0000" Y="100.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="303.1885" Y="326.5628" />
+                    <Position X="302.4789" Y="346.4557" />
                     <Scale ScaleX="1.0000" ScaleY="0.5852" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.5053" Y="0.8164" />
+                    <PrePosition X="0.5041" Y="0.8661" />
                     <PreSize X="0.5000" Y="0.2500" />
                     <FileData Type="Normal" Path="skillintro.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="wind" ActionTag="1447947531" Tag="26" IconVisible="False" LeftMargin="47.1400" RightMargin="469.8600" TopMargin="97.2889" BottomMargin="219.7111" Scale9Width="83" Scale9Height="83" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="wind" ActionTag="1447947531" Tag="26" IconVisible="False" LeftMargin="38.6044" RightMargin="478.3956" TopMargin="82.8012" BottomMargin="234.1988" Scale9Width="83" Scale9Height="83" ctype="ImageViewObjectData">
                     <Size X="83.0000" Y="83.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="88.6400" Y="261.2111" />
+                    <Position X="80.1044" Y="275.6988" />
                     <Scale ScaleX="0.8271" ScaleY="0.7942" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.1477" Y="0.6530" />
+                    <PrePosition X="0.1335" Y="0.6892" />
                     <PreSize X="0.1383" Y="0.2075" />
                     <FileData Type="Normal" Path="UI_Skill_Wind.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="wave" ActionTag="-1996791139" Tag="27" IconVisible="False" LeftMargin="47.3941" RightMargin="469.6058" TopMargin="182.5213" BottomMargin="134.4787" Scale9Width="83" Scale9Height="83" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="wave" ActionTag="-1996791139" Tag="27" IconVisible="False" LeftMargin="39.5583" RightMargin="477.4417" TopMargin="181.3660" BottomMargin="135.6340" Scale9Width="83" Scale9Height="83" ctype="ImageViewObjectData">
                     <Size X="83.0000" Y="83.0000" />
-                    <AnchorPoint ScaleX="0.4969" ScaleY="0.5000" />
-                    <Position X="88.6400" Y="175.9787" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="81.0583" Y="177.1340" />
                     <Scale ScaleX="0.8271" ScaleY="0.8236" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.1477" Y="0.4399" />
+                    <PrePosition X="0.1351" Y="0.4428" />
                     <PreSize X="0.1383" Y="0.2075" />
                     <FileData Type="Normal" Path="UI_Skill_Wave.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="ice" ActionTag="-853100804" Tag="28" IconVisible="False" LeftMargin="47.1436" RightMargin="469.8564" TopMargin="265.3781" BottomMargin="51.6219" Scale9Width="83" Scale9Height="83" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="ice" ActionTag="-853100804" Tag="28" IconVisible="False" LeftMargin="40.7538" RightMargin="476.2462" TopMargin="289.9357" BottomMargin="27.0643" Scale9Width="83" Scale9Height="83" ctype="ImageViewObjectData">
                     <Size X="83.0000" Y="83.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="88.6436" Y="93.1219" />
+                    <Position X="82.2538" Y="68.5643" />
                     <Scale ScaleX="0.7695" ScaleY="0.7942" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.1477" Y="0.2328" />
+                    <PrePosition X="0.1371" Y="0.1714" />
                     <PreSize X="0.1383" Y="0.2075" />
                     <FileData Type="Normal" Path="UI_Skill_Ice.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="windintro" ActionTag="-387623087" Tag="30" IconVisible="False" LeftMargin="25.9315" RightMargin="-5.9315" TopMargin="117.6061" BottomMargin="242.3939" FontSize="20" LabelText="在某一行或列召唤出飓风，对怪物造成伤害并且净化掉怪物身上的&#xA;所有buff。该技能的升级可提升伤害及减少冷却时间。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="580.0000" Y="40.0000" />
+                  <AbstractNodeData Name="windintro" ActionTag="-387623087" Tag="30" IconVisible="False" LeftMargin="8.3283" RightMargin="-80.3283" TopMargin="103.7411" BottomMargin="250.2589" FontSize="20" LabelText="在某一行或列召唤出飓风，对怪物造成伤害并且净化掉怪物身上的所有buff。&#xA;该技能的升级可提升伤害及减少冷却时间。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="680.0000" Y="40.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="315.9315" Y="262.3939" />
+                    <Position X="344.3283" Y="273.2589" />
                     <Scale ScaleX="0.6480" ScaleY="1.0530" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5266" Y="0.6560" />
+                    <PrePosition X="0.5739" Y="0.6831" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="waveintro" ActionTag="-1737409853" Tag="31" IconVisible="False" LeftMargin="9.3937" RightMargin="10.6063" TopMargin="198.7631" BottomMargin="161.2369" FontSize="20" LabelText="在某一行或列释放出一道超强声波，击退该行怪物一定距离并造成&#xA;怪物被恐吓状态，停止前进一段时间。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="580.0000" Y="40.0000" />
+                  <AbstractNodeData Name="waveintro" ActionTag="-1737409853" Tag="31" IconVisible="False" LeftMargin="-22.3270" RightMargin="-117.6730" TopMargin="198.6449" BottomMargin="155.3551" FontSize="20" LabelText="在某一行或列释放出一道超强声波，击退该行怪物一定距离并造成怪物被恐吓状态，&#xA;停止前进一段时间。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="740.0000" Y="40.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="299.3937" Y="181.2369" />
+                    <Position X="347.6730" Y="178.3551" />
                     <Scale ScaleX="0.5920" ScaleY="1.1061" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.4990" Y="0.4531" />
+                    <PrePosition X="0.5795" Y="0.4459" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="iceintro" ActionTag="1976330117" Tag="32" IconVisible="False" LeftMargin="39.0581" RightMargin="-9.0581" TopMargin="283.8322" BottomMargin="76.1678" FontSize="20" LabelText="单体指向性技能，对怪物造成3秒的冻结，并使其额外受到一定的&#xA;伤害。该技能的升级可使得冰冻时间增加和额外伤害的增加。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="570.0000" Y="40.0000" />
+                  <AbstractNodeData Name="iceintro" ActionTag="1976330117" Tag="32" IconVisible="False" LeftMargin="33.3691" RightMargin="-64.3691" TopMargin="308.4341" BottomMargin="45.5659" FontSize="20" LabelText="单体指向性技能，对怪物造成3秒的冻结，并使其额外受到一定的伤害。&#xA;该技能的升级可使得冰冻时间增加和额外伤害的增加。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="630.0000" Y="40.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="324.0581" Y="96.1678" />
+                    <Position X="348.8691" Y="68.5659" />
                     <Scale ScaleX="0.6902" ScaleY="1.0000" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5401" Y="0.2404" />
+                    <PrePosition X="0.5814" Y="0.1714" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
@@ -814,20 +814,20 @@
               <AbstractNodeData Name="buff" ActionTag="894543120" Tag="34" IconVisible="False" LeftMargin="1200.0000" RightMargin="-1200.0000" TouchEnable="True" ClipAble="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="600.0000" Y="400.0000" />
                 <Children>
-                  <AbstractNodeData Name="title" ActionTag="-2076892393" Tag="35" IconVisible="False" LeftMargin="158.4576" RightMargin="141.5424" TopMargin="22.9404" BottomMargin="277.0596" Scale9Width="300" Scale9Height="100" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="title" ActionTag="-2076892393" Tag="35" IconVisible="False" LeftMargin="158.4578" RightMargin="141.5422" TopMargin="5.9877" BottomMargin="294.0123" Scale9Width="300" Scale9Height="100" ctype="ImageViewObjectData">
                     <Size X="300.0000" Y="100.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="308.4576" Y="327.0596" />
+                    <Position X="308.4578" Y="344.0123" />
                     <Scale ScaleX="1.0000" ScaleY="0.5608" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.5141" Y="0.8176" />
+                    <PrePosition X="0.5141" Y="0.8600" />
                     <PreSize X="0.5000" Y="0.2500" />
                     <FileData Type="Normal" Path="buffintro.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="treat" ActionTag="-1780800153" Tag="36" IconVisible="False" LeftMargin="71.1900" RightMargin="503.8100" TopMargin="110.4617" BottomMargin="254.5383" ctype="SpriteObjectData">
+                  <AbstractNodeData Name="treat" ActionTag="-1780800153" Tag="36" IconVisible="False" LeftMargin="71.1903" RightMargin="503.8097" TopMargin="110.4617" BottomMargin="254.5383" ctype="SpriteObjectData">
                     <Size X="25.0000" Y="35.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="83.6900" Y="272.0383" />
+                    <Position X="83.6903" Y="272.0383" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.1395" Y="0.6801" />
@@ -843,7 +843,7 @@
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.1333" Y="0.5296" />
                     <PreSize X="0.0000" Y="0.0000" />
-                    <FileData Type="Normal" Path="Buff/Jiasu/Jiasu_Buff_00.png" Plist="" />
+                    <FileData Type="Normal" Path="Buff/Jiasu/Jiasu_Buff_03.png" Plist="" />
                     <BlendFunc Src="770" Dst="771" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="defence" ActionTag="1046505690" Tag="41" IconVisible="False" LeftMargin="48.0000" RightMargin="488.0000" TopMargin="229.6600" BottomMargin="91.3400" ctype="SpriteObjectData">
@@ -854,7 +854,7 @@
                     <CColor A="255" R="255" G="255" B="255" />
                     <PrePosition X="0.1333" Y="0.3271" />
                     <PreSize X="0.0000" Y="0.0000" />
-                    <FileData Type="Normal" Path="Buff/Jianshang/Jianshang_Buff_00.png" Plist="" />
+                    <FileData Type="Normal" Path="Buff/Jianshang/Jianshang_Buff_01.png" Plist="" />
                     <BlendFunc Src="770" Dst="771" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="Text_13" ActionTag="12925710" Tag="38" IconVisible="False" LeftMargin="115.2246" RightMargin="78.7754" TopMargin="126.2615" BottomMargin="245.7385" FontSize="28" LabelText="怪物获得治疗,每秒恢复一定生命" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
@@ -890,13 +890,13 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="Button_Ret" ActionTag="585282629" Tag="33" IconVisible="False" LeftMargin="396.1334" RightMargin="3.8666" TopMargin="285.5297" BottomMargin="39.4703" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="170" Scale9Height="53" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="Button_Ret" ActionTag="585282629" Tag="33" IconVisible="False" LeftMargin="417.6004" RightMargin="-17.6004" TopMargin="309.3372" BottomMargin="15.6627" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="170" Scale9Height="53" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                     <Size X="200.0000" Y="75.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="496.1334" Y="76.9703" />
+                    <Position X="517.6004" Y="53.1627" />
                     <Scale ScaleX="0.5644" ScaleY="0.6968" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.8269" Y="0.1924" />
+                    <PrePosition X="0.8627" Y="0.1329" />
                     <PreSize X="0.3333" Y="0.1875" />
                     <TextColor A="255" R="65" G="65" B="70" />
                     <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />

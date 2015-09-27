@@ -1,10 +1,69 @@
 <Solution>
-  <PropertyGroup Name="CantFallTower" Version="2.3.2.2" Type="CocosStudio" />
+  <PropertyGroup Name="CantFallTower" Version="2.3.2.3" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
         <Project Name="MainScene.csd" Type="Scene" />
         <Image Name="HelloWorld.png" />
+        <Folder Name="Buff">
+          <Folder Name="Jianshang">
+            <Image Name="Jianshang_Buff_00.png" />
+            <Image Name="Jianshang_Buff_01.png" />
+            <Image Name="Jianshang_Buff_02.png" />
+            <Image Name="Jianshang_Buff_03.png" />
+          </Folder>
+          <Folder Name="Jiasu">
+            <Image Name="Jiasu_Buff_00.png" />
+            <Image Name="Jiasu_Buff_01.png" />
+            <Image Name="Jiasu_Buff_02.png" />
+            <Image Name="Jiasu_Buff_03.png" />
+            <Image Name="Jiasu_Buff_04.png" />
+            <File Name="J_Buff.psd" />
+          </Folder>
+          <Folder Name="Jiaxue">
+            <Image Name="Jiaxue_Buff_00.png" />
+            <Image Name="Jiaxue_Buff_01.png" />
+            <Image Name="Jiaxue_Buff_02.png" />
+            <Image Name="Jiaxue_Buff_03.png" />
+            <Image Name="Jiaxue_Buff_04.png" />
+            <Image Name="Jiaxue_Buff_05.png" />
+            <Image Name="Jiaxue_Buff_06.png" />
+            <Image Name="Jiaxue_Buff_07.png" />
+            <Image Name="Jiaxue_Buff_08.png" />
+            <Image Name="Jiaxue_Buff_09.png" />
+            <Image Name="Jiaxue_Buff_10.png" />
+            <Image Name="Jiaxue_Buff_11.png" />
+            <Image Name="Jiaxue_Buff_12.png" />
+            <Image Name="Jiaxue_Buff_13.png" />
+            <Image Name="Jiaxue_Buff_14.png" />
+            <Image Name="Jiaxue_Buff_15.png" />
+            <Image Name="Jiaxue_Buff_16.png" />
+            <Image Name="Jiaxue_Buff_17.png" />
+            <Image Name="Jiaxue_Buff_18.png" />
+            <Image Name="Jiaxue_Buff_19.png" />
+            <Image Name="Jiaxue_Buff_20.png" />
+            <Image Name="Jiaxue_Buff_21.png" />
+            <Image Name="Jiaxue_Buff_22.png" />
+            <Image Name="Jiaxue_Buff_23.png" />
+            <Image Name="Jiaxue_Buff_24.png" />
+          </Folder>
+        </Folder>
+        <Image Name="defintro.png" />
+        <Image Name="Fire_Tower_00.png" />
+        <Image Name="GameScreen_backmenu.png" />
+        <Image Name="GameScreen_backmenuBig.png" />
+        <Image Name="Ice_Tower_00.png" />
+        <Image Name="MainScreen.png" />
+        <Image Name="Moon_Tower_01.png" />
+        <Image Name="skillintro.png" />
+        <Image Name="Star_Tower_02.png" />
+        <Image Name="Thunder_Tower_01.png" />
+        <Image Name="ui_introduce.png" />
+        <Image Name="UI_Skill_Fire.png" />
+        <Image Name="UI_Skill_Ice.png" />
+        <Image Name="UI_Skill_Wave.png" />
+        <Image Name="UI_Skill_Wind.png" />
+        <Image Name="buffintro.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

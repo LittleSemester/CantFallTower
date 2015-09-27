@@ -45,6 +45,7 @@ public:
 
 	// 对该敌人造成伤害，期间检查敌人各项属性和buff，指定direct=true造成直伤；返回最终伤害量
 	virtual int dealDamage(double damage, bool direct=false);
+	virtual void dealCure(double cure);
 
 	inline int getHP() const
 	{
@@ -67,8 +68,13 @@ public:
 		return this->distance;
 	}
 
+private:
+
 	//敌人移动回调函数
 	void moveEnemy(float dt);
+
+	//治疗回调函数
+	void cureEnemy(float dt);
 
 };
 

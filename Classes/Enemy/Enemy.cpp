@@ -85,7 +85,17 @@ int Enemy::dealDamage(double damage, bool direct/*=false*/)
 	return finalDamage;
 }
 
-
+void Enemy::dealCure(double cure)
+{
+	int finalCure = (int)cure;
+	if (finalCure > 0)
+	{
+		healthPoint += finalCure;
+		if (healthPoint > maxHP())
+			healthPoint = maxHP();
+		hpBar->setPercent(100.0 * healthPoint / maxHP());
+	}
+}
 
 double Enemy::calcDefencedDamage(double damage, double defence)
 {
@@ -168,6 +178,12 @@ void Enemy::moveEnemy(float dt)
 	}
 }
 
+void Enemy::cureEnemy(float dt)
+{
+	double cure = (int)getBuffValue(&Buff::cureOnce);
+	this->dealCure(cure);
+}
+
 void Enemy::updateBuffState()
 {
 	unsigned int flag = getBuffFlag();
@@ -197,6 +213,16 @@ void Enemy::updateBuffState()
 		}
 		actSprite->setColor(color);
 	}
+
+	if (flag&BUFF_CURED)
+	{
+		this->schedule(CC_SCHEDULE_SELECTOR(Enemy::cureEnemy), 0.2, CC_REPEAT_FOREVER, 0.2);
+	}
+	else
+	{
+		this->unschedule(CC_SCHEDULE_SELECTOR(Enemy::cureEnemy));
+	}
+
 }
 
 void Enemy::onBuffBegin(Buff* buff)

@@ -1,5 +1,5 @@
 #include "TowerStar.h"
-
+#include "Entity/StarFall.h"
 USING_NS_CC;
 
 
@@ -10,28 +10,26 @@ void TowerStar::onFire()
 	float dist = -INFINITY, t;
 	for (Enemy* enemy : enemyInRange)
 	{
-		t = enemy->getDistance();
-		if (t > dist)
-		{
-			p = enemy;
-			dist = t;
-		}
+		auto star = StarFall::create();
+		star->setPosition(enemy->getPosition());
+		star->setTarget(enemy);
+		mainScene->addChild(star);
 	}
 
-	if (p != nullptr)
-	{
-		/*auto thunder = Thunder::create();
-		thunder->setPosition(p->getPosition());
-		thunder->setTarget(p);
-		mainScene->addChild(thunder);*/
-	}
+	//if (p != nullptr)
+	//{
+	//	/*auto thunder = Thunder::create();
+	//	thunder->setPosition(p->getPosition());
+	//	thunder->setTarget(p);
+	//	mainScene->addChild(thunder);*/
+	//}
 }
 
 TowerStar::TowerStar()
 {
 	radius = 100;
 	attack = 15;
-	interval = 0.7;
+	interval = 0.8;
 }
 
 
@@ -50,7 +48,7 @@ bool TowerStar::init()
 	for (int i = 0; i <= 4; i++)
 	{
 		char szName[100];
-		sprintf(szName, "Star/Star_Tower_%02d.png", i);
+		sprintf(szName, "Star/Star Tower/Star_Tower_%02d.png", i);
 		aniTower->addSpriteFrameWithFile(szName);
 	}
 
@@ -61,6 +59,7 @@ bool TowerStar::init()
 	auto ani = Animate::create(aniTower);
 	auto repeatT = RepeatForever::create(ani);
 	spriteTD->runAction(repeatT);
+	spriteTD->setScale(0.6);
 	this->addChild(spriteTD);
 
 	return true;

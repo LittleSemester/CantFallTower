@@ -29,7 +29,7 @@
       <UniqueIdentifier>{c2921edb-527d-46cc-b2ee-a71ff5770198}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Entity">
-      <UniqueIdentifier>{5b68affb-bf6d-42c7-b8b2-e327bd4818b9}</UniqueIdentifier>
+      <UniqueIdentifier>{73677d47-f417-447c-9f28-22a58660c8fa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,30 +72,6 @@
     <ClCompile Include="..\Classes\Tower\TowerFire.cpp">
       <Filter>src\Tower</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Entity\AOEArea.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Entity\Entity.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Entity\FireAOE.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Entity\IceAOE.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Entity\Missile.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Entity\MissileStar.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Entity\Thunder.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Entity\FireDir.cpp">
-      <Filter>src\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Enemy\SimpleEnemy.cpp">
       <Filter>src\Enemy</Filter>
     </ClCompile>
@@ -125,6 +101,39 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Tower\TowerStar.cpp">
       <Filter>src\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower\TowerMoon.cpp">
+      <Filter>src\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\AOEArea.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Entity.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\FireAOE.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\FireDir.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\IceAOE.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Missile.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\MissileStar.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\MoonSword.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\StarFall.cpp">
+      <Filter>src\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Thunder.cpp">
+      <Filter>src\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,30 +176,6 @@
     <ClInclude Include="..\Classes\Tower\TowerFire.h">
       <Filter>src\Tower</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Entity\AOEArea.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\Entity.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\FireAOE.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\IceAOE.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\Missile.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\MissileStar.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\Thunder.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\FireDir.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Enemy\SimpleEnemy.h">
       <Filter>src\Enemy</Filter>
     </ClInclude>
@@ -220,6 +205,39 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Tower\TowerStar.h">
       <Filter>src\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerMoon.h">
+      <Filter>src\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\AOEArea.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Entity.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\FireAOE.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\FireDir.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\IceAOE.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Missile.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\MissileStar.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\MoonSword.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\StarFall.h">
+      <Filter>src\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Thunder.h">
+      <Filter>src\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

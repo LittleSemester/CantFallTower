@@ -32,6 +32,8 @@ bool GameScene::init()
 	{
 		return false;
 	}
+	GameScene::getScheduler()->setTimeScale(1.0);
+
 	//娣诲姞鑳屾櫙鍥剧墖
 	auto spriteBG = Sprite::create("Map_Ground_02.jpg");
 	addChild(spriteBG);
@@ -280,8 +282,8 @@ void GameScene::loadStatus()
 	set->addTouchEventListener(CC_CALLBACK_2(GameScene::setCallBack, this));
 
 	CheckBox * speed = CheckBox::create();
-	speed->loadTextureBackGround("ui_x2.png");
-	speed->loadTextureFrontCross("ui_x1.png");
+	speed->loadTextureBackGround("ui_x1.png");
+	speed->loadTextureFrontCross("ui_x2.png");
 	speed->setPosition(Vec2(275, 0));
 	speed->setScale(0.7);
 	speed->addEventListener(CC_CALLBACK_2(GameScene::speedCallBack, this));
@@ -518,9 +520,16 @@ void GameScene::addTDSelect(int r, int c)
 	bt03_sel->setScale(1.1);
 
 	//星落之塔
-	auto bt04 = Sprite::create("Star/Star_Tower_02.png");
-	auto bt04_sel = Sprite::create("Star/Star_Tower_02.png");
-	bt04_sel->setScale(1.1);
+	auto bt04 = Sprite::create("Star/Star Tower/Star_Tower_02.png");
+	auto bt04_sel = Sprite::create("Star/Star Tower/Star_Tower_02.png");
+	bt04->setScale(0.6);
+	bt04_sel->setScale(0.66);
+
+	//月刃之塔
+	auto bt05 = Sprite::create("Moon/Moon Tower/Moon_Tower_00.png");
+	auto bt05_sel = Sprite::create("Moon/Moon Tower/Moon_Tower_00.png");
+	bt05->setScale(0.5);
+	bt05_sel->setScale(0.55);
 
 	//将该sprite转为Menu接收用户事件
 	auto menuItem01 = MenuItemSprite::create(bt01, bt01_sel, CC_CALLBACK_1(GameScene::selectTD, this));
@@ -545,9 +554,15 @@ void GameScene::addTDSelect(int r, int c)
 	menuItem03->addChild(price3);
 
 	auto menuItem04 = MenuItemSprite::create(bt04, bt04_sel, CC_CALLBACK_1(GameScene::selectTD, this));
+	menuItem04->setTag(13);
+	menuItem04->setAnchorPoint(Vec2(0,0));
+
+	auto menuItem05 = MenuItemSprite::create(bt05, bt05_sel, CC_CALLBACK_1(GameScene::selectTD, this));
+	menuItem05->setTag(14);
+	menuItem05->setAnchorPoint(Vec2(1, 0));
 
 	//用menu容纳menuItem
-	auto menuTD = Menu::create(menuItem01, menuItem02, menuItem03, nullptr);
+	auto menuTD = Menu::create(menuItem01, menuItem02, menuItem03, menuItem04, menuItem05, nullptr);
 	
 	menuTD->setPosition(Vec2::ZERO);
 	tPos->addChild(menuTD);
@@ -555,7 +570,8 @@ void GameScene::addTDSelect(int r, int c)
 	menuItem01->setPosition(Vec2(nowSize.x / 2, nowSize.y));
 	menuItem02->setPosition(Vec2(nowSize.x, nowSize.y));
 	menuItem03->setPosition(Vec2(0, nowSize.y));
-
+	menuItem04->setPosition(Vec2(2*nowSize.x, nowSize.y));
+	menuItem05->setPosition(Vec2(-nowSize.x/2, 1*nowSize.y));
 	tPos->setTag(100);
 	this->addChild(tPos);
 
@@ -586,6 +602,23 @@ void GameScene::selectTD(Ref * obj)
 	case 12:
 	{
 		Tower * TD = Tower::createTower(TOWER_FIRE, nowRow, nowCol);
+		this->addChild(TD);
+		//标记该位置已经建塔
+		towerInfo[nowCol][nowRow] = true;
+		break;
+	}
+	case 13:
+		
+	{
+		Tower * TD = Tower::createTower(TOWER_ARROW, nowRow, nowCol);
+		this->addChild(TD);
+		//标记该位置已经建塔
+		towerInfo[nowCol][nowRow] = true;
+		break;
+	}
+	case 14:
+	{
+		Tower * TD = Tower::createTower(TOWER_KNIFE, nowRow, nowCol);
 		this->addChild(TD);
 		//标记该位置已经建塔
 		towerInfo[nowCol][nowRow] = true;
@@ -740,6 +773,8 @@ void GameScene::setCallBack(cocos2d::Ref* pSender, Widget::TouchEventType type)
 		box->addChild(conti);
 		
 		conti->addTouchEventListener(CC_CALLBACK_2(GameScene::contiCallBack, this));
+		ret->addTouchEventListener(CC_CALLBACK_2(GameScene::retCallBack, this));
+		again->addTouchEventListener(CC_CALLBACK_2(GameScene::againCallBack, this));
 
 		addChild(box);
 		conti->setPosition(Vec2(0, 130));
@@ -805,6 +840,27 @@ void GameScene::againCallBack(cocos2d::Ref* pSender, Widget::TouchEventType type
 		break;
 	case Widget::TouchEventType::ENDED:
 	{
+		auto backBox = this->getChildByName("backBox");
+		auto vecChild = backBox->getChildren();
+		for (auto eachChild : vecChild)
+		{
+			eachChild->removeFromParent();
+		}
+		backBox->removeFromParent();
+		auto black = this->getChildByName("black");
+		black->removeFromParent();
+
+		CheckBox* speedItem = (CheckBox*)getChildByName("status")->getChildByName("speed");
+		if (speedItem->getSelectedState())
+		{
+			GameScene::getScheduler()->setTimeScale(2.0);
+		}
+		else
+		{
+			GameScene::getScheduler()->setTimeScale(1.0);
+		}
+
+		stopTouch = false;
 		auto nextScene = GameScene::createScene();
 		auto Trans = TransitionFadeTR::create(1.0, nextScene);
 		Director::getInstance()->replaceScene(Trans);
@@ -827,6 +883,28 @@ void GameScene::retCallBack(cocos2d::Ref * pSender, Widget::TouchEventType type)
 		break;
 	case Widget::TouchEventType::ENDED:
 	{
+		auto backBox = this->getChildByName("backBox");
+		auto vecChild = backBox->getChildren();
+		for (auto eachChild : vecChild)
+		{
+			eachChild->removeFromParent();
+		}
+		backBox->removeFromParent();
+		auto black = this->getChildByName("black");
+		black->removeFromParent();
+
+		CheckBox* speedItem = (CheckBox*)getChildByName("status")->getChildByName("speed");
+		if (speedItem->getSelectedState())
+		{
+			GameScene::getScheduler()->setTimeScale(2.0);
+		}
+		else
+		{
+			GameScene::getScheduler()->setTimeScale(1.0);
+		}
+
+		stopTouch = false;
+
 		auto nextScene = MainScene::createScene();
 		auto Trans = TransitionFadeTR::create(1.0, nextScene);
 		Director::getInstance()->replaceScene(Trans);

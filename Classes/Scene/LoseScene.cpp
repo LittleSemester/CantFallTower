@@ -36,7 +36,7 @@ bool LoseScene::init()
 		return false;
 	}
 
-	auto backGround = Sprite::create("GameScreen_youwin.png");
+	auto backGround = Sprite::create("GameScreen_youlose.png");
 	backGround->setPosition(Vec2(480, 320));
 	addChild(backGround);
 

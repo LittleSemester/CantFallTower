@@ -158,6 +158,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Entity\IceAOE.cpp" />
     <ClCompile Include="..\Classes\Entity\Missile.cpp" />
     <ClCompile Include="..\Classes\Entity\MissileStar.cpp" />
+    <ClCompile Include="..\Classes\Entity\MoonSword.cpp" />
+    <ClCompile Include="..\Classes\Entity\StarFall.cpp" />
     <ClCompile Include="..\Classes\Entity\Thunder.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
@@ -172,6 +174,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Tower\Tower.cpp" />
     <ClCompile Include="..\Classes\Tower\TowerFire.cpp" />
     <ClCompile Include="..\Classes\Tower\TowerIce.cpp" />
+    <ClCompile Include="..\Classes\Tower\TowerMoon.cpp" />
     <ClCompile Include="..\Classes\Tower\TowerStar.cpp" />
     <ClCompile Include="..\Classes\Tower\TowerThunder.cpp" />
     <ClCompile Include="..\Classes\Util\TDPoint.cpp" />
@@ -190,6 +193,8 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Entity\IceAOE.h" />
     <ClInclude Include="..\Classes\Entity\Missile.h" />
     <ClInclude Include="..\Classes\Entity\MissileStar.h" />
+    <ClInclude Include="..\Classes\Entity\MoonSword.h" />
+    <ClInclude Include="..\Classes\Entity\StarFall.h" />
     <ClInclude Include="..\Classes\Entity\Thunder.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
@@ -204,6 +209,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.8\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Tower\Tower.h" />
     <ClInclude Include="..\Classes\Tower\TowerFire.h" />
     <ClInclude Include="..\Classes\Tower\TowerIce.h" />
+    <ClInclude Include="..\Classes\Tower\TowerMoon.h" />
     <ClInclude Include="..\Classes\Tower\TowerStar.h" />
     <ClInclude Include="..\Classes\Tower\TowerThunder.h" />
     <ClInclude Include="..\Classes\Util\TDPoint.h" />

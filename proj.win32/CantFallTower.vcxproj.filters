@@ -99,6 +99,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Scene\IntroScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Scene\WinScene.h">
@@ -204,6 +207,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Tower\TowerStar.h">
       <Filter>Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\IntroScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

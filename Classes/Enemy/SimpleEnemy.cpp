@@ -193,10 +193,10 @@ void SimpleEnemy::doBuffDizzy()
 {
 	frameFly = 0;
 	actSprite->schedule([this](float){
-		actSprite->setPositionY(0.2 * (frameFly - 10) * (frameFly - 10));
+		actSprite->setPositionY(- 0.2 * (frameFly - 10) * (frameFly - 10));
 		++frameFly;
 	}, 1.0 / 60, 20, 0.0, "fly");
-	actSprite->scheduleOnce([this](float){actSprite->setPositionY(-20.0); }, 0.34, "flystop");
+	actSprite->scheduleOnce([this](float){actSprite->setPositionY(-20.0); }, 0.35, "flystop");
 
 	auto dizzy = Sprite::create();
 	auto ani = Animation::create();

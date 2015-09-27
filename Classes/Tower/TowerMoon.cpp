@@ -1,11 +1,10 @@
 #include "TowerMoon.h"
-
+#include "Entity/MoonSword.h"
 USING_NS_CC;
 
 void TowerMoon::onFire()
 {
 	Enemy* p = nullptr;
-	//攻击范围内的所有敌人
 	float dist = -INFINITY, t;
 	for (Enemy* enemy : enemyInRange)
 	{
@@ -19,10 +18,11 @@ void TowerMoon::onFire()
 
 	if (p != nullptr)
 	{
-		//auto thunder = Thunder::create();
-		/*thunder->setPosition(p->getPosition());
-		thunder->setTarget(p);
-		mainScene->addChild(thunder);*/
+		auto moon = MoonSword::create();
+		moon->setPosition(this->getPosition());
+		moon->setTarget(p);
+		moon->setJump(3);
+		mainScene->addChild(moon);
 	}
 }
 
@@ -65,3 +65,5 @@ bool TowerMoon::init()
 
 	return true;
 }
+
+

@@ -1,210 +1,165 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
-      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Scene">
-      <UniqueIdentifier>{7575d0f7-5718-49c6-b3c9-3dcfa166ac16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Buff">
-      <UniqueIdentifier>{2210115a-8022-4287-9221-d3b5434eb96a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Enemy">
-      <UniqueIdentifier>{a09c14b4-dcf8-4b98-8283-9ca9c737527c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Skill">
-      <UniqueIdentifier>{79acdf64-4be3-4616-a415-4e084b59e906}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Tower">
-      <UniqueIdentifier>{15a736fe-4df0-4c2c-a7aa-d2a6088bdedf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Util">
-      <UniqueIdentifier>{c2921edb-527d-46cc-b2ee-a71ff5770198}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Entity">
-      <UniqueIdentifier>{73677d47-f417-447c-9f28-22a58660c8fa}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Enemy\Enemy.cpp">
-      <Filter>src\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Buff\Buff.cpp">
-      <Filter>src\Buff</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Buff\BuffList.cpp">
-      <Filter>src\Buff</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Scene\GameScene.cpp">
-      <Filter>src\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Util\TDPoint.cpp">
-      <Filter>src\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Tower\Tower.cpp">
-      <Filter>src\Tower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Tower\TowerThunder.cpp">
-      <Filter>src\Tower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Tower\TowerIce.cpp">
-      <Filter>src\Tower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Enemy\SimpleEnemy.cpp">
-      <Filter>src\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Tower\TowerFire.cpp">
-      <Filter>src\Tower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Enemy\SimpleEnemy.cpp">
-      <Filter>src\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Skill\Skill.cpp">
-      <Filter>src\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Skill\FastFreeze.cpp">
-      <Filter>src\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Skill\Hurricane.cpp">
-      <Filter>src\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Scene\MainScene.cpp">
-      <Filter>src\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Skill\ShakingWave.cpp">
-      <Filter>src\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Skill\RowSkill.cpp">
-      <Filter>src\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Scene\LoseScene.cpp">
-      <Filter>src\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene\WinScene.cpp">
-      <Filter>src\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Util\StageLoader.cpp">
-      <Filter>src\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Tower\TowerStar.cpp">
-      <Filter>src\Tower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Tower\TowerMoon.cpp">
-      <Filter>src\Tower</Filter>
+      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\AOEArea.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Buff\Buff.cpp">
+      <Filter>Buff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Buff\BuffList.cpp">
+      <Filter>Buff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Enemy\Enemy.cpp">
+      <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\Entity.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Skill\FastFreeze.cpp">
+      <Filter>Skill</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\FireAOE.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\FireDir.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\GameScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Skill\Hurricane.cpp">
+      <Filter>Skill</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\IceAOE.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\MainScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\LoseScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\Missile.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\MissileStar.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\MoonSword.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Skill\RowSkill.cpp">
+      <Filter>Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Skill\ShakingWave.cpp">
+      <Filter>Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Enemy\SimpleEnemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Skill\Skill.cpp">
+      <Filter>Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\StageLoader.cpp">
+      <Filter>Util</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\StarFall.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\TDPoint.cpp">
+      <Filter>Util</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entity\Thunder.cpp">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Tower\Tower.cpp">
+      <Filter>Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower\TowerFire.cpp">
+      <Filter>Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower\TowerIce.cpp">
+      <Filter>Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower\TowerMoon.cpp">
+      <Filter>Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower\TowerStar.cpp">
+      <Filter>Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tower\TowerThunder.cpp">
+      <Filter>Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>win32</Filter>
+    <ClInclude Include="..\Classes\Scene\WinScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Enemy\Enemy.h">
-      <Filter>src\Enemy</Filter>
+    <ClInclude Include="..\Classes\Entity\AOEArea.h">
+      <Filter>Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Buff\Buff.h">
-      <Filter>src\Buff</Filter>
+      <Filter>Buff</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Buff\BuffList.h">
-      <Filter>src\Buff</Filter>
+      <Filter>Buff</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\GameScene.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\Enemy\Enemy.h">
+      <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Util\TDPoint.h">
-      <Filter>src\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Tower\Tower.h">
-      <Filter>src\Tower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Tower\TowerThunder.h">
-      <Filter>src\Tower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Tower\TowerIce.h">
-      <Filter>src\Tower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Enemy\SimpleEnemy.h">
-      <Filter>src\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Tower\TowerFire.h">
-      <Filter>src\Tower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Enemy\SimpleEnemy.h">
-      <Filter>src\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Skill\Skill.h">
-      <Filter>src\Skill</Filter>
+    <ClInclude Include="..\Classes\Entity\Entity.h">
+      <Filter>Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Skill\FastFreeze.h">
-      <Filter>src\Skill</Filter>
+      <Filter>Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\FireAOE.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\FireDir.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\GameScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Skill\Hurricane.h">
-      <Filter>src\Skill</Filter>
+      <Filter>Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\IceAOE.h">
+      <Filter>Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\MainScene.h">
-      <Filter>src\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Skill\ShakingWave.h">
-      <Filter>src\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Skill\RowSkill.h">
-      <Filter>src\Skill</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\LoseScene.h">
-      <Filter>src\Scene</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Scene\WinScene.h">
-      <Filter>src\Scene</Filter>
+    <ClInclude Include="..\Classes\Entity\Missile.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\MissileStar.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\MoonSword.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Skill\RowSkill.h">
+      <Filter>Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Skill\ShakingWave.h">
+      <Filter>Skill</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Util\StageLoader.h">
       <Filter>src\Util</Filter>
@@ -212,47 +167,73 @@
     <ClInclude Include="..\Classes\Tower\TowerStar.h">
       <Filter>src\Tower</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Tower\TowerMoon.h">
-      <Filter>src\Tower</Filter>
+    <ClInclude Include="..\Classes\Enemy\SimpleEnemy.h">
+      <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Entity\AOEArea.h">
-      <Filter>src\Entity</Filter>
+    <ClInclude Include="..\Classes\Skill\Skill.h">
+      <Filter>Skill</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Entity\Entity.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\FireAOE.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\FireDir.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\IceAOE.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\Missile.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\MissileStar.h">
-      <Filter>src\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Entity\MoonSword.h">
-      <Filter>src\Entity</Filter>
+    <ClInclude Include="..\Classes\Util\StageLoader.h">
+      <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Entity\StarFall.h">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\TDPoint.h">
+      <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Entity\Thunder.h">
-      <Filter>src\Entity</Filter>
+      <Filter>Entity</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
-    </ResourceCompile>
+    <ClInclude Include="..\Classes\Tower\Tower.h">
+      <Filter>Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerFire.h">
+      <Filter>Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerIce.h">
+      <Filter>Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerMoon.h">
+      <Filter>Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerStar.h">
+      <Filter>Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tower\TowerThunder.h">
+      <Filter>Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\AppDelegate.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\res\Tower\Ice_Attack.plist" />
     <None Include="..\Resources\res\Tower\Ice_picture.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{9e1081eb-0c21-463f-95f6-d35beadcdd77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buff">
+      <UniqueIdentifier>{2acdc278-6a5e-4f85-bf33-da247d1bc3f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity">
+      <UniqueIdentifier>{5040701a-975d-4b8c-9d0e-8aacdfda3f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skill">
+      <UniqueIdentifier>{93cbb7a1-2819-46d3-9001-b87c5276368b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{89bc078a-833c-414b-8b94-09b4997e2528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tower">
+      <UniqueIdentifier>{22c89551-5d16-41a8-8fee-6e7d2c5bfdba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{38708f9b-c30b-4597-bcf9-3f5a40ace414}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc" />
   </ItemGroup>
 </Project>

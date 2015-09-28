@@ -227,6 +227,15 @@
     <None Include="..\Resources\res\Enemy\Monster.plist">
       <Filter>Enemy</Filter>
     </None>
+    <None Include="..\Resources\res\Map\stage1.plist">
+      <Filter>Stages</Filter>
+    </None>
+    <None Include="..\Resources\res\Map\stage2.plist">
+      <Filter>Stages</Filter>
+    </None>
+    <None Include="..\Resources\res\Map\stage3.plist">
+      <Filter>Stages</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -249,6 +258,9 @@
     </Filter>
     <Filter Include="Util">
       <UniqueIdentifier>{38708f9b-c30b-4597-bcf9-3f5a40ace414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stages">
+      <UniqueIdentifier>{1fd60f0d-f35a-4393-87b7-cd7bb21d5da3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

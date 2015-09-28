@@ -73,5 +73,30 @@ void TowerIce::onFire()
 	auto iceAtk = IceAOE::createIceAOE();
 	iceAtk->setPosition(this->getPosition());
 	iceAtk->setScale(0.5);
+	iceAtk->setBaseDamage(this->attack);
 	mainScene->addChild(iceAtk);
+}
+
+bool TowerIce::onChangeLevel(int level)
+{
+	switch (level)
+	{
+	case 2:
+	{
+		attack = 10;
+		radius = 130;
+		interval = 0.8;
+		break;
+	}
+	case 3:
+	{
+		attack = 15;
+		radius = 160;
+		interval = 0.7;
+		break;
+	}
+	default:
+		break;
+	}
+	return Tower::onChangeLevel(level);
 }

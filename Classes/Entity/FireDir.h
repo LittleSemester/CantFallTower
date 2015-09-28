@@ -9,6 +9,9 @@ private:
 	cocos2d::Sprite* sprite;
 
 	cocos2d::Vec2 fireDir;
+
+	float boomRadius;
+
 public:
 	explicit FireDir();
 
@@ -17,6 +20,7 @@ public:
 
 	virtual bool judgeSingleEnemy(Enemy* enemy);
 
+	void setBoom(float rad);
 
 	CREATE_FUNC(FireDir);
 

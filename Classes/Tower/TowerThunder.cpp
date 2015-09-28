@@ -41,6 +41,7 @@ void TowerThunder::onFire()
 		auto thunder = Thunder::create();
 		thunder->setPosition(p->getPosition());
 		thunder->setTarget(p);
+		thunder->setBaseDamage(this->attack);
 		mainScene->addChild(thunder);
 	}
 
@@ -75,3 +76,26 @@ bool TowerThunder::init()
 	return true;
 }
 
+bool TowerThunder::onChangeLevel(int level)
+{
+	switch (level)
+	{
+	case 2:
+	{
+		attack = 30;
+		radius = 130;
+		interval = 0.4;
+		break;
+	}
+	case 3:
+	{
+		attack = 45;
+		radius = 160;
+		interval = 0.35;
+		break;
+	}
+	default:
+		break;
+	}
+	return Tower::onChangeLevel(level);
+}

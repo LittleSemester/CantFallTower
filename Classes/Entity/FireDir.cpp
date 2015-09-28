@@ -67,6 +67,12 @@ bool FireDir::judgeSingleEnemy(Enemy * enemy)
 	//生成爆炸AOE并计算伤害
 	auto boom = FireAOE::createFireAOE();
 	boom->setPosition(enemy->getPosition());
+	boom->setBaseDamage(this->baseDamage);
 	mainScene->addChild(boom);
 	return true;
+}
+
+void FireDir::setBoom(float rad)
+{
+	this->boomRadius = rad;
 }

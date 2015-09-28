@@ -29,6 +29,11 @@ void Entity::onEnter()
 		removeFromParent();
 }
 
+void Entity::setBaseDamage(int damage)
+{
+	baseDamage = damage;
+}
+
 bool Entity::init()
 {
 	if (!Node::init())

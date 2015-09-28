@@ -10,6 +10,8 @@ protected:
 
 	virtual void onFire();
 
+	bool onChangeLevel(int level);
+
 public:
 	explicit TowerFire();
 

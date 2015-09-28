@@ -71,6 +71,8 @@ public:
 		return this->distance;
 	}
 
+	int money;
+
 private:
 
 	//敌人移动回调函数

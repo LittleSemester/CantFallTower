@@ -39,6 +39,8 @@ public:
 
 	virtual bool judgeSingleEnemy(Enemy* enemy) = 0;
 
+	//设置子弹伤害
+	virtual void setBaseDamage(int damage);
 };
 
 

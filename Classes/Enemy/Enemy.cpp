@@ -17,6 +17,7 @@ Enemy::Enemy()
 	this->distance = 0;
 	this->speed = 100;
 	this->height = 50;
+	this->money = 0;
 }
 
 Enemy::~Enemy()

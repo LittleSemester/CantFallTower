@@ -22,8 +22,33 @@ void TowerMoon::onFire()
 		moon->setPosition(this->getPosition());
 		moon->setTarget(p);
 		moon->setJump(3);
+		moon->setBaseDamage(this->attack);
 		mainScene->addChild(moon);
 	}
+}
+
+bool TowerMoon::onChangeLevel(int level)
+{
+	switch (level)
+	{
+	case 2:
+	{
+		attack = 20;
+		radius = 180;
+		interval = 0.9;
+		break;
+	}
+	case 3:
+	{
+		attack = 40;
+		radius = 210;
+		interval = 0.8;
+		break;
+	}
+	default:
+		break;
+	}
+	return Tower::onChangeLevel(level);
 }
 
 TowerMoon::TowerMoon()

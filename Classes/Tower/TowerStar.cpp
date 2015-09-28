@@ -13,6 +13,7 @@ void TowerStar::onFire()
 		auto star = StarFall::create();
 		star->setPosition(enemy->getPosition());
 		star->setTarget(enemy);
+		star->setBaseDamage(this->attack);
 		mainScene->addChild(star);
 	}
 
@@ -23,6 +24,30 @@ void TowerStar::onFire()
 	//	thunder->setTarget(p);
 	//	mainScene->addChild(thunder);*/
 	//}
+}
+
+bool TowerStar::onChangeLevel(int level)
+{
+	switch (level)
+	{
+	case 2:
+	{
+		attack = 25;
+		radius = 140;
+		interval = 0.7;
+		break;
+	}
+	case 3:
+	{
+		attack = 40;
+		radius = 180;
+		interval = 0.6;
+		break;
+	}
+	default:
+		break;
+	}
+	return Tower::onChangeLevel(level);
 }
 
 TowerStar::TowerStar()

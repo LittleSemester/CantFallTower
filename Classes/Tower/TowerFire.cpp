@@ -6,7 +6,7 @@ USING_NS_CC;
 
 TowerFire::TowerFire()
 {
-	attack = 10;
+	attack = 15;
 	radius = 150;
 	interval = 0.7;
 	cost[1] = 180;
@@ -39,8 +39,33 @@ void TowerFire::onFire()
 		Vec2 pos = this->getPosition();
 		fire->setPosition(Vec2(pos.x,pos.y+20));
 		fire->setTarget(p);
+		fire->setBaseDamage(this->attack);
 		mainScene->addChild(fire);
 	}
+}
+
+bool TowerFire::onChangeLevel(int level)
+{
+	switch (level)
+	{
+	case 2:
+	{
+		attack = 30;
+		radius = 180;
+		interval = 0.6;
+		break;
+	}
+	case 3:
+	{
+		attack = 50;
+		radius = 210;
+		interval = 0.5;
+		break;
+	}
+	default:
+		break;
+	}
+	return Tower::onChangeLevel(level);
 }
 
 

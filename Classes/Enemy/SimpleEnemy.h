@@ -18,7 +18,6 @@ protected:
 	std::string type; //怪物类型
 	int maxhp;
 	int def;
-	int money;
 
 	int frameFly;
 

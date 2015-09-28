@@ -992,7 +992,6 @@ void GameScene::updateTD(int r, int c)
 	auto tPos = Sprite::create("towerSel.png");
 	Vec2 nowSize = tPos->getContentSize();
 	Tower* thisTD = towerObjs[10-c][r];
-	thisTD->setName("thisTD");
 	Sprite *btn_up;
 	Sprite *btn_up_sel;
 
@@ -1040,7 +1039,7 @@ void GameScene::updateTD(int r, int c)
 void GameScene::selectUpdate(cocos2d::Ref * obj)
 {
 	auto item = (MenuItemSprite *)obj;
-	Tower* thisTD =(Tower*) this->getChildByName("thisTD");
+	Tower* thisTD = towerObjs[nowCol][nowRow];
 	switch (item->getTag())
 	{
 	case 20:

@@ -89,6 +89,7 @@ bool MoonSword::judgeSingleEnemy(Enemy * enemy)
 			moon->setPosition(this->getPosition());
 			moon->setTarget(nextEnemy);
 			moon->setJump(nextTime);
+			moon->setBaseDamage(this->baseDamage);
 			mainScene->addChild(moon);
 		}
 		return true;

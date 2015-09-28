@@ -45,11 +45,10 @@ protected:
 	cocos2d::Label* labHealth;
 	cocos2d::Label* labWave;
 
-	int skillCD;//技能CD限制
-	int nowTime, lastTime;
 	int skillTimes;//使用次数限制
 	int maxTimes;
-
+	int CDTime;
+	bool canUse;//是否可以使用技能
 
 public:
 
@@ -128,7 +127,7 @@ public:
 	//升级塔的回调函数
 	void selectUpdate(cocos2d::Ref* obj);
 
-
+	void CDupdate(float dt);
 };
 
 #endif

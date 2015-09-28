@@ -81,7 +81,7 @@
       <key>speed</key>
       <real>50</real>
       <key>money</key>
-      <real>30</real>
+      <real>20</real>
     </dict>
 		<key>Snow_Men</key>
 		<dict>
@@ -109,13 +109,13 @@
 			<key>height</key>
 			<real>55</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>500</integer>
 			<key>defence</key>
 			<integer>0</integer>
 			<key>speed</key>
 			<real>30</real>
       <key>money</key>
-      <real>40</real>
+      <real>30</real>
 		</dict>
 		<key>Snow_Boss</key>
 		<dict>
@@ -149,7 +149,7 @@
 			<key>speed</key>
 			<real>30</real>
       <key>money</key>
-      <real>150</real>
+      <real>50</real>
 			<key>buffs</key>
 			<array>
 				<dict>
@@ -166,104 +166,115 @@
 		<dict>
 			<key>animpic</key>
 			<array>
-				<string>Snow/Dark_Bat_00.png</string>
-				<string>Snow/Dark_Bat_01.png</string>
-				<string>Snow/Dark_Bat_02.png</string>
-				<string>Snow/Dark_Bat_03.png</string>
-				<string>Snow/Dark_Bat_04.png</string>
-				<string>Snow/Dark_Bat_05.png</string>
-				<string>Snow/Dark_Bat_06.png</string>
+				<string>Dark/Dark_Bat_00.png</string>
+				<string>Dark/Dark_Bat_01.png</string>
+				<string>Dark/Dark_Bat_02.png</string>
+				<string>Dark/Dark_Bat_03.png</string>
+				<string>Dark/Dark_Bat_04.png</string>
+				<string>Dark/Dark_Bat_05.png</string>
+				<string>Dark/Dark_Bat_06.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
 			<key>height</key>
 			<real>100</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>200</integer>
 			<key>defence</key>
 			<integer>5</integer>
 			<key>speed</key>
-			<real>50</real>
+			<real>70</real>
       <key>money</key>
-      <real>10</real>
+      <real>20</real>
 		</dict>
 		<key>Dark_Bear</key>
 		<dict>
 			<key>animpic</key>
 			<array>
-				<string>Snow/Dark_Bear_00.png</string>
-				<string>Snow/Dark_Bear_01.png</string>
-				<string>Snow/Dark_Bear_02.png</string>
-				<string>Snow/Dark_Bear_03.png</string>
-				<string>Snow/Dark_Bear_04.png</string>
-				<string>Snow/Dark_Bear_05.png</string>
-				<string>Snow/Dark_Bear_06.png</string>
-				<string>Snow/Dark_Bear_07.png</string>
-				<string>Snow/Dark_Bear_08.png</string>
-				<string>Snow/Dark_Bear_09.png</string>
+				<string>Dark/Dark_Bear_00.png</string>
+				<string>Dark/Dark_Bear_01.png</string>
+				<string>Dark/Dark_Bear_02.png</string>
+				<string>Dark/Dark_Bear_03.png</string>
+				<string>Dark/Dark_Bear_04.png</string>
+				<string>Dark/Dark_Bear_05.png</string>
+				<string>Dark/Dark_Bear_06.png</string>
+				<string>Dark/Dark_Bear_07.png</string>
+				<string>Dark/Dark_Bear_08.png</string>
+				<string>Dark/Dark_Bear_09.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
 			<key>height</key>
 			<real>100</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>800</integer>
 			<key>defence</key>
 			<integer>5</integer>
 			<key>speed</key>
 			<real>50</real>
       <key>money</key>
-      <real>10</real>
+      <real>30</real>
 		</dict>
 		<key>Dark_Boss</key>
 		<dict>
 			<key>animpic</key>
 			<array>
-				<string>Snow/Dark_Boss_00.png</string>
-				<string>Snow/Dark_Boss_01.png</string>
-				<string>Snow/Dark_Boss_02.png</string>
-				<string>Snow/Dark_Boss_03.png</string>
-				<string>Snow/Dark_Boss_04.png</string>
-				<string>Snow/Dark_Boss_05.png</string>
-				<string>Snow/Dark_Boss_06.png</string>
-				<string>Snow/Dark_Boss_07.png</string>
-				<string>Snow/Dark_Boss_08.png</string>
-				<string>Snow/Dark_Boss_09.png</string>
-				<string>Snow/Dark_Boss_10.png</string>
-				<string>Snow/Dark_Boss_11.png</string>
-				<string>Snow/Dark_Boss_12.png</string>
+				<string>Dark/Dark_Boss_00.png</string>
+				<string>Dark/Dark_Boss_01.png</string>
+				<string>Dark/Dark_Boss_02.png</string>
+				<string>Dark/Dark_Boss_03.png</string>
+				<string>Dark/Dark_Boss_04.png</string>
+				<string>Dark/Dark_Boss_05.png</string>
+				<string>Dark/Dark_Boss_06.png</string>
+				<string>Dark/Dark_Boss_07.png</string>
+				<string>Dark/Dark_Boss_08.png</string>
+				<string>Dark/Dark_Boss_09.png</string>
+				<string>Dark/Dark_Boss_10.png</string>
+				<string>Dark/Dark_Boss_11.png</string>
+				<string>Dark/Dark_Boss_12.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
 			<key>height</key>
 			<real>100</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>2200</integer>
 			<key>defence</key>
 			<integer>5</integer>
 			<key>speed</key>
 			<real>50</real>
       <key>money</key>
-      <real>10</real>
+      <real>100</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>12</real>
+          <key>effects</key>
+          <string>1.0,1.0,1.0,1.5,0.0,0.0</string>
+          <key>flag</key>
+          <integer>64</integer>
+        </dict>
+      </array>
 		</dict>
 		<key>Dark_Cat</key>
 		<dict>
 			<key>animpic</key>
 			<array>
-				<string>Snow/Dark_Cat_00.png</string>
-				<string>Snow/Dark_Cat_01.png</string>
-				<string>Snow/Dark_Cat_02.png</string>
-				<string>Snow/Dark_Cat_03.png</string>
-				<string>Snow/Dark_Cat_04.png</string>
-				<string>Snow/Dark_Cat_05.png</string>
-				<string>Snow/Dark_Cat_06.png</string>
+				<string>Dark/Dark_Cat_00.png</string>
+				<string>Dark/Dark_Cat_01.png</string>
+				<string>Dark/Dark_Cat_02.png</string>
+				<string>Dark/Dark_Cat_03.png</string>
+				<string>Dark/Dark_Cat_04.png</string>
+				<string>Dark/Dark_Cat_05.png</string>
+				<string>Dark/Dark_Cat_06.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
 			<key>height</key>
 			<real>100</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>200</integer>
 			<key>defence</key>
 			<integer>5</integer>
 			<key>speed</key>
@@ -275,87 +286,120 @@
 		<dict>
 			<key>animpic</key>
 			<array>
-				<string>Snow/Dark_Redbat_00.png</string>
-				<string>Snow/Dark_Redbat_01.png</string>
-				<string>Snow/Dark_Redbat_02.png</string>
-				<string>Snow/Dark_Redbat_03.png</string>
-				<string>Snow/Dark_Redbat_04.png</string>
-				<string>Snow/Dark_Redbat_05.png</string>
-				<string>Snow/Dark_Redbat_06.png</string>
+				<string>Dark/Dark_Redbat_00.png</string>
+				<string>Dark/Dark_Redbat_01.png</string>
+				<string>Dark/Dark_Redbat_02.png</string>
+				<string>Dark/Dark_Redbat_03.png</string>
+				<string>Dark/Dark_Redbat_04.png</string>
+				<string>Dark/Dark_Redbat_05.png</string>
+				<string>Dark/Dark_Redbat_06.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
 			<key>height</key>
 			<real>100</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>400</integer>
 			<key>defence</key>
 			<integer>5</integer>
 			<key>speed</key>
-			<real>50</real>
+			<real>70</real>
       <key>money</key>
-      <real>10</real>
+      <real>25</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>12</real>
+          <key>effects</key>
+          <string>1.0,1.0,1.0,1.5,0.0,0.0</string>
+          <key>flag</key>
+          <integer>64</integer>
+        </dict>
+      </array>
 		</dict>
 		<key>Dark_Rock</key>
 		<dict>
 			<key>animpic</key>
 			<array>
-				<string>Snow/Dark_Rock_00.png</string>
-				<string>Snow/Dark_Rock_01.png</string>
-				<string>Snow/Dark_Rock_02.png</string>
-				<string>Snow/Dark_Rock_03.png</string>
-				<string>Snow/Dark_Rock_04.png</string>
-				<string>Snow/Dark_Rock_05.png</string>
-				<string>Snow/Dark_Rock_06.png</string>
-				<string>Snow/Dark_Rock_07.png</string>
-				<string>Snow/Dark_Rock_08.png</string>
-				<string>Snow/Dark_Rock_09.png</string>
-				<string>Snow/Dark_Rock_10.png</string>
-				<string>Snow/Dark_Rock_11.png</string>
-				<string>Snow/Dark_Rock_12.png</string>
-				<string>Snow/Dark_Rock_13.png</string>
-				<string>Snow/Dark_Rock_14.png</string>
-				<string>Snow/Dark_Rock_15.png</string>
-				<string>Snow/Dark_Rock_16.png</string>
+				<string>Dark/Dark_Rock_00.png</string>
+				<string>Dark/Dark_Rock_01.png</string>
+				<string>Dark/Dark_Rock_02.png</string>
+				<string>Dark/Dark_Rock_03.png</string>
+				<string>Dark/Dark_Rock_04.png</string>
+				<string>Dark/Dark_Rock_05.png</string>
+				<string>Dark/Dark_Rock_06.png</string>
+				<string>Dark/Dark_Rock_07.png</string>
+				<string>Dark/Dark_Rock_08.png</string>
+				<string>Dark/Dark_Rock_09.png</string>
+				<string>Dark/Dark_Rock_10.png</string>
+				<string>Dark/Dark_Rock_11.png</string>
+				<string>Dark/Dark_Rock_12.png</string>
+				<string>Dark/Dark_Rock_13.png</string>
+				<string>Dark/Dark_Rock_14.png</string>
+				<string>Dark/Dark_Rock_15.png</string>
+				<string>Dark/Dark_Rock_16.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
 			<key>height</key>
 			<real>100</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>1000</integer>
 			<key>defence</key>
 			<integer>5</integer>
 			<key>speed</key>
-			<real>50</real>
+			<real>30</real>
       <key>money</key>
-      <real>10</real>
+      <real>35</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>120</real>
+          <key>effects</key>
+          <string>1.0,1.0,0.8,1.0,0.0,2.0</string>
+          <key>flag</key>
+          <integer>20</integer>
+        </dict>
+      </array>
 		</dict>
 		<key>Dark_Tree</key>
 		<dict>
 			<key>animpic</key>
 			<array>
-				<string>Snow/Dark_Tree_00.png</string>
-				<string>Snow/Dark_Tree_01.png</string>
-				<string>Snow/Dark_Tree_02.png</string>
-				<string>Snow/Dark_Tree_03.png</string>
-				<string>Snow/Dark_Tree_04.png</string>
-				<string>Snow/Dark_Tree_05.png</string>
-				<string>Snow/Dark_Tree_06.png</string>
-				<string>Snow/Dark_Tree_07.png</string>
+				<string>Dark/Dark_Tree_00.png</string>
+				<string>Dark/Dark_Tree_01.png</string>
+				<string>Dark/Dark_Tree_02.png</string>
+				<string>Dark/Dark_Tree_03.png</string>
+				<string>Dark/Dark_Tree_04.png</string>
+				<string>Dark/Dark_Tree_05.png</string>
+				<string>Dark/Dark_Tree_06.png</string>
+				<string>Dark/Dark_Tree_07.png</string>
 			</array>
 			<key>animdelay</key>
 			<real>0.05</real>
 			<key>height</key>
 			<real>100</real>
 			<key>maxHp</key>
-			<integer>300</integer>
+			<integer>1000</integer>
 			<key>defence</key>
 			<integer>5</integer>
 			<key>speed</key>
-			<real>50</real>
+			<real>40</real>
       <key>money</key>
-      <real>10</real>
+      <real>40</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>12</real>
+          <key>effects</key>
+          <string>1.0,1.0,1.0,1.0,0.0,10.0</string>
+          <key>flag</key>
+          <integer>4</integer>
+        </dict>
+      </array>
 		</dict>
     <key>Beach_Bull</key>
     <dict>

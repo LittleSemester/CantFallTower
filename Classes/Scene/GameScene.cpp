@@ -275,10 +275,10 @@ void GameScene::loadSkillPattern()
 	skillMenu->setTag(30);
 	this->addChild(skillMenu,50);
 
-	skillCD = 30000;//技能CD30S
-	lastTime = -30000;//初始化计时
 	skillTimes = 0;
 	maxTimes = 5;//最多使用5次
+	CDTime = 0;
+	canUse = true;
 }
 
 void GameScene::loadStatus()
@@ -382,8 +382,7 @@ void GameScene::selectSkill(Ref * obj)
 	}
 	auto item = (MenuItemSprite *)obj;
 	
-	nowTime = clock();
-	if (nowTime - lastTime < skillCD  || skillTimes>=maxTimes)
+	if (!canUse  || skillTimes>=maxTimes)
 		return;
 	if (selectedSkill == item->getTag() && currSkill!=nullptr)
 	{
@@ -533,12 +532,13 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 		auto skill = menu->getChildByTag(selectedSkill);
 		skill->setScale(1.0);
 		skillTimes++;
-		lastTime = clock();
 		//进入CD显示
 		auto spriteCD = SkillCD::create();
 		spriteCD->setAnchorPoint(Vec2(0.5,0));
 		spriteCD->setPosition(Vec2(800, 15));
 		addChild(spriteCD,55);
+		canUse = false;
+		schedule(schedule_selector(GameScene::CDupdate, this), 1.0, 31, 0.0);
 	}
 
 }
@@ -1086,6 +1086,16 @@ void GameScene::selectUpdate(cocos2d::Ref * obj)
 	if (this->getChildByTag(99) != nullptr)
 	{
 		this->removeChildByTag(99);
+	}
+}
+
+void GameScene::CDupdate(float dt)
+{
+	CDTime++;
+	if (CDTime >= 30)
+	{
+		canUse = true;
+		CDTime = 0;
 	}
 }
 

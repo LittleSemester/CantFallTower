@@ -36,27 +36,7 @@
 				<key>count</key>
 				<integer>10</integer>
 				<key>delay</key>
-				<real>0.5</real>
-				<key>enemies</key>
-				<array>
-					<string>Snow_Men</string>
-				</array>
-			</dict>
-			<dict>
-				<key>count</key>
-				<integer>2</integer>
-				<key>delay</key>
-				<real>5</real>
-				<key>enemies</key>
-				<array>
-					<string>Snow_Boss</string>
-				</array>
-			</dict>
-			<dict>
-				<key>count</key>
-				<integer>20</integer>
-				<key>delay</key>
-				<real>0.1</real>
+				<real>1</real>
 				<key>enemies</key>
 				<array>
 					<string>Snow_Men</string>
@@ -66,14 +46,30 @@
 				<key>count</key>
 				<integer>20</integer>
 				<key>delay</key>
-				<real>0.5</real>
+				<real>1</real>
 				<key>enemies</key>
 				<array>
-					<string>Snow_Boss</string>
 					<string>Snow_Men</string>
-					<string>Snow_Men</string>
-					<string>Snow_Men</string>
-					<string>Snow_Men</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>10</integer>
+				<key>delay</key>
+				<real>2</real>
+				<key>enemies</key>
+				<array>
+					<string>Snow_Sheep</string>
+				</array>
+			</dict>
+			<dict>
+				<key>count</key>
+				<integer>20</integer>
+				<key>delay</key>
+				<real>2</real>
+				<key>enemies</key>
+				<array>
+					<string>Snow_Sheep</string>
 				</array>
 			</dict>
 			<dict>
@@ -84,8 +80,55 @@
 				<key>enemies</key>
 				<array>
 					<string>Snow_Boss</string>
-				</array>
+          <string>Snow_Men</string>
+          <string>Snow_Men</string>
+          <string>Snow_Men</string>
+          <string>Snow_Men</string>
+        </array>
 			</dict>
+      <dict>
+        <key>count</key>
+        <integer>20</integer>
+        <key>delay</key>
+        <real>1</real>
+        <key>enemies</key>
+        <array>
+          <string>Snow_Men</string>
+          <string>Snow_Men</string>
+          <string>Snow_Sheep</string>
+          <string>Snow_Sheep</string>
+          <string>Snow_Sheep</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>20</integer>
+        <key>delay</key>
+        <real>1</real>
+        <key>enemies</key>
+        <array>
+          <string>Snow_Men</string>
+          <string>Snow_Men</string>
+          <string>Snow_Sheep</string>
+          <string>Snow_Dog</string>
+          <string>Snow_Boss</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>18</integer>
+        <key>delay</key>
+        <real>1</real>
+        <key>enemies</key>
+        <array>
+          <string>Snow_Men</string>
+          <string>Snow_Sheep</string>
+          <string>Snow_Dog</string>
+          <string>Snow_Boss</string>
+          <string>Snow_Boss</string>
+          <string>Snow_Boss</string>
+        </array>
+      </dict>
 		</array>
 	</dict>
 </plist>

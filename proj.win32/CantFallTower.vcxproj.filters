@@ -105,6 +105,9 @@
     <ClCompile Include="..\Classes\Util\StageData.cpp">
       <Filter>Util</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Skill\SkillCD.cpp">
+      <Filter>Skill</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Scene\WinScene.h">
@@ -216,6 +219,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Util\StageData.h">
       <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Skill\SkillCD.h">
+      <Filter>Skill</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

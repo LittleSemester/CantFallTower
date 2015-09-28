@@ -7,6 +7,7 @@
 #include "Scene/WinScene.h"
 #include "Scene/MainScene.h"
 #include "Util/StageData.h"
+#include "Skill/SkillCD.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -534,7 +535,10 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 		skillTimes++;
 		lastTime = clock();
 		//进入CD显示
-		
+		auto spriteCD = SkillCD::create();
+		spriteCD->setAnchorPoint(Vec2(0.5,0));
+		spriteCD->setPosition(Vec2(800, 15));
+		addChild(spriteCD,55);
 	}
 
 }

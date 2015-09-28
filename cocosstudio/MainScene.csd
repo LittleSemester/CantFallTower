@@ -766,19 +766,19 @@
                     <PreSize X="0.1383" Y="0.2075" />
                     <FileData Type="Normal" Path="UI_Skill_Ice.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="windintro" ActionTag="-387623087" Tag="30" IconVisible="False" LeftMargin="25.9315" RightMargin="-5.9315" TopMargin="117.6061" BottomMargin="242.3939" FontSize="20" LabelText="在某一行或列召唤出飓风，对怪物造成伤害并且净化掉怪物身上的&#xA;所有buff。该技能的升级可提升伤害及减少冷却时间。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="580.0000" Y="40.0000" />
+                  <AbstractNodeData Name="windintro" ActionTag="-387623087" Tag="30" IconVisible="False" LeftMargin="25.9315" RightMargin="-5.9315" TopMargin="116.8989" BottomMargin="243.1011" FontSize="20" LabelText="在某一行或列召唤出飓风，对怪物造成伤害并且净化掉怪物身上的&#xA;所有buff。&#xA;使用方法：选中技能后，点击某个点，再滑向某一行或某一列。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="580.0000" Y="60.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="315.9315" Y="262.3939" />
+                    <Position X="315.9315" Y="263.1011" />
                     <Scale ScaleX="0.6480" ScaleY="1.0530" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.5266" Y="0.6560" />
+                    <PrePosition X="0.5266" Y="0.6578" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="waveintro" ActionTag="-1737409853" Tag="31" IconVisible="False" LeftMargin="9.3937" RightMargin="10.6063" TopMargin="198.7631" BottomMargin="161.2369" FontSize="20" LabelText="在某一行或列释放出一道超强声波，击退该行怪物一定距离并造成&#xA;怪物被恐吓状态，停止前进一段时间。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="580.0000" Y="40.0000" />
+                  <AbstractNodeData Name="waveintro" ActionTag="-1737409853" Tag="31" IconVisible="False" LeftMargin="9.3937" RightMargin="10.6063" TopMargin="198.7631" BottomMargin="161.2369" FontSize="20" LabelText="在某一行或列释放出一道超强声波，击退该行怪物一定距离并造成&#xA;怪物被恐吓状态，停止前进一段时间。&#xA;使用方法:选中技能后，点击某个点，再滑向某一行或某一列" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="580.0000" Y="60.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="299.3937" Y="181.2369" />
                     <Scale ScaleX="0.5920" ScaleY="1.1061" />
@@ -788,13 +788,24 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="iceintro" ActionTag="1976330117" Tag="32" IconVisible="False" LeftMargin="39.0581" RightMargin="-9.0581" TopMargin="283.8322" BottomMargin="76.1678" FontSize="20" LabelText="单体指向性技能，对怪物造成3秒的冻结，并使其额外受到一定的&#xA;伤害。该技能的升级可使得冰冻时间增加和额外伤害的增加。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                    <Size X="570.0000" Y="40.0000" />
+                  <AbstractNodeData Name="iceintro" ActionTag="1976330117" Tag="32" IconVisible="False" LeftMargin="39.0581" RightMargin="-9.0581" TopMargin="283.8322" BottomMargin="76.1678" FontSize="20" LabelText="单体指向性技能，对怪物造成3秒的冻结，并使其额外受到一定的&#xA;伤害。&#xA;使用方法：选中技能后，直接点击某个怪物。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="570.0000" Y="60.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="324.0581" Y="96.1678" />
                     <Scale ScaleX="0.6902" ScaleY="1.0000" />
                     <CColor A="255" R="0" G="0" B="0" />
                     <PrePosition X="0.5401" Y="0.2404" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="Text_2" ActionTag="-1236564799" Tag="34" IconVisible="False" LeftMargin="99.2931" RightMargin="130.7069" TopMargin="338.8194" BottomMargin="41.1806" FontSize="20" LabelText="30s内最多释放一次技能，各技能共用CD。" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                    <Size X="370.0000" Y="20.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="284.2931" Y="51.1806" />
+                    <Scale ScaleX="0.8345" ScaleY="1.0000" />
+                    <CColor A="255" R="0" G="0" B="0" />
+                    <PrePosition X="0.4738" Y="0.1280" />
                     <PreSize X="0.0000" Y="0.0000" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />

@@ -177,6 +177,25 @@ void Enemy::moveEnemy(float dt)
 	//如果怪物死了
 	if (this->isDead())
 	{
+		
+		GameScene * ourScene =(GameScene*) this->getParent();
+		ourScene->setMoney(ourScene->getMoney() + this->money);
+
+		//显示金钱获得
+
+		auto bonus = Sprite::create("ui_towerprice.png");
+		TTFConfig myTTF;
+		myTTF.fontFilePath = "fonts/Marker Felt.ttf";
+		myTTF.fontSize = 16;
+		myTTF.glyphs = GlyphCollection::DYNAMIC;
+
+		std::string strMoney = std::to_string(this->money);
+		Label * labBonus = Label::createWithTTF(myTTF, strMoney);
+		bonus->addChild(labBonus);
+		addChild(bonus);
+		labBonus->setPosition(Vec2(30, 10));
+		auto fly = MoveBy::create(0.8, Vec2(0, 10));
+
 		//先渐隐消失，再删除
 		auto dead = FadeOut::create(0.3);
 		auto deadFunc = CallFunc::create([this]() {this->removeFromParent(); });
@@ -184,6 +203,8 @@ void Enemy::moveEnemy(float dt)
 		this->actSprite->runAction(deadSeq);
 		this->runAction(Sequence::create(DelayTime::create(0.3), deadFunc, NULL));
 		this->finished = true;
+
+		bonus->runAction(Sequence::create(fly, deadFunc, NULL));
 	}
 }
 

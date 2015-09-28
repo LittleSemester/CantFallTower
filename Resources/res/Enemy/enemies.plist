@@ -115,7 +115,7 @@
 			<key>speed</key>
 			<real>30</real>
       <key>money</key>
-      <real>20</real>
+      <real>10</real>
 		</dict>
 		<key>Snow_Boss</key>
 		<dict>
@@ -149,7 +149,7 @@
 			<key>speed</key>
 			<real>30</real>
       <key>money</key>
-      <real>200</real>
+      <real>150</real>
 			<key>buffs</key>
 			<array>
 				<dict>

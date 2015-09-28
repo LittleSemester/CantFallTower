@@ -273,6 +273,11 @@ void GameScene::loadSkillPattern()
 	skillMenu->setPosition(Vec2(800, 50));
 	skillMenu->setTag(30);
 	this->addChild(skillMenu,50);
+
+	skillCD = 30000;//技能CD30S
+	lastTime = -30000;//初始化计时
+	skillTimes = 0;
+	maxTimes = 5;//最多使用5次
 }
 
 void GameScene::loadStatus()
@@ -376,6 +381,9 @@ void GameScene::selectSkill(Ref * obj)
 	}
 	auto item = (MenuItemSprite *)obj;
 	
+	nowTime = clock();
+	if (nowTime - lastTime < skillCD  || skillTimes>=maxTimes)
+		return;
 	if (selectedSkill == item->getTag() && currSkill!=nullptr)
 	{
 		//再次点击相同技能则取消释放
@@ -523,6 +531,10 @@ void GameScene::onTouchEnded(Touch * touch, Event * unused_event)
 		auto menu = this->getChildByTag(30);
 		auto skill = menu->getChildByTag(selectedSkill);
 		skill->setScale(1.0);
+		skillTimes++;
+		lastTime = clock();
+		//进入CD显示
+		
 	}
 
 }
@@ -1072,6 +1084,10 @@ void GameScene::selectUpdate(cocos2d::Ref * obj)
 		this->removeChildByTag(99);
 	}
 }
+
+
+
+
 
 cocos2d::Sprite * GameScene::createPrice(int money)
 {

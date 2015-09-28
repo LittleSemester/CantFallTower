@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="17" height="11" tilewidth="64" tileheight="64" nextobjectid="17">
+ <tileset firstgid="1" name="Map_02" tilewidth="64" tileheight="64" tilecount="70">
+  <image source="Map_02.png" width="640" height="449"/>
+  <tile id="69">
+   <properties>
+    <property name="canBuild" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="块层 2" width="17" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAObLCIGeAQxwXUgVgDTYwDj3o3IGYEYgUgZgZiRShmRhKDsUFYDIh5ofqQzZCA0riwHhqfD4idsZhhiKbOCoitkdzAgiQHsxPZDHkkN7MwYHcLN5Q2groDxBaGmuGEphbZPGSshMUdsgyQ+NIEYi0g1iYQJjDMiGQeDBgDsQkQmzJA4gPZL5xAzIVmhgISGxeQZ0DEIy4M0m+IxwxSAQAHXRYh
+  </data>
+ </layer>
+ <objectgroup name="Obj1">
+  <object id="1" x="608" y="288"/>
+  <object id="2" x="744" y="290"/>
+  <object id="3" x="730" y="414"/>
+  <object id="4" x="349" y="417"/>
+  <object id="5" x="353" y="350"/>
+  <object id="6" x="149" y="359"/>
+  <object id="7" x="163" y="163"/>
+  <object id="8" x="929" y="159"/>
+  <object id="9" x="933" y="472"/>
+  <object id="10" x="858" y="475" visible="0"/>
+  <object id="11" x="864" y="605"/>
+  <object id="15" x="352" y="604" width="5" height="12"/>
+  <object id="16" x="351" y="545"/>
+ </objectgroup>
+</map>

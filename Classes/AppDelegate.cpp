@@ -59,6 +59,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("res/fonts");
 
 	StageData::getInstance()->pushStageFileName("stage1.plist");
+	StageData::getInstance()->pushStageFileName("stage2.plist");
+	StageData::getInstance()->pushStageFileName("stage3.plist");
 
     // create a scene. it's an autorelease object
 	//测试游戏场景

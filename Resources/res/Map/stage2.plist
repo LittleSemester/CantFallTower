@@ -5,9 +5,9 @@
 		<key>stagename</key>
 		<string>Stage 1</string>
 		<key>background</key>
-		<string>Map_Background_01.jpg</string>
+		<string>Map_Background_02.jpg</string>
 		<key>tilemap</key>
-		<string>map_01.tmx</string>
+		<string>map_02.tmx</string>
 		<key>infinite</key>
 		<false/>
 		<key>waves</key>

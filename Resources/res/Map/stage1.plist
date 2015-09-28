@@ -14,12 +14,12 @@
 		<array>
 			<dict>
 				<key>count</key>
-				<integer>20</integer>
+				<integer>10</integer>
 				<key>delay</key>
 				<real>2</real>
 				<key>enemies</key>
 				<array>
-					<string>Snow_Men</string>
+					<string>Snow_Dog</string>
 				</array>
 			</dict>
 			<dict>
@@ -29,12 +29,12 @@
 				<real>1</real>
 				<key>enemies</key>
 				<array>
-					<string>Snow_Men</string>
+					<string>Snow_Dog</string>
 				</array>
 			</dict>
 			<dict>
 				<key>count</key>
-				<integer>20</integer>
+				<integer>10</integer>
 				<key>delay</key>
 				<real>0.5</real>
 				<key>enemies</key>

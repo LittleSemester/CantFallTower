@@ -319,7 +319,7 @@ void GameScene::loadStatus()
 
 	//初始化状态
 	this->ourHealth = 20;
-	this->money = 1000;
+	this->money = 500;
 	this->nowWave = 1;
 	this->sumWave = stageLoader->getWaveCount();
 

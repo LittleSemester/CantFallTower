@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
+-<plist version="1.0">
 	<dict>
     <key>Template_Empty</key>
     <dict>
@@ -429,13 +429,24 @@
       <key>height</key>
       <real>80</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>1800</integer>
       <key>defence</key>
       <integer>0</integer>
       <key>speed</key>
       <real>50</real>
       <key>money</key>
-      <real>10</real>
+      <real>150</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>120</real>
+          <key>effects</key>
+          <string>1.0,1.0,1.0,1.0,0.0,2.0</string>
+          <key>flag</key>
+          <integer>4</integer>
+        </dict>
+      </array>
     </dict>
     <key>Beach_Dun</key>
     <dict>
@@ -463,13 +474,24 @@
       <key>height</key>
       <real>55</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>2200</integer>
       <key>defence</key>
-      <integer>0</integer>
+      <integer>15</integer>
       <key>speed</key>
       <real>50</real>
       <key>money</key>
-      <real>10</real>
+      <real>150</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>60</real>
+          <key>effects</key>
+          <string>1.0,1.0,0.6,1.0,0.0,1.0</string>
+          <key>flag</key>
+          <integer>16</integer>
+        </dict>
+      </array>
     </dict>
     <key>Beach_Flymen</key>
     <dict>
@@ -489,13 +511,24 @@
       <key>height</key>
       <real>55</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>700</integer>
       <key>defence</key>
       <integer>0</integer>
       <key>speed</key>
-      <real>50</real>
+      <real>90</real>
       <key>money</key>
-      <real>10</real>
+      <real>90</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>120</real>
+          <key>effects</key>
+          <string>1.0,1.0,1.0,1.8,0.0,0.0</string>
+          <key>flag</key>
+          <integer>64</integer>
+        </dict>
+      </array>
     </dict>
     <key>Beach_Goblin</key>
     <dict>
@@ -519,7 +552,7 @@
       <key>height</key>
       <real>55</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>240</integer>
       <key>defence</key>
       <integer>0</integer>
       <key>speed</key>
@@ -552,15 +585,15 @@
       <key>animdelay</key>
       <real>0.05</real>
       <key>height</key>
-      <real>55</real>
+      <real>80</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>700</integer>
       <key>defence</key>
       <integer>0</integer>
       <key>speed</key>
-      <real>50</real>
+      <real>40</real>
       <key>money</key>
-      <real>10</real>
+      <real>30</real>
     </dict>
     <key>Beach_Ironbull</key>
     <dict>
@@ -584,13 +617,24 @@
       <key>height</key>
       <real>55</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>3600</integer>
       <key>defence</key>
-      <integer>0</integer>
+      <integer>20</integer>
       <key>speed</key>
       <real>50</real>
       <key>money</key>
-      <real>10</real>
+      <real>400</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>120</real>
+          <key>effects</key>
+          <string>1.0,1.0,0.5,1.0,0.0,2.0</string>
+          <key>flag</key>
+          <integer>20</integer>
+        </dict>
+      </array>
     </dict>
     <key>Beach_Knight</key>
     <dict>
@@ -608,13 +652,13 @@
       <key>height</key>
       <real>55</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>600</integer>
       <key>defence</key>
       <integer>0</integer>
       <key>speed</key>
-      <real>50</real>
+      <real>100</real>
       <key>money</key>
-      <real>10</real>
+      <real>15</real>
     </dict>
     <key>Beach_Man</key>
     <dict>
@@ -638,11 +682,11 @@
       <key>height</key>
       <real>55</real>
       <key>maxHp</key>
-      <integer>300</integer>
+      <integer>150</integer>
       <key>defence</key>
       <integer>0</integer>
       <key>speed</key>
-      <real>50</real>
+      <real>70</real>
       <key>money</key>
       <real>10</real>
     </dict>
@@ -668,6 +712,17 @@
       <real>50</real>
       <key>money</key>
       <real>10</real>
+      <key>buffs</key>
+      <array>
+        <dict>
+          <key>time</key>
+          <real>120</real>
+          <key>effects</key>
+          <string>1.0,1.0,1.0,1.0,0.0,15.0</string>
+          <key>flag</key>
+          <integer>4</integer>
+        </dict>
+      </array>
     </dict>
 	</dict>
 </plist>

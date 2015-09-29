@@ -58,7 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("res/Buff");
 	FileUtils::getInstance()->addSearchPath("res/fonts");
 
-	//StageData::getInstance()->pushStageFileName("stage1.plist");
+	StageData::getInstance()->pushStageFileName("stage1.plist");
 	StageData::getInstance()->pushStageFileName("stage2.plist");
 	StageData::getInstance()->pushStageFileName("stage3.plist");
 

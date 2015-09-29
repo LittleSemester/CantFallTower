@@ -4,6 +4,9 @@
 #include "Enemy/TestEnemy.h"
 #include "GameScene.h"
 #include "IntroScene.h"
+#include "audio/include/SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -62,6 +65,8 @@ bool MainScene::init()
 	btn_Exit->addTouchEventListener(CC_CALLBACK_2(MainScene::btnExitCalback, this));
 
 	btn_Intro->addTouchEventListener(CC_CALLBACK_2(MainScene::btnIntroCalback, this));
+
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Bgm/title.mp3", true);
 
 	return true;
 }

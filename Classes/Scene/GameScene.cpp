@@ -8,8 +8,10 @@
 #include "Scene/MainScene.h"
 #include "Util/StageData.h"
 #include "Skill/SkillCD.h"
+#include "audio/include/SimpleAudioEngine.h"
 
 USING_NS_CC;
+using namespace CocosDenshion;
 using namespace cocos2d::ui;
 
 Vector<TDPoint*> GameScene::allPoint;//保存所有路径转弯点
@@ -85,6 +87,10 @@ bool GameScene::init()
 
 	loadSkillPattern();
 	loadStatus();
+
+	char bgmfile[30];
+	sprintf(bgmfile, "Bgm/%d.mp3", StageData::getInstance()->currentStage() + 1);
+	SimpleAudioEngine::sharedEngine()->playBackgroundMusic(bgmfile, true);
 	
 	return true;
 }

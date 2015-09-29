@@ -39,6 +39,11 @@ public:
 	virtual ~StageData();
 
 	void pushStageFileName(const char* filename);
+
+	inline int currentStage() const
+	{
+		return currStage;
+	}
 	
 	const char* getCurrentStageFileName();
 	bool toggleNextStage();

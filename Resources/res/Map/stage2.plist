@@ -89,10 +89,91 @@
         <real>1</real>
         <key>enemies</key>
         <array>
-          <string>Beach_Bear</string>
+          <string>Dark_Bear</string>
         </array>
       </dict>
-      
+      <dict>
+        <key>count</key>
+        <integer>10</integer>
+        <key>delay</key>
+        <real>2</real>
+        <key>enemies</key>
+        <array>
+          <string>Dark_Tree</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>20</integer>
+        <key>delay</key>
+        <real>1</real>
+        <key>enemies</key>
+        <array>
+          <string>Dark_Tree</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>10</integer>
+        <key>delay</key>
+        <real>2</real>
+        <key>enemies</key>
+        <array>
+          <string>Dark_Rock</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>20</integer>
+        <key>delay</key>
+        <real>1</real>
+        <key>enemies</key>
+        <array>
+          <string>Dark_Rock</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>10</integer>
+        <key>delay</key>
+        <real>2</real>
+        <key>enemies</key>
+        <array>
+          <string>Dark_Rock</string>
+          <string>Dark_Rock</string>
+          <string>Dark_Tree</string>
+          <string>Dark_Tree</string>
+          <string>Dark_Redbat</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>10</integer>
+        <key>delay</key>
+        <real>2</real>
+        <key>enemies</key>
+        <array>
+          <string>Dark_Rock</string>
+          <string>Dark_Rock</string>
+          <string>Dark_Tree</string>
+          <string>Dark_Redbat</string>
+          <string>Dark_Boss</string>
+        </array>
+      </dict>
+      <dict>
+        <key>count</key>
+        <integer>10</integer>
+        <key>delay</key>
+        <real>2</real>
+        <key>enemies</key>
+        <array>
+          <string>Dark_Boss</string>
+          <string>Dark_Rock</string>
+          <string>Dark_Tree</string>
+          <string>Dark_Redbat</string>
+          <string>Dark_Boss</string>
+        </array>
+      </dict>
 		</array>
 	</dict>
 </plist>

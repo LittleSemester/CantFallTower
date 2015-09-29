@@ -192,7 +192,7 @@ void Enemy::moveEnemy(float dt)
 		std::string strMoney = std::to_string(this->money);
 		Label * labBonus = Label::createWithTTF(myTTF, strMoney);
 		bonus->addChild(labBonus);
-		addChild(bonus);
+		addChild(bonus,50);
 		labBonus->setPosition(Vec2(30, 10));
 		auto fly = MoveBy::create(0.8, Vec2(0, 10));
 

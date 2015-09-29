@@ -33,14 +33,14 @@ bool TowerMoon::onChangeLevel(int level)
 	{
 	case 2:
 	{
-		attack = 20;
+		attack = 45;
 		radius = 180;
 		interval = 0.9;
 		break;
 	}
 	case 3:
 	{
-		attack = 40;
+		attack = 70;
 		radius = 210;
 		interval = 0.8;
 		break;
@@ -54,7 +54,7 @@ bool TowerMoon::onChangeLevel(int level)
 TowerMoon::TowerMoon()
 {
 	radius = 150;
-	attack = 10.0;
+	attack = 20.0;
 	interval = 1.0;
 	//各个级别需要金钱
 	cost[1] = 200;

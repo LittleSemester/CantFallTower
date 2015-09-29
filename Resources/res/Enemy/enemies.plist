@@ -249,7 +249,7 @@
       <array>
         <dict>
           <key>time</key>
-          <real>12</real>
+          <real>120</real>
           <key>effects</key>
           <string>1.0,1.0,1.0,1.5,0.0,0.0</string>
           <key>flag</key>
@@ -310,7 +310,7 @@
       <array>
         <dict>
           <key>time</key>
-          <real>12</real>
+          <real>120</real>
           <key>effects</key>
           <string>1.0,1.0,1.0,1.5,0.0,0.0</string>
           <key>flag</key>
@@ -358,9 +358,9 @@
           <key>time</key>
           <real>120</real>
           <key>effects</key>
-          <string>1.0,1.0,0.8,1.0,0.0,2.0</string>
+          <string>1.0,1.0,0.3,1.0,0.0,2.0</string>
           <key>flag</key>
-          <integer>20</integer>
+          <integer>16</integer>
         </dict>
       </array>
 		</dict>
@@ -388,12 +388,12 @@
 			<key>speed</key>
 			<real>40</real>
       <key>money</key>
-      <real>40</real>
+      <real>35</real>
       <key>buffs</key>
       <array>
         <dict>
           <key>time</key>
-          <real>12</real>
+          <real>120</real>
           <key>effects</key>
           <string>1.0,1.0,1.0,1.0,0.0,10.0</string>
           <key>flag</key>
